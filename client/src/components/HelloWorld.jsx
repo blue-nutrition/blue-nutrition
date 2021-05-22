@@ -3,7 +3,7 @@ import { ContextProvider, AppContext } from '../Context.jsx';
 
 const HelloWorld = () => {
 
-  const { exampleState } = useContext(AppContext);
+  const { exampleState, setExampleState } = useContext(AppContext);
 
   return (
     <div>
