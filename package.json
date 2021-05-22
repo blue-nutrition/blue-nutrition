@@ -20,7 +20,6 @@
     "live-server": "^1.2.1",
     "mongodb": "^3.6.8",
     "mongoose": "^5.12.10",
-    "mysql": "^2.18.1",
     "nodemon": "^2.0.7",
     "react": "~16.12",
     "react-dom": "~16.12"
