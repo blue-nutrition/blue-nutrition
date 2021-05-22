@@ -1,6 +1,7 @@
 import React, { useContext, useEffect }from 'react';
 import { ContextProvider } from './Context.jsx';
 import API from './API.jsx';
+import NavBar from './components/NavBar.jsx';
 
 const App = (props) => {
 
@@ -8,11 +9,9 @@ const App = (props) => {
     <div>
       <ContextProvider>
         <div>
-          <API />
-          <h1>Hello World</h1>
+          <NavBar/>
         </div>
       </ContextProvider>
-      <h1>Hello World</h1>
     </div>
   )
 };
