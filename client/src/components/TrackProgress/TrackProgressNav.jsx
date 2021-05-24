@@ -5,8 +5,8 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import Today from './Today/Today.jsx';
-import TrackProgressNav from './TrackProgress/TrackProgressNav.jsx';
+import TrackProgress from './TrackProgress.jsx'
+
 
 function TabPanel(props) {
   const { children, value, index } = props;
@@ -40,7 +40,7 @@ function a11yProps(index) {
   };
 }
 
-export default function NavBar() {
+export default function TrackProgressNav () {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -48,23 +48,27 @@ export default function NavBar() {
   };
 
   return (
-    <>
+    <div>
       <AppBar position="static">
         <Tabs centered value={value} onChange={handleChange} aria-label="simple tabs example">
-          <Tab label="Today" {...a11yProps(0)} />
-          <Tab label="Progress" {...a11yProps(1)} />
-          <Tab label="Goals" {...a11yProps(2)} />
+          <Tab label="By Day" {...a11yProps(0)} />
+          <Tab label="By Week" {...a11yProps(1)} />
+          <Tab label="By Month" {...a11yProps(2)} />
+          <Tab label="All Time" {...a11yProps(3)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <Today />
+        <TrackProgress period={'daily'}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <TrackProgressNav/>
+      <TrackProgress period={'weekly'}/>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+      <TrackProgress period={'monthly'}/>
       </TabPanel>
-    </>
+      <TabPanel value={value} index={3}>
+      <TrackProgress period={'allTime'}/>
+      </TabPanel>
+    </div>
   );
 }
