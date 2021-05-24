@@ -8,9 +8,9 @@ const TrackProgress = (props) => {
   const [period, setPeriod] = useState('daily');
   const [asOf, setAsOf] = useState(today);
 
-  useEffect() {
-    axios.get('/')
-  }
+  // useEffect() {
+  //   axios.get('/')
+  // }
 
   //get request with previous 5 period information
 

@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const FoodSchema = new Schema({
-  _id: ,
   calories: Number,
   protein: Number,
   carbs: Number,
