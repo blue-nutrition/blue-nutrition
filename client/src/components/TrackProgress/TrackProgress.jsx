@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
+import AsOf from './AsOf.jsx'
 
 
 const TrackProgress = (props) => {
@@ -20,7 +21,7 @@ const TrackProgress = (props) => {
     <div>
       Track Progress Widget
       <div>
-        AsOf
+        <AsOf/>
       </div>
       <div>
         Summary Stats
