@@ -1,6 +1,7 @@
 import React, { useContext, useEffect }from 'react';
 import { ContextProvider } from './Context.jsx';
 import API from './API.jsx';
+import Welcome from './components/welcome/Welcome.jsx';
 
 const App = (props) => {
 
@@ -8,11 +9,9 @@ const App = (props) => {
     <div>
       <ContextProvider>
         <div>
-          <API />
-          <h1>Hello World</h1>
+          <Welcome />
         </div>
       </ContextProvider>
-      <h1>Hello World</h1>
     </div>
   )
 };
