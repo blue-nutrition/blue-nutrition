@@ -6,9 +6,6 @@ import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 const AsOf = (props) => {
   const {asOf, setAsOf} = props;
 
-  console.log(asOf);
-
-
   return(
     <Grid container direction="row" justify="flex-start" alignItems="center" >
         <Grid item>

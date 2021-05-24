@@ -10,6 +10,7 @@ import EditDay from './EditDay.jsx';
 
 const SummarySquare = (props) => {
   const timePeriod = props.period;
+  const {dateRange} = props;
   const [open, setOpen] = useState(false);
 
   const useStyles = makeStyles((theme) => ({
@@ -19,10 +20,10 @@ const SummarySquare = (props) => {
       justifyContent: 'center',
     },
     paper: {
-      backgroundColor: 'white',
+      backgroundColor: '#F0EFEB',
       width: 'auto',
-      paddingTop: '1.5rem',
-      paddingBottom: '1.5rem',
+      paddingTop: '1.0rem',
+      paddingBottom: '1.0rem',
       paddingRight:'1.5rem',
       paddingLeft:'1.5rem'
     },
@@ -34,7 +35,9 @@ const SummarySquare = (props) => {
     width: '15vw',
     height: '15vw',
     border: '2px solid #DBE7E4',
-    position: 'relative'
+    position: 'relative',
+    boxShadow: 'rgba(23, 51, 71, 0.3) 0px 19px 19px, rgba(23, 51, 71, 0.22) 0px 15px 12px',
+    backgroundColor: '#D6E2E9'
   }
 
   const classes = useStyles();
@@ -52,7 +55,7 @@ const SummarySquare = (props) => {
 
   return (
     <div>
-    <Grid container justify="flex-start" alignItems="flex-start">
+    <Grid container>
       <Grid item xs={12}>
       <Typography variant="h6">Time Period</Typography>
         </Grid>

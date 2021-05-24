@@ -25,7 +25,7 @@ const TrackProgress = (props) => {
         <AsOf setAsOf={setAsOf} asOf={asOf}/>
       </div>
       <div>
-        <SummaryStats timePeriod={period}/>
+        <SummaryStats timePeriod={period} asOf={asOf}/>
         </div>
     <div>
       Graphs

@@ -53,8 +53,8 @@ export default function TrackProgressNav () {
       <Grid item xs={12}>
     <Typography variant="h3">Your Progress</Typography>
   </Grid>
-      <AppBar center position="static" color='secondary'>
-        <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
+      <AppBar position="static" color='secondary'>
+        <Tabs centered value={value} onChange={handleChange} aria-label="simple tabs example">
           <Tab label="By Day" {...a11yProps(0)} />
           <Tab label="By Week" {...a11yProps(1)} />
           <Tab label="By Month" {...a11yProps(2)} />

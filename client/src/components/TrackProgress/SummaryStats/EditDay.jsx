@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from '@material-ui/core/Modal';
+import Box from '@material-ui/core/Box';
 
 
 const EditDay = (props) => {
@@ -8,7 +9,7 @@ const EditDay = (props) => {
     maxHeight: '150px',
     width: '100%',
     height: '15vw',
-    borderRadius: '5px',
+    backgroundColor:'white'
   }
 
   return(
@@ -16,7 +17,7 @@ const EditDay = (props) => {
       <h3 id="Edit Day">
       Edit Your Day!
         </h3>
-        <p id="Edit Your Day">
+        <div id="Edit Your Day" style={{position:"center"}}>
           <form>
             <label>
             Water Intake
@@ -25,12 +26,15 @@ const EditDay = (props) => {
             oz
             </label>
           </form>
-          <div style={foodStyle}>
-            Your Reported Food
+          <div>
+            Your Reported Food:
           </div>
-        </p>
+          <Box border={1} style={foodStyle}>
+            Food Item
+          </Box>
+        </div>
         <button type="button" style={{ position:'absolute', bottom:0, right:0 }}>
-          Update Day
+          Add Food
         </button>
     </div>
   )
