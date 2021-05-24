@@ -9,12 +9,12 @@ const Today = () => {
   const { userId, setUserId } = useContext(AppContext);
 
   return (
-    <Container>
+    <div className={'mainContainer'}>
       <AtAGlance/>
       <Meal name={"Breakfast"}/>
       <Meal name={"Lunch"}/>
       <Meal name={"Dinner"}/>
-    </Container>
+    </div>
   )
 };
 
