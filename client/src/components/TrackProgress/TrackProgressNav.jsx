@@ -5,6 +5,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import TrackProgress from './TrackProgress.jsx'
 
 
 function TabPanel(props) {
@@ -57,16 +58,16 @@ export default function TrackProgressNav () {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        By Day
+        <TrackProgress period={'daily'}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        By Week
+      <TrackProgress period={'weekly'}/>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        By Month
+      <TrackProgress period={'monthly'}/>
       </TabPanel>
       <TabPanel value={value} index={3}>
-        All Time
+      <TrackProgress period={'allTime'}/>
       </TabPanel>
     </div>
   );

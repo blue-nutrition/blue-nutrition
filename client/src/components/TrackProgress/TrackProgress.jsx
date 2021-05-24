@@ -5,7 +5,7 @@ import axios from 'axios';
 const TrackProgress = (props) => {
   const today = new Date();
 
-  const [period, setPeriod] = useState('daily');
+  const [period, setPeriod] = useState(props.period);
   const [asOf, setAsOf] = useState(today);
 
   // useEffect() {
@@ -19,9 +19,15 @@ const TrackProgress = (props) => {
   return (
     <div>
       Track Progress Widget
-      {/* <AsOf/>
-      <SummaryStats/>
-      <Graphs/> */}
+      <div>
+        AsOf
+      </div>
+      <div>
+        Summary Stats
+        </div>
+    <div>
+      Graphs
+    </div>
     </div>
   )
 };
