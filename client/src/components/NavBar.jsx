@@ -6,6 +6,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Today from './Today/Today.jsx';
+import Goals from './Goals/Goals.jsx';
 
 function TabPanel(props) {
   const { children, value, index } = props;
@@ -62,7 +63,7 @@ export default function NavBar() {
         Item Two
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        <Goals />
       </TabPanel>
     </div>
   );
