@@ -53,7 +53,7 @@ const Meal = (props) => {
     setWaterModal(false);
     axios.post('/data/water', {userId: '5', date: new Date(), startDate: today, endDate: tomorrow, oz: oz, meal: props.name })
     .then((response) => {
-      console.log(response);
+      props.reRenderWater();
     })
     .catch((err) => {
       console.log(err);
@@ -83,12 +83,15 @@ const Meal = (props) => {
               >
                 <Fade in={waterModal}>
                   <div className={classes.paper}>
-                    <AddWater meal={props.name} handleClose={handleWaterSubmit.bind(this)}/>
+                    <AddWater meal={props.name} handleClose={handleWaterSubmit.bind(this)} currentWater={props.water}/>
                   </div>
                 </Fade>
           </Modal>
 
           </Grid>
+          <ul>
+            <li>Water: {props.water} oz</li>
+          </ul>
         </Grid>
       </div>
   )

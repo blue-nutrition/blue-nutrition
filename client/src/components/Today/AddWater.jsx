@@ -8,7 +8,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Grid from '@material-ui/core/Grid';
 
 const AddWater = (props) => {
-  const [water, setWater] = useState(0);
+  const [water, setWater] = useState(props.currentWater || 0);
 
   const handleChange = (event) => {
     if (event.target.value >= 0) {

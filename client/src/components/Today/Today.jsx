@@ -12,27 +12,32 @@ const Today = () => {
   // const { userId, setUserId } = useContext(AppContext);
   const userId = '5';
   const date = new Date();
-  const [water, setWaterData] = useState(null);
+  const [water, setWaterData] = useState({});
 
-  console.log(today);
-  console.log(tomorrow);
-
-  useEffect(() => {
+  const getWater = () => {
     axios.get('/data/water', { params: {userId: userId, startDate: today, endDate: tomorrow}})
     .then((response) => {
-      console.log(response.data);
+      let formattedWaterData = { 'Breakfast': 0, 'Lunch': 0, 'Dinner': 0}
+      response.data.forEach((res) => {
+        formattedWaterData[res.meal] = res.oz
+      })
+      setWaterData(formattedWaterData);
     })
     .catch((err) => {
       console.log(err);
     })
-  })
+  }
+
+  useEffect(() => {
+    getWater();
+  }, [])
 
   return (
     <div className={'mainContainer'}>
       <AtAGlance/>
-      <Meal name={"Breakfast"}/>
-      <Meal name={"Lunch"}/>
-      <Meal name={"Dinner"}/>
+      <Meal name={"Breakfast"} water={water['Breakfast']} reRenderWater={getWater.bind(this)}/>
+      <Meal name={"Lunch"} water={water['Lunch']} reRenderWater={getWater.bind(this)}/>
+      <Meal name={"Dinner"} water={water['Dinner']} reRenderWater={getWater.bind(this)}/>
     </div>
   )
 };
