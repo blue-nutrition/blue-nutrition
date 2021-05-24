@@ -1,6 +1,8 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
-import AsOf from './AsOf.jsx'
+import AsOf from './AsOf.jsx';
+import Container from '@material-ui/core/Container';
+import SummaryStats from './SummaryStats/SummaryStats.jsx'
 
 
 const TrackProgress = (props) => {
@@ -18,18 +20,17 @@ const TrackProgress = (props) => {
 
 
   return (
-    <div>
-      Track Progress Widget
+    <Container>
       <div>
-        <AsOf/>
+        <AsOf setAsOf={setAsOf} asOf={asOf}/>
       </div>
       <div>
-        Summary Stats
+        <SummaryStats timePeriod={period}/>
         </div>
     <div>
       Graphs
     </div>
-    </div>
+    </Container>
   )
 };
 

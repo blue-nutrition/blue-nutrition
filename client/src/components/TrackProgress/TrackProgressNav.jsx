@@ -5,6 +5,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
 import TrackProgress from './TrackProgress.jsx'
 
 
@@ -49,8 +50,11 @@ export default function TrackProgressNav () {
 
   return (
     <div>
-      <AppBar position="static">
-        <Tabs centered value={value} onChange={handleChange} aria-label="simple tabs example">
+      <Grid item xs={12}>
+    <Typography variant="h3">Your Progress</Typography>
+  </Grid>
+      <AppBar center position="static" color='secondary'>
+        <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
           <Tab label="By Day" {...a11yProps(0)} />
           <Tab label="By Week" {...a11yProps(1)} />
           <Tab label="By Month" {...a11yProps(2)} />
