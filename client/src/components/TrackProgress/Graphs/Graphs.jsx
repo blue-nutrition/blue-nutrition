@@ -5,6 +5,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import Calories from './CaloriesGraph.jsx'
 
 function TabPanel(props) {
   const { children, value, index } = props;
@@ -14,7 +15,7 @@ function TabPanel(props) {
       role="tabpanel"
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
-      aria-labelledby={`vertical-tab-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
     >
       {value === index && (
         <Box>
@@ -33,8 +34,8 @@ TabPanel.propTypes = {
 
 function a11yProps(index) {
   return {
-    id: `vertical-tab-${index}`,
-    'aria-controls': `vertical-tabpanel-${index}`,
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
   };
 }
 
@@ -47,20 +48,8 @@ export default function Graphs() {
 
   return (
     <div>
-      <Tabs
-        orientation="vertical"
-        variant="scrollable"
-        value={value}
-        onChange={handleChange}
-        aria-label="Vertical tabs example"
-      >
-        <Tab label="Calories" {...a11yProps(0)} />
-        <Tab label="Macros" {...a11yProps(1)} />
-        <Tab label="Water Intake" {...a11yProps(2)} />
-        <Tab label="Weight" {...a11yProps(3)} />
-      </Tabs>
       <TabPanel value={value} index={0}>
-        Calories
+        <Calories />
       </TabPanel>
       <TabPanel value={value} index={1}>
         Macros
@@ -71,6 +60,12 @@ export default function Graphs() {
       <TabPanel value={value} index={3}>
         Weight
       </TabPanel>
+      <Tabs value={value} onChange={handleChange} aria-label="Graph tabs" centered>
+        <Tab label="Calories" {...a11yProps(0)} />
+        <Tab label="Macros" {...a11yProps(1)} />
+        <Tab label="Water Intake" {...a11yProps(2)} />
+        <Tab label="Weight" {...a11yProps(3)} />
+      </Tabs>
     </div>
   );
 }
