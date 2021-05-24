@@ -84,10 +84,7 @@ typings/
 
 # Nuxt.js build / generate output
 .nuxt
-<<<<<<< HEAD
-=======
 client/dist/bundle.js
->>>>>>> f7ede7d5a7b5e72a2f31e679851c8b5cef31e9b9
 
 # Gatsby files
 .cache/
