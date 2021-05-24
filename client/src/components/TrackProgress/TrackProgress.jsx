@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
+import Graphs from './Graphs/Graphs.jsx';
 
 
 const TrackProgress = (props) => {
@@ -25,9 +26,9 @@ const TrackProgress = (props) => {
       <div>
         Summary Stats
         </div>
-    <div>
-      Graphs
-    </div>
+      <div>
+        <Graphs />
+      </div>
     </div>
   )
 };
