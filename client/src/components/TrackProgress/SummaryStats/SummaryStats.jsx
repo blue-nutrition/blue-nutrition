@@ -13,19 +13,19 @@ const SummaryStats = (props) => {
     <Grid container
       justify="center"
     >
-      <Grid item>
-        <SummarySquare dateRange={"water"} period={props.timePeriod}/>
+      <Grid item xs={2}>
+        <SummarySquare date={"water"} period={props.timePeriod}/>
       </Grid>
-       <Grid item>
+       <Grid item xs={2}>
          <SummarySquare dateRange={"calories"} unit={"calories"} period={props.timePeriod}/>
        </Grid>
-       <Grid item>
+       <Grid item xs={2}>
        <SummarySquare dateRange={"carbs"} unit={"grams"} period={props.timePeriod}/>
        </Grid>
-       <Grid item>
+       <Grid item xs={2}>
          <SummarySquare dateRange={"protein"} unit={"grams"} period={props.timePeriod}/>
        </Grid>
-       <Grid item>
+       <Grid item xs={2}>
          <SummarySquare dateRange={"fat"} unit={"grams"} period={props.timePeriod}/>
        </Grid>
     </Grid>

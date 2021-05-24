@@ -62,16 +62,16 @@ export default function TrackProgressNav () {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <TrackProgress period={'daily'}/>
+        <TrackProgress period={'Daily'}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-      <TrackProgress period={'weekly'}/>
+      <TrackProgress period={'Weekly'}/>
       </TabPanel>
       <TabPanel value={value} index={2}>
-      <TrackProgress period={'monthly'}/>
+      <TrackProgress period={'Monthly'}/>
       </TabPanel>
       <TabPanel value={value} index={3}>
-      <TrackProgress period={'allTime'}/>
+      <TrackProgress period={'All Time'}/>
       </TabPanel>
     </div>
   );

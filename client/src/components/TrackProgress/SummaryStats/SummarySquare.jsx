@@ -9,7 +9,7 @@ import Modal from '@material-ui/core/Modal'
 import EditDay from './EditDay.jsx';
 
 const SummarySquare = (props) => {
-  const timePeriod = props.period;
+  const timePeriod = props.period
   const {dateRange} = props;
   const [open, setOpen] = useState(false);
 
@@ -30,8 +30,8 @@ const SummarySquare = (props) => {
   }));
 
   const boxStyle = {
-    maxWidth: '150px',
-    maxHeight: '150px',
+    maxWidth: '175px',
+    maxHeight: '175px',
     width: '15vw',
     height: '15vw',
     border: '2px solid #DBE7E4',
@@ -50,7 +50,7 @@ const SummarySquare = (props) => {
     setOpen(false);
   }
 
-  const editButton = timePeriod !== 'daily' ? '' : <Button variant="contained" onClick={handleClick}>Edit</Button>
+  const editButton = timePeriod !== 'Daily' ? '' : <Button variant="contained" onClick={handleClick}>Edit</Button>
 
 
   return (
@@ -61,8 +61,26 @@ const SummarySquare = (props) => {
         </Grid>
       <div style={boxStyle}>
         {props.metric}
-        food
-        water
+        <Grid item>
+          <div style={{ position:'absolute', top:0}}>
+            Your {timePeriod} Average
+          </div>
+          </Grid>
+          <Grid item>
+            Water Intake
+          </Grid>
+          <Grid item>
+            Calories
+          </Grid>
+          <Grid item>
+            Protein Macros
+          </Grid>
+          <Grid item>
+            Carb Macros
+          </Grid>
+          <Grid item>
+            Fat Macros
+          </Grid>
         <div style={{ position:'absolute', bottom:0, right:0 }}>
       {editButton}
         </div>
