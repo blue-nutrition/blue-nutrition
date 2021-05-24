@@ -1,5 +1,5 @@
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
-import './fonts.css';
+import '../dist/fonts.css';
 
 const unica = "'Unica One', cursive";
 const oxygen = "'Oxygen', sans-serif";
@@ -17,7 +17,8 @@ let theme = createMuiTheme({
       fontFamily: [unica]
     },
     h3: {
-      fontFamily: [unica]
+      fontFamily: [unica],
+      textAlign: 'center'
     },
     h4: {
       fontFamily: [unica]
@@ -47,6 +48,15 @@ let theme = createMuiTheme({
     },
     neutral: {
       main: '#F0EFEB' //Grey/peach
+    },
+    mediumBlue: {
+      main: '#BCD4E6'
+    },
+    darkBlue: {
+      main: '#99C1DE'
+    },
+    darkestBlue: {
+      main: '#173347'
     }
   },
   overrides: {
@@ -60,7 +70,25 @@ let theme = createMuiTheme({
     },
     MuiButton: {
       text: {
-        fontSize: '3rem'
+        fontSize: '2rem'
+      }
+    },
+    MuiTabs: {
+      indicator: {
+        height: 3,
+        borderTopLeftRadius: 3,
+        borderTopRightRadius: 3,
+        backgroundColor: '#99C1DE'
+      }
+    },
+    MuiGrid: {
+      container: {
+        width: '100%'
+      }
+    },
+    MuiContainer: {
+      root: {
+        padding: '1rem'
       }
     }
   },
