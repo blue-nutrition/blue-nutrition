@@ -13,15 +13,19 @@ const Today = () => {
   const userId = '5';
   const date = new Date();
   const [water, setWaterData] = useState({});
+  const [totalWater, setTotalWater] = useState(0);
 
   const getWater = () => {
     axios.get('/data/water', { params: {userId: userId, startDate: today, endDate: tomorrow}})
     .then((response) => {
-      let formattedWaterData = { 'Breakfast': 0, 'Lunch': 0, 'Dinner': 0}
+      let formattedWaterData = { 'Breakfast': 0, 'Lunch': 0, 'Dinner': 0};
+      let waterTotal = 0;
       response.data.forEach((res) => {
         formattedWaterData[res.meal] = res.oz
+        waterTotal += res.oz;
       })
       setWaterData(formattedWaterData);
+      setTotalWater(waterTotal);
     })
     .catch((err) => {
       console.log(err);
@@ -34,7 +38,7 @@ const Today = () => {
 
   return (
     <div className={'mainContainer'}>
-      <AtAGlance/>
+      <AtAGlance water={totalWater}/>
       <Meal name={"Breakfast"} water={water['Breakfast']} reRenderWater={getWater.bind(this)}/>
       <Meal name={"Lunch"} water={water['Lunch']} reRenderWater={getWater.bind(this)}/>
       <Meal name={"Dinner"} water={water['Dinner']} reRenderWater={getWater.bind(this)}/>
