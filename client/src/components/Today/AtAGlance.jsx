@@ -1,9 +1,14 @@
 import React, { useContext }from 'react';
-import AtAGlanceSquare from './AtAGlanceSquare.jsx';
+import AtAGlanceSquareWater from './AtAGlanceSquareWater.jsx';
+import AtAGlanceSquareCals from './AtAGlanceSquareCals.jsx';
+import AtAGlanceSquareFat from './AtAGlanceSquareFat.jsx';
+import AtAGlanceSquareCarbs from './AtAGlanceSquareCarbs.jsx';
+import AtAGlanceSquareProtein from './AtAGlanceSquareProtein.jsx';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
 const AtAGlance = (props) => {
+
 
   return (
     <Grid container
@@ -13,19 +18,19 @@ const AtAGlance = (props) => {
         <Typography variant="h3">Your Day At A Glance</Typography>
       </Grid>
       <Grid item>
-        <AtAGlanceSquare metric={"water"} unit={"oz"} amt={props.water}/>
+        <AtAGlanceSquareWater metric={"water"} unit={"oz"} amt={props.water} goal={74}/>
       </Grid>
        <Grid item>
-         <AtAGlanceSquare metric={"calories"} unit={"calories"} amt={props.calories}/>
+         <AtAGlanceSquareCals metric={"calories"} unit={"calories"} amt={props.calories} goal={2000}/>
        </Grid>
        <Grid item>
-       <AtAGlanceSquare metric={"carbs"} unit={"grams"}/>
+       <AtAGlanceSquareCarbs metric={"carbs"} unit={"grams"} amt={props.carbs} goal={50}/>
        </Grid>
        <Grid item>
-         <AtAGlanceSquare metric={"protein"} unit={"grams"}/>
+         <AtAGlanceSquareProtein metric={"protein"} unit={"grams"} amt={props.protein} goal={50}/>
        </Grid>
        <Grid item>
-         <AtAGlanceSquare metric={"fat"} unit={"grams"}/>
+         <AtAGlanceSquareFat metric={"fat"} unit={"grams"} amt={props.fat} goal={50}/>
        </Grid>
     </Grid>
   )
