@@ -7,15 +7,12 @@ import { format } from 'date-fns'
 const SummaryStats = (props) => {
   const {timePeriod, asOf} = props;
 
-  // const asOfDay = format(asOf, 'MMM do YYYY');
+  const asOfDate = new Date(asOf);
+  console.log(asOfDate);
+  // const asOfDay = format(asOfDate, '')
+
 
   // console.log(asOfDay)
-
-
-
-
-
-
 
 
   return (

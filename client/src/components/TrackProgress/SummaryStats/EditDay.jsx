@@ -4,6 +4,7 @@ import Box from '@material-ui/core/Box';
 
 
 const EditDay = (props) => {
+  const {water} = props;
 
   const foodStyle = {
     maxHeight: '150px',
@@ -21,7 +22,7 @@ const EditDay = (props) => {
           <form>
             <label>
             Water Intake
-            <input/>
+            <input placeholder={water}/>
             &nbsp;
             oz
             </label>

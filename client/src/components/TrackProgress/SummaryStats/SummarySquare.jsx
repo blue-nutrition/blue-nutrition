@@ -66,24 +66,44 @@ const SummarySquare = (props) => {
         <Typography variant="subtitle2">Your {timePeriod} Average</Typography>
           </Grid>
           <Grid container>
-            <Grid item xs={6}>
+            <Grid item xs={8}>
             Water Intake:
             </Grid>
-            <Grid item xs={6} style={{right:0}}>
+            <Grid item xs={2} style={{right:0}}>
             Amount
             </Grid>
           </Grid>
-          <Grid item>
+          <Grid container>
+            <Grid item xs={8}>
             Calories:
+            </Grid>
+            <Grid item xs={2} style={{right:0}}>
+            Amount
+            </Grid>
           </Grid>
-          <Grid item>
+          <Grid container>
+            <Grid item xs={8}>
             Protein Macros:
+            </Grid>
+            <Grid item xs={2} style={{right:0}}>
+            Amount
+            </Grid>
           </Grid>
-          <Grid item>
-            Carb Macros:
+          <Grid container>
+            <Grid item xs={8}>
+            Carb Macros
+            </Grid>
+            <Grid item xs={2} style={{right:0}}>
+            Amount
+            </Grid>
           </Grid>
-          <Grid item>
+          <Grid container>
+            <Grid item xs={8}>
             Fat Macros:
+            </Grid>
+            <Grid item xs={2} style={{right:0}}>
+            Amount
+            </Grid>
           </Grid>
         <div style={{ position:'absolute', bottom:0, right:0 }}>
       {editButton}

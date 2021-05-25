@@ -1,6 +1,7 @@
 import React, {useState, useContext} from 'react';
 import DateFnsUtils from '@date-io/date-fns';
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 
 const AsOf = (props) => {
@@ -9,10 +10,7 @@ const AsOf = (props) => {
   return(
     <Grid container direction="row" justify="flex-start" alignItems="center" >
         <Grid item>
-          <h3>
-      As Of:
-      &nbsp;
-          </h3>
+        <Typography variant="h6">As Of: &nbsp;</Typography>
         </Grid>
         <Grid item>
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
