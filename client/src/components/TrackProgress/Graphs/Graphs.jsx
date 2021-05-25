@@ -5,7 +5,10 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import Calories from './CaloriesGraph.jsx'
+import Calories from './CaloriesGraph.jsx';
+import Macros from './MacrosGraph.jsx';
+import WaterIntake from './WaterIntakeGraph.jsx';
+import Weight from './WeightGraph.jsx';
 
 function TabPanel(props) {
   const { children, value, index } = props;
@@ -52,13 +55,13 @@ export default function Graphs() {
         <Calories />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Macros
+        <Macros />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Water Intake
+        < WaterIntake />
       </TabPanel>
       <TabPanel value={value} index={3}>
-        Weight
+        <Weight />
       </TabPanel>
       <Tabs value={value} onChange={handleChange} aria-label="Graph tabs" centered>
         <Tab label="Calories" {...a11yProps(0)} />

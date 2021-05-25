@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
-import { ArgumentAxis, ValueAxis, Chart, BarSeries } from '@devexpress/dx-react-chart-material-ui';
-import { ArgumentScale, Stack } from '@devexpress/dx-react-chart';
+import { ArgumentAxis, ValueAxis, Chart, BarSeries, LineSeries, Tooltip } from '@devexpress/dx-react-chart-material-ui';
+import { ArgumentScale, Stack, EventTracker, HoverState } from '@devexpress/dx-react-chart';
 import { scaleBand } from '@devexpress/dx-chart-core';
 
 const data = [
@@ -13,15 +13,35 @@ const data = [
   { day: 'Friday', calories: 1800 },
 ];
 
-export default () => (
-  <Paper>
-    <Chart
-      data={data}
-    >
-      <ArgumentScale factory={scaleBand} />
-      <ArgumentAxis />
-      <ValueAxis  />
-      <BarSeries valueField="calories" argumentField="day" />
-    </Chart>
-  </Paper>
-);
+const Label = symbol => (props) => {
+  const { text } = props;
+  return (
+    <ValueAxis.Label
+      {...props}
+      text={text + symbol}
+    />
+  );
+};
+
+const CalorieLabel = Label(' cal');
+
+const CaloriesGraph = (props) => {
+  return (
+    <Paper>
+      <Chart
+        data={data}
+      >
+        <ArgumentScale factory={scaleBand} />
+        <ArgumentAxis />
+        <ValueAxis labelComponent={CalorieLabel} />
+        <BarSeries valueField="calories" argumentField="day" />
+        <LineSeries  valueField={1700} argumentField="day" />
+        <EventTracker />
+        <Tooltip />
+        <HoverState />
+      </Chart>
+    </Paper>
+  )
+}
+
+export default CaloriesGraph;
