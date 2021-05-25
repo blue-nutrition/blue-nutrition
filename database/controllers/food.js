@@ -12,12 +12,23 @@ exports.getFood = (req, res) => {
 }
 
 exports.postFood = (req, res) => {
-  Food.create(req.body, (err, result) => {
+  Food.findByIdAndUpdate(req.body.foodId, req.body, (err, result) => {
     if (err) {
       console.error(err);
       res.sendStatus(500);
     } else {
       res.status(204).send(result);
+    }
+  })
+}
+
+exports.deleteFood = (req, res) => {
+  Food.findByIdAndDelete(req.body.foodId, (err, result) => {
+    if (err) {
+      console.error(err);
+      res.sendStatus(500);
+    } else {
+      res.status(200).send(result);
     }
   })
 }
