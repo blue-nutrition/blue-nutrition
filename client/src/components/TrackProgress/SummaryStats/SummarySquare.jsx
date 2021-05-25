@@ -9,9 +9,10 @@ import Modal from '@material-ui/core/Modal'
 import EditDay from './EditDay.jsx';
 
 
+
 const SummarySquare = (props) => {
   const timePeriod = props.period
-  const {date} = props;
+  const {title, image, unit, amount} = props;
   const [open, setOpen] = useState(false);
 
   const useStyles = makeStyles((theme) => ({
@@ -31,14 +32,15 @@ const SummarySquare = (props) => {
   }));
 
   const boxStyle = {
-    maxWidth: '175px',
-    maxHeight: '175px',
+    maxWidth: '160px',
+    maxHeight: '160px',
     width: '15vw',
     height: '15vw',
     border: '2px solid #DBE7E4',
     position: 'relative',
     boxShadow: 'rgba(23, 51, 71, 0.3) 0px 19px 19px, rgba(23, 51, 71, 0.22) 0px 15px 12px',
-    backgroundColor: '#D6E2E9'
+    backgroundColor: '#D6E2E9',
+    textAlign: 'center'
   }
 
   const classes = useStyles();
@@ -56,61 +58,34 @@ const SummarySquare = (props) => {
 
   return (
     <div>
-    <Grid container>
+    <Grid container direction='column' justify='center' alignItems='center'>
       <Grid item xs={12}>
-      <Typography variant="h6">{date}</Typography>
+      <Typography variant="h6">{title}</Typography>
         </Grid>
       <div style={boxStyle}>
         {props.metric}
         <Grid item>
-        <Typography variant="subtitle2">Your {timePeriod} Average</Typography>
+        <Typography variant="subtitle2">Your {timePeriod} Avg</Typography>
           </Grid>
           <Grid container>
-            <Grid item xs={8}>
-            Water Intake:
-            </Grid>
-            <Grid item xs={2} style={{right:0}}>
-            Amount
+            <Grid item xs={12} justify="center">
+            <img src={image} style={{height: '75px' }}/>
             </Grid>
           </Grid>
           <Grid container>
-            <Grid item xs={8}>
-            Calories:
+            <Grid item xs={7} style={{textAlign:'left'}}>
+            {title} Intake:
             </Grid>
-            <Grid item xs={2} style={{right:0}}>
-            Amount
-            </Grid>
-          </Grid>
-          <Grid container>
-            <Grid item xs={8}>
-            Protein Macros:
-            </Grid>
-            <Grid item xs={2} style={{right:0}}>
-            Amount
+            <Grid item xs={5} style={{textAlign:'right'}}>
+            {amount} {unit}
             </Grid>
           </Grid>
-          <Grid container>
-            <Grid item xs={8}>
-            Carb Macros
-            </Grid>
-            <Grid item xs={2} style={{right:0}}>
-            Amount
-            </Grid>
-          </Grid>
-          <Grid container>
-            <Grid item xs={8}>
-            Fat Macros:
-            </Grid>
-            <Grid item xs={2} style={{right:0}}>
-            Amount
-            </Grid>
-          </Grid>
-        <div style={{ position:'absolute', bottom:0, right:0 }}>
-      {editButton}
-        </div>
+        {/* <div style={{ position:'absolute', bottom:0, right:0 }}>
+      {/* {editButton} */}
+        {/* </div> */}
       </div>
     </Grid>
-        <Modal
+        {/* <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="Edit Day"
@@ -120,7 +95,7 @@ const SummarySquare = (props) => {
         <div className={classes.paper}>
           <EditDay/>
         </div>
-      </Modal>
+      </Modal> */}
     </div>
   )
 };

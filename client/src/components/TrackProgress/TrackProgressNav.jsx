@@ -55,9 +55,9 @@ export default function TrackProgressNav () {
   </Grid>
       <AppBar position="static" color='secondary'>
         <Tabs centered value={value} onChange={handleChange} aria-label="simple tabs example">
-          <Tab label="By Day" {...a11yProps(0)} />
-          <Tab label="By Week" {...a11yProps(1)} />
-          <Tab label="By Month" {...a11yProps(2)} />
+          <Tab label="Day" {...a11yProps(0)} />
+          <Tab label="Last 7 Days" {...a11yProps(1)} />
+          <Tab label="Last 30 Days" {...a11yProps(2)} />
           <Tab label="All Time" {...a11yProps(3)} />
         </Tabs>
       </AppBar>
