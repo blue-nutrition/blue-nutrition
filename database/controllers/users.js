@@ -8,7 +8,9 @@ exports.postUser = (req, res) => {
   const filter = { email: req.body.email };
   const update = { goals: req.body.goals };
 
-  User.findOneAndUpdate(filter, update, { new: true }, (err, results) => {
+  User.findOneAndUpdate(filter, update, {       upsert: true,
+    new: true
+  }, (err, results) => {
     if (err) throw err;
     res.send(results);
   })

@@ -18,6 +18,16 @@ const EditGoals = ({ handleClose }) => {
     goalWeight: userGoals.goalWeight
   })
 
+  // sample data
+  // {
+  //   water: 64,
+  //   calories: 2000,
+  //   protein: 50,
+  //   carbs: 120,
+  //   fats: 30,
+  //   goalWeight: 135
+  // }
+
   const weightData = {
     userId,
     weight: editedWeight,
@@ -31,17 +41,14 @@ const EditGoals = ({ handleClose }) => {
   }
 
   const setUser = (userData, weightData) => {
-    axios.post('/user', userData)
+    axios.post('/data/users', userData)
       .then(results => {
-        axios.post('/weight', weightData)
+        axios.post('/data/weight', weightData)
         .then(results => {
-          setWeight(editedWeight);
-          setWaterGoal(editedWater);
-          setCaloriesGoal(editedCalories);
-          setProteinGoal(carbsGoal);
-          setCarbsGoal(editedCarbs);
-          setFatsGoal(editedFats);
-          setGoalWeight(editedGoalWeight);
+          setUserGoals({
+            weight: weightData.weight,
+            goals: userData.goals
+          })
           handleClose();
         })
       });
