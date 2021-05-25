@@ -13,7 +13,7 @@ import Fade from '@material-ui/core/Fade';
 import Modal from '@material-ui/core/Modal';
 import { makeStyles } from '@material-ui/core/styles';
 import EditIcon from '@material-ui/icons/Edit';
-
+import DeleteIcon from '@material-ui/icons/Delete';
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -22,6 +22,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import IconButton from '@material-ui/core/IconButton';
 
 //Components
 import AddWater from './AddWater.jsx';
@@ -61,6 +62,7 @@ const Meal = (props) => {
   const classes = useStyles();
   const [waterModal, setWaterModal] = React.useState(false);
   const [foodModal, setFoodModal] = React.useState(false);
+  const [currentFood, setCurrentFood] = React.useState({});
   const { today, setToday } = useContext(AppContext);
   const { tomorrow, setTomorrow } = useContext(AppContext);
 
@@ -72,7 +74,8 @@ const Meal = (props) => {
     setWaterModal(false);
   };
 
-  const handleFoodOpen = () => {
+  const handleFoodOpen = (food) => {
+    setCurrentFood(food);
     setFoodModal(true);
   };
 
@@ -125,7 +128,7 @@ const Meal = (props) => {
                 >
                   <Fade in={foodModal}>
                     <div className={classes.modalPaper}>
-                      <AddFood meal={props.name} handleClose={handleFoodSubmit.bind(this)}/>
+                      <AddFood meal={props.name} handleClose={handleFoodSubmit.bind(this)} currentFood={currentFood}/>
                     </div>
                   </Fade>
               </Modal>
@@ -167,13 +170,20 @@ const Meal = (props) => {
               <TableBody>
                 {props.food.map((item) => {
                   return(
-                    <TableRow>
+                    <TableRow key={item._id}>
                       <TableCell>{item.foodName}</TableCell>
                       <TableCell align="right">{item.calories}</TableCell>
                       <TableCell align="right">{item.fat}</TableCell>
                       <TableCell align="right">{item.carbs}</TableCell>
                       <TableCell align="right">{item.protein}</TableCell>
-                      <TableCell align="right"><EditIcon/></TableCell>
+                      <TableCell align="right">
+                        <IconButton>
+                          <EditIcon onClick={() => handleFoodOpen({foodName: item.foodName, calories: item.calories, fat: item.fat, carbs: item.carbs, protein: item.protein, _id: item._id})} />
+                        </IconButton>
+                        <IconButton>
+                          <DeleteIcon/>
+                        </IconButton>
+                      </TableCell>
                     </TableRow>
                   )
                 })}

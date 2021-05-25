@@ -12,7 +12,7 @@ exports.getFood = (req, res) => {
 }
 
 exports.postFood = (req, res) => {
-  Food.create(req.body, (err, result) => {
+  Food.findByIdAndUpdate(req.body.foodId, req.body, (err, result) => {
     if (err) {
       console.error(err);
       res.sendStatus(500);
