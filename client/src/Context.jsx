@@ -1,3 +1,4 @@
+
 import React, { createContext, useState } from 'react';
 const { zonedTimeToUtc, utcToZonedTime, format } = require('date-fns-tz')
 
@@ -15,21 +16,57 @@ export const ContextProvider = (props) => {
   const [today, setToday] = useState(_2dayUTC);
   const [tomorrow, setTomorrow] = useState(_2morrowUTC);
   const [userId, setUserId] = useState('5');
+  const [email, setEmail] = useState('');
 
   // Landing page states
-  const [newUserPackage, setNewUserPackage] = useState({
-    currentWeight: null,
-    waterConsumption: 0,
-    caloricIntake: 0,
-    proteinMacros: 0,
-    carbMacros: 0,
-    fatMacros: 0,
+  const [userGoals, setUserGoals] = useState({
+    weight: null,
+    water: 0,
+    calories: 2000,
+    protein: 0,
+    carbs: 0,
+    fats: 0,
     goalWeight: null,
   });
 
   return (
-    <AppContext.Provider value={{exampleState, setExampleState, userId, setUserId, newUserPackage, setNewUserPackage, today, setToday, tomorrow, setTomorrow}}>
+    <AppContext.Provider value={{exampleState, setExampleState, userId, setUserId, email, setEmail,
+      userGoals, setUserGoals, today, setToday, tomorrow, setTomorrow}}>
       {props.children}
     </AppContext.Provider>
   )
 }
+
+
+// import React, { createContext, useState } from 'react';
+
+// export const AppContext = createContext();
+
+// export const ContextProvider = (props) => {
+
+//   // list of useState items
+//   const [exampleState, setExampleState] = useState('Hello World');
+//   const [currentWeight, setCurrentWeight] = useState(0);
+//   const [waterGoal, setWaterGoal] = useState(64);
+//   const [caloriesGoal, setCaloriesGoal] = useState(2000);
+//   const [proteinMacrosGoal, setProteinMacrosGoal] = useState(50);
+//   const [carbsMacrosGoal, setCarbsMacrosGoal] = useState(100);
+//   const [fatsMacrosGoal, setFatsMacrosGoal] = useState(25);
+//   const [goalWeight, setGoalWeight] = useState();
+
+
+//   return (
+//     <AppContext.Provider value={{
+//       exampleState, setExampleState,
+//       currentWeight, setCurrentWeight,
+//       waterGoal, setWaterGoal,
+//       caloriesGoal, setCaloriesGoal,
+//       proteinMacrosGoal, setProteinMacrosGoal,
+//       carbsMacrosGoal, setCarbsMacrosGoal,
+//       fatsMacrosGoal, setFatsMacrosGoal,
+//       goalWeight, setGoalWeight
+//     }}>
+//       {props.children}
+//     </AppContext.Provider>
+//   )
+// }
