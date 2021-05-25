@@ -12,7 +12,7 @@ exports.getFood = (req, res) => {
 }
 
 exports.postFood = (req, res) => {
-  Food.findByIdAndUpdate(req.body.foodId, req.body, (err, result) => {
+  Food.findByIdAndUpdate(req.body.foodId, req.body, {upsert: true}, (err, result) => {
     if (err) {
       console.error(err);
       res.sendStatus(500);
