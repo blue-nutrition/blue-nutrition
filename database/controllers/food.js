@@ -60,7 +60,16 @@ exports.getDailyFood = (req, res) => {
         _id: '$yearMonthDayUTC',
         dailyCalories: {
             $sum: '$calories'
-        }
+        },
+        dailyProtein: {
+            $sum: '$protein'
+       },
+        dailyCarbs: {
+            $sum: '$carbs'
+        },
+        dailyFat: {
+          $sum: '$carbs'
+      }
     }
 }], (err, resp) => {
   if(err) {
