@@ -8,11 +8,19 @@ export const ContextProvider = (props) => {
   const [exampleState, setExampleState] = useState('Hello World');
 
   // Landing page states
-  const [loginModalOpen, setLoginModalstate] = useState(false);
-  const [createAccountModalOpen, setCreateAccountModalstate] = useState(false);
+  const [userId, setUserId] = useState();
+  const [newUserPackage, setNewUserPackage] = useState({
+    currentWeight: null,
+    waterConsumption: 0,
+    caloricIntake: 0,
+    proteinMacros: 0,
+    carbMacros: 0,
+    fatMacros: 0,
+    goalWeight: null,
+  });
 
   return (
-    <AppContext.Provider value={{exampleState, setExampleState, loginModalOpen, createAccountModalOpen, setLoginModalstate, setCreateAccountModalstate}}>
+    <AppContext.Provider value={{exampleState, setExampleState, userId, setUserId, newUserPackage, setNewUserPackage}}>
       {props.children}
     </AppContext.Provider>
   )

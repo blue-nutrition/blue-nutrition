@@ -12,8 +12,8 @@ const Welcome = () => {
       <Typography>
         <h1>Welcome to Salut!</h1>
         <h6>Please Login or Sign Up to continue.</h6>
-        <CreateAccountModal />
         <SignInModal />
+        <CreateAccountModal />
       </Typography>
     </Box>
   )

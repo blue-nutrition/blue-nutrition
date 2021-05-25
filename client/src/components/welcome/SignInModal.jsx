@@ -24,6 +24,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    overflow: 'scroll',
   },
   paper: {
     position: 'absolute',
@@ -36,22 +37,15 @@ const useStyles = makeStyles(theme => ({
 
 const SignInModal = () => {
 
-  const {signIn, loaded } = useGoogleLogin({
-    onSuccess,
-    onFailure,
-    // authKey,
-    isSignedIn: true,
-    accessType: 'offline'
-  })
-
   const onSuccess = (res) => {
-    console.log(res.profileObj);
+    setUserId(res.profileObj.googleId);
   };
 
   const onFailure = (res) => {
     console.log(res);
   }
 
+  const {userId, setUserId} = useContext(AppContext);
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
   const [open, setOpen] = useState(false);
@@ -80,10 +74,7 @@ const SignInModal = () => {
       aria-describedby="simple-modal-description"
     >
       <div style={modalStyle} className={classes.paper}>
-        <h2>Simple React Modal</h2>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi accumsan odio enim, non pharetra est ultrices et.
-        </p>
+        <h2>Please Sign In</h2>
         <GoogleLogin
           clientID="223117457103-m37me8ugrqlb9nn8o2i48dr96arojlfv.apps.googleusercontent.com"
           buttonText="Login"
