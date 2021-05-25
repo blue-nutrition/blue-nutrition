@@ -1,12 +1,9 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
-<<<<<<< HEAD
 import Graphs from './Graphs/Graphs.jsx';
-=======
 import AsOf from './AsOf.jsx';
 import Container from '@material-ui/core/Container';
 import SummaryStats from './SummaryStats/SummaryStats.jsx'
->>>>>>> main
 
 
 const TrackProgress = (props) => {
@@ -43,18 +40,11 @@ const TrackProgress = (props) => {
       </div>
       <div>
         <SummaryStats timePeriod={period} asOf={asOf} food={food} water={water}/>
-        </div>
-<<<<<<< HEAD
+      </div>
       <div>
         <Graphs />
       </div>
-    </div>
-=======
-    <div>
-      Graphs
-    </div>
     </Container>
->>>>>>> main
   )
 };
 

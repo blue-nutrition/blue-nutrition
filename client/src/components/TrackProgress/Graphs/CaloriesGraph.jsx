@@ -6,11 +6,11 @@ import { ArgumentScale, Stack, EventTracker, HoverState } from '@devexpress/dx-r
 import { scaleBand } from '@devexpress/dx-chart-core';
 
 const data = [
-  { day: 'Monday', calories: 1500 },
-  { day: 'Tuesday', calories: 2000 },
-  { day: 'Wednesday', calories: 1700 },
-  { day: 'Thursday', calories: 2200 },
-  { day: 'Friday', calories: 1800 },
+  { day: 'Monday', calories: 1500, goal: 1600 },
+  { day: 'Tuesday', calories: 2000, goal: 1600 },
+  { day: 'Wednesday', calories: 1700, goal: 1600 },
+  { day: 'Thursday', calories: 2200, goal: 1600 },
+  { day: 'Friday', calories: 1800, goal: 1600 },
 ];
 
 const Label = symbol => (props) => {
@@ -34,8 +34,8 @@ const CaloriesGraph = (props) => {
         <ArgumentScale factory={scaleBand} />
         <ArgumentAxis />
         <ValueAxis labelComponent={CalorieLabel} />
-        <BarSeries valueField="calories" argumentField="day" />
-        <LineSeries  valueField={1700} argumentField="day" />
+        <BarSeries valueField="calories" argumentField="day" color="lightslategrey" />
+        <LineSeries  valueField="goal" argumentField="day" color="bisque" />
         <EventTracker />
         <Tooltip />
         <HoverState />
