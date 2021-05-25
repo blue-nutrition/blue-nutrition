@@ -36,12 +36,22 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const SignInModal = () => {
-
-  const {userId, setUserId} = useContext(AppContext);
+  const {userId, setUserId, setLoggedIn} = useContext(AppContext);
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
   const [open, setOpen] = useState(false);
 
+  const onSuccess = (res) => {
+    // console.log(res.profileObj);
+    setUserId(res.profileObj.googleId);
+    setEmail(res.profileObj.email);
+    setLoggedIn(true);
+    // console.log(email);
+  };
+
+  const onFailure = (res) => {
+    console.log(res);
+  }
 
   const handleOpen = () => {
       setOpen(true);
@@ -65,7 +75,14 @@ const SignInModal = () => {
       <Container>
       <div style={modalStyle} className={classes.paper}>
         <h2>Please Sign In</h2>
-        <GoogleButton />
+        <GoogleLogin
+          clientId="223117457103-m37me8ugrqlb9nn8o2i48dr96arojlfv.apps.googleusercontent.com"
+          buttonText="Login to Salut"
+          onSuccess={onSuccess}
+          onFailure={onFailure}
+          cookiePolicy={'single_host_origin'}
+          isSignedIn={true}
+        />
       </div>
       </Container>
     </Modal>

@@ -1,4 +1,4 @@
-import React, { useContext, useState }from 'react';
+import React, { useContext, useState, useEffect }from 'react';
 import { ContextProvider, AppContext } from '../../Context.jsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
@@ -42,11 +42,24 @@ const useStyles = makeStyles(theme => ({
 
 const CreateAccountModal = () => {
 
-  const {userId, setUserId, userGoals, setUserGoals} = useContext(AppContext);
+  const {userId, setUserId, userGoals, setUserGoals, today, postUser, email, setLoggedIn} = useContext(AppContext);
 
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
   const [open, setOpen] = useState(false);
+  const [newUserGoals, setNewUserGoals ]= useState();
+
+
+  useEffect(() => {
+    setNewUserGoals({
+      water: userGoals.water,
+      calories: userGoals.calories,
+      protein: userGoals.protein,
+      carbs: userGoals.carbs,
+      fats: userGoals.fats,
+      goalWeight: userGoals.goalWeight
+    })
+  }, [userGoals])
 
 
   const handleOpen = () => {
@@ -57,10 +70,24 @@ const CreateAccountModal = () => {
       setOpen(false);
   };
 
+  const userData = {
+    email,
+    userId,
+    goals: newUserGoals
+  }
+
+  const weightData = {
+    userId,
+    weight: userGoals.weight,
+    date: today,
+  }
+
   const handleAccountCreation = (e) => {
     e.preventDefault();
     e.persist();
-    console.log('New User Info: ', userId, userGoals);
+    console.log('New User Info: ', userData, weightData);
+    postUser(userData, weightData, handleClose)
+    setLoggedIn(true);
     return false;
   }
 

@@ -20,10 +20,10 @@ const GoogleButton = () => {
   }
 
   return (
-    <div class="g-signin2" data-width="300" data-height="200" data-longtitle="true">
+    <div className="g-signin2" data-width="300" data-height="200" data-longtitle="true">
     <GoogleLogin
       clientId="223117457103-m37me8ugrqlb9nn8o2i48dr96arojlfv.apps.googleusercontent.com"
-      buttonText="Login with Google"
+      buttonText="Create Account with Google"
       onSuccess={onSuccess}
       onFailure={onFailure}
       cookiePolicy={'single_host_origin'}

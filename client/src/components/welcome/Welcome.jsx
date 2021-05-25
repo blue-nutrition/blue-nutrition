@@ -18,23 +18,26 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Welcome = () => {
+  const {loggedIn} =useContext(AppContext);
   const classes = useStyles();
 
   return (
-    <Container>
-      <div className={classes.landing}>
-      <Grid container justify="center">
-        <Grid item>
-          <Typography>
-            <h1>Welcome to Salut!</h1>
-            <h6>Please Login or Sign Up to continue.</h6>
-            <SignInModal />
-            <CreateAccountModal />
-          </Typography>
+    <>
+      <Container>
+        <div className={classes.landing}>
+        <Grid container justify="center">
+          <Grid item>
+            <Typography>
+              <h1>Welcome to Salut!</h1>
+              <h6>Please Sign In or Create Account to continue.</h6>
+              <SignInModal />
+              <CreateAccountModal />
+            </Typography>
+          </Grid>
         </Grid>
-      </Grid>
-      </div>
-    </Container>
+        </div>
+      </Container>
+    </>
   )
 };
 
