@@ -1,6 +1,7 @@
 # sensitive files
 database/index.js
 server/AuthKeys.js
+client/dist/bundle.js
 
 # Logs
 logs

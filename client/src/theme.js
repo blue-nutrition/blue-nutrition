@@ -83,6 +83,11 @@ let theme = createMuiTheme({
         backgroundColor: '#99C1DE'
       }
     },
+    MuiAppBar: {
+      colorSecondary: {
+        backgroundColor: '#F0EFEB'
+      }
+    },
     MuiGrid: {
       container: {
         width: '100%'
