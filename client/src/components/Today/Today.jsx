@@ -1,20 +1,48 @@
-import React, { useContext }from 'react';
+import React, { useContext, useState, useEffect }from 'react';
 import { ContextProvider, AppContext } from '../../Context.jsx';
 import Container from '@material-ui/core/Container';
 import AtAGlance from './AtAGlance.jsx';
 import Meal from './Meal.jsx';
+const axios = require('axios');
+
 
 const Today = () => {
+  const { today, setToday } = useContext(AppContext);
+  const { tomorrow, setTomorrow } = useContext(AppContext);
+  // const { userId, setUserId } = useContext(AppContext);
+  const userId = '5';
+  const date = new Date();
+  const [water, setWaterData] = useState({});
+  const [totalWater, setTotalWater] = useState(0);
 
-  const { userId, setUserId } = useContext(AppContext);
+  const getWater = () => {
+    axios.get('/data/water', { params: {userId: userId, startDate: today, endDate: tomorrow}})
+    .then((response) => {
+      let formattedWaterData = { 'Breakfast': 0, 'Lunch': 0, 'Dinner': 0};
+      let waterTotal = 0;
+      response.data.forEach((res) => {
+        formattedWaterData[res.meal] = res.oz
+        waterTotal += res.oz;
+      })
+      setWaterData(formattedWaterData);
+      setTotalWater(waterTotal);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+
+  useEffect(() => {
+    getWater();
+  }, [])
 
   return (
-    <Container>
-      <AtAGlance/>
-      <Meal name={"Breakfast"}/>
-      <Meal name={"Lunch"}/>
-      <Meal name={"Dinner"}/>
-    </Container>
+    <div className={'mainContainer'}>
+      <AtAGlance water={totalWater}/>
+      <Meal name={"Breakfast"} water={water['Breakfast']} reRenderWater={getWater.bind(this)}/>
+      <Meal name={"Lunch"} water={water['Lunch']} reRenderWater={getWater.bind(this)}/>
+      <Meal name={"Dinner"} water={water['Dinner']} reRenderWater={getWater.bind(this)}/>
+    </div>
   )
 };
 

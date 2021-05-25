@@ -18,7 +18,7 @@ const AtAGlanceSquare = (props) => {
       <div style={boxStyle}>
         {props.metric}
       </div>
-      <Typography variant="h6"># / # {props.unit}</Typography>
+      <Typography variant="h6">{props.amt} / ? {props.unit}</Typography>
     </Container>
   )
 };

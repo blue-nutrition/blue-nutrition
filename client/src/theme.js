@@ -70,7 +70,8 @@ let theme = createMuiTheme({
     },
     MuiButton: {
       text: {
-        fontSize: '2rem'
+        fontFamily: unica,
+        fontSize: '1.25rem'
       }
     },
     MuiTabs: {
@@ -93,7 +94,7 @@ let theme = createMuiTheme({
     },
     MuiContainer: {
       root: {
-        padding: '1rem'
+        height: '100%'
       }
     }
   },
