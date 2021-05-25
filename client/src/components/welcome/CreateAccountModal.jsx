@@ -2,18 +2,19 @@ import React, { useContext, useState }from 'react';
 import { ContextProvider, AppContext } from '../../Context.jsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
+import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import { GoogleLogin, useGoogleLogin } from 'react-google-login';
 import Box from '@material-ui/core/Box';
 import GoogleButton from './GoogleButton.jsx'
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Grid from '@material-ui/core/Grid';
 
-const rand = () => (
-  Math.round(Math.random() * 20) - 10
-)
 
 const getModalStyle = () => {
-  const top = 50 + rand();
-  const left = 50 + rand();
+  const top = 50;
+  const left = 50;
   return {
       top: `${top}%`,
       left: `${left}%`,
@@ -26,7 +27,6 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    overflow: 'hidden'
   },
   paper: {
     position: 'absolute',
@@ -34,7 +34,6 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
-    overflow: 'scroll',
   },
 }));
 
@@ -87,7 +86,7 @@ const CreateAccountModal = () => {
       aria-describedby="simple-modal-description"
     >
       <div style={modalStyle} className={classes.paper}>
-        <h2>Please Enter Your Goals</h2>
+        <h2>Please Sign in with Google and Enter Your Goals</h2>
         <GoogleLogin
           clientID="223117457103-m37me8ugrqlb9nn8o2i48dr96arojlfv.apps.googleusercontent.com"
           buttonText="Login"
@@ -97,85 +96,109 @@ const CreateAccountModal = () => {
           isSignedIn={true}
         />
         <h6>Set Your Baseline</h6>
-        <label>
-          <h6>Current Weight</h6>
-          <input type="number" name="currentWeight"
-            value={newUserPackage.currentWeight}
-            onChange={(e) => setNewUserPackage({
-              ...newUserPackage,
-              [e.target.name]: e.target.value
-            })}
-          />
-          <h6>{`lbs. (optional)`}</h6>
-        </label>
-        <h1>Set Your Daily Goals</h1>
-        <label>
-          <t>Water Consumption</t>
-          <input type="number" name="waterConsumption"
+        <div>
+          <FormControl>
+            <Input
+              id="current-weight"
+              type="number" name="currentWeight"
+              value={newUserPackage.currentWeight}
+              onChange={(e) => setNewUserPackage({
+                ...newUserPackage,
+                [e.target.name]: e.target.value
+              })}
+            />
+            <FormHelperText id="current-weight-helper-text">{`Current Weight in lbs. (optional)`}</FormHelperText>
+          </FormControl>
+        </div>
+        <h6>Set Your Daily Goals</h6>
+        <FormControl>
+          <Input
+            id="water-consumption"
+            type="number" name="waterConsumption"
             value={newUserPackage.waterConsumption}
             onChange={(e) => setNewUserPackage({
               ...newUserPackage,
               [e.target.name]: e.target.value
             })}
           />
-          <h6>oz.</h6>
-        </label>
-        <label>
-          <h6>Caloric Intake</h6>
-          <input type="number" name="caloricIntake"
+          <FormHelperText id="water-consumption-helper-text">Water Consumption in oz.</FormHelperText>
+        </FormControl>
+        <div>
+        <FormControl>
+          <Input
+            id="calorie-intake"
+            type="number" name="caloricIntake"
             value={newUserPackage.caloricIntake}
             onChange={(e) => setNewUserPackage({
               ...newUserPackage,
               [e.target.name]: e.target.value
             })}
           />
-          <h6>kcals</h6>
-        </label>
-        <label>
-          <h6>Protein Macros</h6>
-          <input type="number" name="proteinMacros"
+          <FormHelperText id="calorie-intake-helper-text">Calorie Intake in kcals.</FormHelperText>
+        </FormControl>
+        </div>
+        <div>
+        <FormControl>
+          <Input
+            id="protein-macros"
+            type="number" name="proteinMacros"
             value={newUserPackage.proteinMacros}
             onChange={(e) => setNewUserPackage({
               ...newUserPackage,
               [e.target.name]: e.target.value
             })}
           />
-        </label>
-        <label>
-          <h6>Carbohydrates Macros</h6>
-          <input type="number" name="carbMacros"
+            <FormHelperText id="protein-macros-helper-text">Protein Macros</FormHelperText>
+        </FormControl>
+        </div>
+        <div>
+        <FormControl>
+          <Input
+            id="carbs-macros"
+            type="number" name="carbMacros"
             value={newUserPackage.carbMacros}
             onChange={(e) => setNewUserPackage({
               ...newUserPackage,
               [e.target.name]: e.target.value
             })}
           />
-        </label>
-        <label>
-          <h6>Fat Macros</h6>
-          <input type="number" name="fatMacros"
+            <FormHelperText id="carbs-macros-helper-text">Carbohydrates Macros</FormHelperText>
+        </FormControl>
+        </div>
+
+        <div>
+          <FormControl>
+          <Input
+            id="fat-macros"
+            type="number" name="fatMacros"
             value={newUserPackage.fatMacros}
             onChange={(e) => setNewUserPackage({
               ...newUserPackage,
               [e.target.name]: e.target.value
             })}
           />
-        </label>
-        <label>
-          <h6>Goal Weight</h6>
-          <input type="number" name="goalWeight"
+            <FormHelperText id="fat-macros-helper-text">Fat Macros</FormHelperText>
+          </FormControl>
+        </div>
+        <div>
+          <FormControl>
+          <Input
+            id="goal-weight"
+            type="number" name="goalWeight"
             value={newUserPackage.goalWeight}
             onChange={(e) => setNewUserPackage({
               ...newUserPackage,
               [e.target.name]: e.target.value
             })}
           />
-          <h6>{`lbs. (optional)`}</h6>
-        </label>
-        <Button varient="contained" color="primary"
-        onClick={handleAccountCreation}>
-          <h6>Create Account</h6>
-        </Button>
+            <FormHelperText id="goal-weight-helper-text">Goal Weight in lbs.</FormHelperText>
+          </FormControl>
+        </div>
+        <Grid container justify="center">
+          <Grid item>
+            <Button  onClick={handleAccountCreation}>Create Account</Button>
+          </Grid>
+        </Grid>
       </div>
     </Modal>
   </Box>
