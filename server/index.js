@@ -10,4 +10,5 @@ const routes = require('./routes.js')
 app.use('/data', routes);
 app.use('/', express.static('./client/dist'));
 
+
 module.exports = app;

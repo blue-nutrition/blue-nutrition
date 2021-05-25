@@ -14,11 +14,12 @@ const AddFood = (props) => {
   const { userId } = useContext(AppContext);
 
   const [values, setValues] = useState({
-    calories: 0,
-    protein: 0,
-    carbs: 0,
-    fat: 0,
-    foodName: '',
+    calories: props.currentFood.calories || 0,
+    protein: props.currentFood.protein || 0,
+    carbs: props.currentFood.carbs || 0,
+    fat: props.currentFood.fat || 0,
+    foodName: props.currentFood.foodName || '',
+    foodId: props.currentFood._id || null,
     userId: userId,
     meal: props.meal,
     date: new Date()
