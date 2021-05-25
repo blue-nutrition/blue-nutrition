@@ -33,7 +33,7 @@ const AtAGlanceSquareWater = (props) => {
     top: '0',
     left: '0',
     height: `${props.amt <= props.goal ? 100 - ((props.amt/props.goal)*100) : 100}%`,
-    color: `${props.amt <= props.goal ? 'black' : 'red'}`
+    color: `${props.amt <= props.goal ? 'black' : '#99C1DE'}`
   }
 
   return (
