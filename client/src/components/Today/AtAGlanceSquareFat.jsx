@@ -33,7 +33,8 @@ const AtAGlanceSquareFat = (props) => {
     position: 'absolute',
     top: '0',
     left: '0',
-    height: `${100 - ((props.amt/50)*100)}%`
+    height: `${props.amt <= props.goal ? 100 - ((props.amt/props.goal)*100) : 100}%`,
+    color: `${props.amt <= props.goal ? 'black' : 'red'}`
   }
 
   return (
@@ -47,7 +48,7 @@ const AtAGlanceSquareFat = (props) => {
           <CakeIcon style={blackIconStyle} />
         </div>
       </div>
-      <Typography variant="h6" >{props.amt} / 50 grams</Typography>
+      <Typography variant="h6" >{props.amt} / {props.goal} grams</Typography>
     </Container>
   )
 };

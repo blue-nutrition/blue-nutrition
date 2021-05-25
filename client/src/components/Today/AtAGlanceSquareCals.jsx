@@ -33,7 +33,8 @@ const AtAGlanceSquareCals = (props) => {
     position: 'absolute',
     top: '0',
     left: '0',
-    height: `${100 - ((props.amt/2000)*100)}%`
+    height: `${props.amt <= props.goal ? 100 - ((props.amt/props.goal)*100) : 100}%`,
+    color: `${props.amt <= props.goal ? 'black' : 'red'}`
   }
 
   return (
@@ -47,7 +48,7 @@ const AtAGlanceSquareCals = (props) => {
           <RestaurantIcon style={blackIconStyle} />
         </div>
       </div>
-      <Typography variant="h6" >{props.amt} / 2000 kcal</Typography>
+      <Typography variant="h6" >{props.amt} / {props.goal} kcal</Typography>
     </Container>
   )
 };
