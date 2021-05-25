@@ -79,7 +79,8 @@ const CreateAccountModal = () => {
       <h6>Create Account</h6>
     </Button>
     <Modal
-    className={classes.modal}
+      className={classes.modal}
+      disableScrollLock={false}
       open={open}
       onClose={handleClose}
       aria-labelledby="simple-modal-title"
