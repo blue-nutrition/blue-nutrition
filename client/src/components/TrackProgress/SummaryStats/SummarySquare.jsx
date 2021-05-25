@@ -8,9 +8,10 @@ import Grid from '@material-ui/core/Grid';
 import Modal from '@material-ui/core/Modal'
 import EditDay from './EditDay.jsx';
 
+
 const SummarySquare = (props) => {
   const timePeriod = props.period
-  const {dateRange} = props;
+  const {date} = props;
   const [open, setOpen] = useState(false);
 
   const useStyles = makeStyles((theme) => ({
@@ -57,29 +58,32 @@ const SummarySquare = (props) => {
     <div>
     <Grid container>
       <Grid item xs={12}>
-      <Typography variant="h6">Time Period</Typography>
+      <Typography variant="h6">{date}</Typography>
         </Grid>
       <div style={boxStyle}>
         {props.metric}
         <Grid item>
-          <div style={{ position:'absolute', top:0}}>
-            Your {timePeriod} Average
-          </div>
+        <Typography variant="subtitle2">Your {timePeriod} Average</Typography>
+          </Grid>
+          <Grid container>
+            <Grid item xs={6}>
+            Water Intake:
+            </Grid>
+            <Grid item xs={6} style={{right:0}}>
+            Amount
+            </Grid>
           </Grid>
           <Grid item>
-            Water Intake
+            Calories:
           </Grid>
           <Grid item>
-            Calories
+            Protein Macros:
           </Grid>
           <Grid item>
-            Protein Macros
+            Carb Macros:
           </Grid>
           <Grid item>
-            Carb Macros
-          </Grid>
-          <Grid item>
-            Fat Macros
+            Fat Macros:
           </Grid>
         <div style={{ position:'absolute', bottom:0, right:0 }}>
       {editButton}
