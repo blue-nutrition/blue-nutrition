@@ -27,7 +27,8 @@ let theme = createMuiTheme({
       fontFamily: [unica]
     },
     h6: {
-      fontFamily: [unica]
+      fontFamily: [unica],
+      textAlign: 'center'
     },
     subtitle1: {
       fontFamily: [oxygen],
@@ -65,7 +66,7 @@ let theme = createMuiTheme({
         html: {
           WebkitFontSmoothing: 'auto',
         },
-        '@font-face': [oxygen],
+        '@font-face': [oxygen]
       },
     },
     MuiButton: {
@@ -82,6 +83,11 @@ let theme = createMuiTheme({
         backgroundColor: '#99C1DE'
       }
     },
+    MuiAppBar: {
+      colorSecondary: {
+        backgroundColor: '#F0EFEB'
+      }
+    },
     MuiGrid: {
       container: {
         width: '100%'
@@ -95,6 +101,12 @@ let theme = createMuiTheme({
     MuiInput: {
       root: {
         width: '200px'
+      }
+    },
+    MuiTableCell: {
+      root: {
+        padding: '5px 16px',
+        fontSize: '16px'
       }
     }
   },

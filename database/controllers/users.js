@@ -5,5 +5,17 @@ exports.getUser = (req, res) => {
 }
 
 exports.postUser = (req, res) => {
-  
+  const filter = { email: req.body.email };
+  const update = {
+    password: req.body.password,
+    goals: req.body.goals
+  };
+
+  User.findOneAndUpdate(filter, update, {
+    upsert: true,
+    new: true
+  }, (err, results) => {
+    if (err) throw err;
+    res.send(results);
+  })
 }

@@ -12,7 +12,9 @@ exports.getFood = (req, res) => {
 }
 
 exports.postFood = (req, res) => {
-  Food.findByIdAndUpdate(req.body.foodId, req.body, (err, result) => {
+  newFood ={...req.body};
+  delete newFood.foodId;
+  Food.findOneAndUpdate({date: req.body.date, userId: req.body.userId, foodName: req.body.foodName}, newFood, {upsert: true}, (err, result) => {
     if (err) {
       console.error(err);
       res.sendStatus(500);
