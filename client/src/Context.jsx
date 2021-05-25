@@ -17,7 +17,6 @@ export const ContextProvider = (props) => {
   const [userId, setUserId] = useState('5');
 
   // Landing page states
-  const [userId, setUserId] = useState();
   const [newUserPackage, setNewUserPackage] = useState({
     currentWeight: null,
     waterConsumption: 0,
