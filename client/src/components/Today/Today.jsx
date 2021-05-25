@@ -14,6 +14,8 @@ const Today = () => {
   const date = new Date();
   const [water, setWaterData] = useState({});
   const [totalWater, setTotalWater] = useState(0);
+  const [food, setFoodData] = useState({'Breakfast': [], 'Lunch': [], 'Dinner': []});
+  const [totalCals, setTotalCals] = useState(0);
 
   const getWater = () => {
     axios.get('/data/water', { params: {userId: userId, startDate: today, endDate: tomorrow}})
@@ -32,16 +34,34 @@ const Today = () => {
     })
   }
 
+  const getFood = () => {
+    axios.get('/data/food', { params: {userId: userId, startDate: today, endDate: tomorrow}})
+    .then((response) => {
+      let formattedFoodData = { 'Breakfast': [], 'Lunch': [], 'Dinner': []};
+      let calorieTotal = 0;
+      response.data.forEach((res) => {
+        formattedFoodData[res.meal].push(res);
+        calorieTotal += res.calories;
+      })
+      setFoodData(formattedFoodData);
+      setTotalCals(calorieTotal);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+
   useEffect(() => {
     getWater();
+    getFood();
   }, [])
 
   return (
     <div className={'mainContainer'}>
-      <AtAGlance water={totalWater}/>
-      <Meal name={"Breakfast"} water={water['Breakfast']} reRenderWater={getWater.bind(this)}/>
-      <Meal name={"Lunch"} water={water['Lunch']} reRenderWater={getWater.bind(this)}/>
-      <Meal name={"Dinner"} water={water['Dinner']} reRenderWater={getWater.bind(this)}/>
+      <AtAGlance water={totalWater} calories={totalCals}/>
+      <Meal name={"Breakfast"} water={water['Breakfast']} food={food['Breakfast']} reRenderWater={getWater.bind(this)} reRenderFood={getFood.bind(this)}/>
+      <Meal name={"Lunch"} water={water['Lunch']} food={food['Lunch']} reRenderWater={getWater.bind(this)} reRenderFood={getFood.bind(this)}/>
+      <Meal name={"Dinner"} water={water['Dinner']} food={food['Dinner']} reRenderWater={getWater.bind(this)} reRenderFood={getFood.bind(this)}/>
     </div>
   )
 };
