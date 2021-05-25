@@ -14,4 +14,6 @@ router.get('/weight', weightController.getWeight);
 router.post('/water', waterController.postWater);
 router.post('/food', foodController.postFood);
 
+router.delete('/food', foodController.deleteFood);
+
 module.exports = router;

@@ -106,6 +106,16 @@ const Meal = (props) => {
     })
   }
 
+  const handleFoodDelete = (id) => {
+    axios.delete('/data/food', { data: {foodId: id}})
+    .then(() => {
+      props.reRenderFood();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+
   return (
       <div style={mealStyle}>
         <Grid container>
@@ -181,7 +191,7 @@ const Meal = (props) => {
                           <EditIcon onClick={() => handleFoodOpen({foodName: item.foodName, calories: item.calories, fat: item.fat, carbs: item.carbs, protein: item.protein, _id: item._id})} />
                         </IconButton>
                         <IconButton>
-                          <DeleteIcon/>
+                          <DeleteIcon onClick={() => handleFoodDelete(item._id)}/>
                         </IconButton>
                       </TableCell>
                     </TableRow>

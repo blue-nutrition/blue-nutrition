@@ -21,6 +21,17 @@ exports.postFood = (req, res) => {
     }
   })
 }
+
+exports.deleteFood = (req, res) => {
+  Food.findByIdAndDelete(req.body.foodId, (err, result) => {
+    if (err) {
+      console.error(err);
+      res.sendStatus(500);
+    } else {
+      res.status(200).send(result);
+    }
+  })
+}
 exports.getDailyFood = (req, res) => {
   //TODO: write controllers
 }
