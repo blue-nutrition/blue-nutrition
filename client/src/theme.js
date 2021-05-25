@@ -102,6 +102,11 @@ let theme = createMuiTheme({
       root: {
         width: '200px'
       }
+    },
+    MuiTableCell: {
+      root: {
+        padding: '5px 16px'
+      }
     }
   },
 });
