@@ -4,7 +4,7 @@ import React, { createContext, useState } from 'react';
 export const AppContext = createContext();
 
 export const ContextProvider = (props) => {
-
+  const [exampleState, setExampleState] = useState();
   const [email, setEmail] = useState('');
   const [userId, setUserId] = useState();
   const [userGoals, setUserGoals] = useState({
