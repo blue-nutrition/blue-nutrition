@@ -5,6 +5,7 @@ import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 import { GoogleLogin, useGoogleLogin } from 'react-google-login';
 import Container from '@material-ui/core/Container';
+import GoogleButton from './GoogleButton.jsx'
 
 
 const getModalStyle = () => {
@@ -36,15 +37,6 @@ const useStyles = makeStyles(theme => ({
 
 const SignInModal = () => {
 
-  const onSuccess = (res) => {
-    setUserId(res.profileObj.googleId);
-    console.log(res.tokenId);
-  };
-
-  const onFailure = (res) => {
-    console.log(res);
-  }
-
   const {userId, setUserId} = useContext(AppContext);
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
@@ -73,14 +65,7 @@ const SignInModal = () => {
       <Container>
       <div style={modalStyle} className={classes.paper}>
         <h2>Please Sign In</h2>
-        <GoogleLogin
-          clientId="223117457103-m37me8ugrqlb9nn8o2i48dr96arojlfv.apps.googleusercontent.com"
-          buttonText="Login"
-          onSuccess={onSuccess}
-          onFailure={onFailure}
-          cookiePolicy={'single_host_origin'}
-          isSignedIn={true}
-        />
+        <GoogleButton />
       </div>
       </Container>
     </Modal>

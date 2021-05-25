@@ -5,13 +5,14 @@ import { GoogleLogin, useGoogleLogin } from 'react-google-login';
 
 const GoogleButton = () => {
 
-  const { userId, setUserId } = useContext(AppContext);
+  const { userId, setUserId, email, setEmail } = useContext(AppContext);
 
 
   const onSuccess = (res) => {
-    console.log(res.profileObj);
+    // console.log(res.profileObj);
     setUserId(res.profileObj.googleId);
-    console.log(userId);
+    setEmail(res.profileObj.email);
+    // console.log(email);
   };
 
   const onFailure = (res) => {
