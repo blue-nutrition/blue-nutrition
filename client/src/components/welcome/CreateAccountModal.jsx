@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
 
 const CreateAccountModal = () => {
 
-  const {userId, setUserId, newUserPackage, setNewUserPackage} = useContext(AppContext);
+  const {userId, setUserId, userGoals, setUserGoals} = useContext(AppContext);
 
   const onSuccess = (res) => {
     setUserId(res.profileObj.googleId);
@@ -101,7 +101,7 @@ const CreateAccountModal = () => {
             <Input
               id="current-weight"
               type="number" name="currentWeight"
-              value={newUserPackage.currentWeight}
+              value={userGoals.weight}
               onChange={(e) => setNewUserPackage({
                 ...newUserPackage,
                 [e.target.name]: e.target.value
@@ -115,7 +115,7 @@ const CreateAccountModal = () => {
           <Input
             id="water-consumption"
             type="number" name="waterConsumption"
-            value={newUserPackage.waterConsumption}
+            value={userGoals.water}
             onChange={(e) => setNewUserPackage({
               ...newUserPackage,
               [e.target.name]: e.target.value
@@ -128,7 +128,7 @@ const CreateAccountModal = () => {
           <Input
             id="calorie-intake"
             type="number" name="caloricIntake"
-            value={newUserPackage.caloricIntake}
+            value={userGoals.calories}
             onChange={(e) => setNewUserPackage({
               ...newUserPackage,
               [e.target.name]: e.target.value
@@ -142,7 +142,7 @@ const CreateAccountModal = () => {
           <Input
             id="protein-macros"
             type="number" name="proteinMacros"
-            value={newUserPackage.proteinMacros}
+            value={userGoals.protein}
             onChange={(e) => setNewUserPackage({
               ...newUserPackage,
               [e.target.name]: e.target.value
@@ -156,7 +156,7 @@ const CreateAccountModal = () => {
           <Input
             id="carbs-macros"
             type="number" name="carbMacros"
-            value={newUserPackage.carbMacros}
+            value={userGoals.carbs}
             onChange={(e) => setNewUserPackage({
               ...newUserPackage,
               [e.target.name]: e.target.value
@@ -171,7 +171,7 @@ const CreateAccountModal = () => {
           <Input
             id="fat-macros"
             type="number" name="fatMacros"
-            value={newUserPackage.fatMacros}
+            value={userGoals.fats}
             onChange={(e) => setNewUserPackage({
               ...newUserPackage,
               [e.target.name]: e.target.value
@@ -185,7 +185,7 @@ const CreateAccountModal = () => {
           <Input
             id="goal-weight"
             type="number" name="goalWeight"
-            value={newUserPackage.goalWeight}
+            value={userGoals.goalWeight}
             onChange={(e) => setNewUserPackage({
               ...newUserPackage,
               [e.target.name]: e.target.value
