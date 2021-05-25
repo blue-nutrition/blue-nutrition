@@ -5,5 +5,14 @@ exports.getWeight = (req, res) => {
 }
 
 exports.postWeight = (req, res) => {
-  
+  const filter = { email: req.body.UserId };
+  const update = {
+    weight: req.body.weight,
+    date: req.body.date
+  };
+
+  Weight.findOneAndUpdate(filter, update, { new: true }, (err, results) => {
+    if (err) throw err;
+    res.send(results);
+  })
 }
