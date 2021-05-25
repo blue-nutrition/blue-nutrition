@@ -11,4 +11,6 @@ router.get('/food', foodController.getFood);
 router.get('/water', waterController.getWater);
 router.get('/weight', weightController.getWeight);
 
+router.post('/water', waterController.postWater);
+
 module.exports = router;
