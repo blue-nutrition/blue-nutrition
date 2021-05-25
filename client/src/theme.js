@@ -27,7 +27,8 @@ let theme = createMuiTheme({
       fontFamily: [unica]
     },
     h6: {
-      fontFamily: [unica]
+      fontFamily: [unica],
+      textAlign: 'center'
     },
     subtitle1: {
       fontFamily: [oxygen],
