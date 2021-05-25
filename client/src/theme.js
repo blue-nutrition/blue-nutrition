@@ -96,6 +96,11 @@ let theme = createMuiTheme({
       root: {
         height: '100%'
       }
+    },
+    MuiInput: {
+      root: {
+        width: '200px'
+      }
     }
   },
 });

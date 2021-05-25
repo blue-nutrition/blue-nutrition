@@ -14,9 +14,21 @@ export const ContextProvider = (props) => {
   const [exampleState, setExampleState] = useState('Hello World');
   const [today, setToday] = useState(_2dayUTC);
   const [tomorrow, setTomorrow] = useState(_2morrowUTC);
+  const [userId, setUserId] = useState('5');
+
+  // Landing page states
+  const [newUserPackage, setNewUserPackage] = useState({
+    currentWeight: null,
+    waterConsumption: 0,
+    caloricIntake: 0,
+    proteinMacros: 0,
+    carbMacros: 0,
+    fatMacros: 0,
+    goalWeight: null,
+  });
 
   return (
-    <AppContext.Provider value={{exampleState, setExampleState, today, setToday, tomorrow, setTomorrow}}>
+    <AppContext.Provider value={{exampleState, setExampleState, userId, setUserId, newUserPackage, setNewUserPackage, today, setToday, tomorrow, setTomorrow}}>
       {props.children}
     </AppContext.Provider>
   )

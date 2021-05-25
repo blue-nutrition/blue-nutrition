@@ -1,5 +1,6 @@
 # sensitive files
 database/index.js
+server/AuthKeys.js
 
 # Logs
 logs
