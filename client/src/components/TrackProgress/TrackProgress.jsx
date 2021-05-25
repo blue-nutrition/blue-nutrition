@@ -7,6 +7,7 @@ import SummaryStats from './SummaryStats/SummaryStats.jsx'
 
 const TrackProgress = (props) => {
   const today = new Date();
+  const { handleChange } = props;
 
   const [period, setPeriod] = useState(props.period);
   const [asOf, setAsOf] = useState(today);
@@ -35,7 +36,7 @@ const TrackProgress = (props) => {
   return (
     <Container>
       <div>
-        <AsOf setAsOf={setAsOf} asOf={asOf} period={period}/>
+        <AsOf setAsOf={setAsOf} asOf={asOf} period={period}  handleChange={handleChange}/>
       </div>
       <div>
         <SummaryStats timePeriod={period} asOf={asOf} food={food} water={water}/>

@@ -10,7 +10,7 @@ import TrackProgress from './TrackProgress.jsx'
 
 
 function TabPanel(props) {
-  const { children, value, index } = props;
+  const { children, value, index, handleChange } = props;
 
   return (
     <div
@@ -41,7 +41,7 @@ function a11yProps(index) {
   };
 }
 
-export default function TrackProgressNav () {
+export default function TrackProgressNav (props) {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -62,7 +62,7 @@ export default function TrackProgressNav () {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <TrackProgress period={'Daily'}/>
+        <TrackProgress period={'Daily'} handleChange={props.handleChange}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
       <TrackProgress period={'Weekly'}/>
