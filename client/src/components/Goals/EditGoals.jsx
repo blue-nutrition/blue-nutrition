@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { AppContext } from '../../Context.jsx';
+import Button from '@material-ui/core/Button';
 
 
 const EditGoals = ({ handleClose }) => {
@@ -125,10 +126,11 @@ const EditGoals = ({ handleClose }) => {
           onChange={handleChange("goalWeight")}
         >
         </input>
-        <button
-          type="submit"
+        <br></br>
+        <Button
+          type="button"
           onClick={updateGoals}
-        >Update Goals</button>
+        >Update Goals</Button>
       </form>
     </div>
   )
