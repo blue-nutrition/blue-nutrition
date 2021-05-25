@@ -14,9 +14,10 @@ export const ContextProvider = (props) => {
   const [exampleState, setExampleState] = useState('Hello World');
   const [today, setToday] = useState(_2dayUTC);
   const [tomorrow, setTomorrow] = useState(_2morrowUTC);
+  const [userId, setUserId] = useState('5');
 
   return (
-    <AppContext.Provider value={{exampleState, setExampleState, today, setToday, tomorrow, setTomorrow}}>
+    <AppContext.Provider value={{userId, setUserId, exampleState, setExampleState, today, setToday, tomorrow, setTomorrow}}>
       {props.children}
     </AppContext.Provider>
   )

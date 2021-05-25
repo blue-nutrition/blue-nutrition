@@ -16,7 +16,7 @@ const AtAGlance = (props) => {
         <AtAGlanceSquare metric={"water"} unit={"oz"} amt={props.water}/>
       </Grid>
        <Grid item>
-         <AtAGlanceSquare metric={"calories"} unit={"calories"}/>
+         <AtAGlanceSquare metric={"calories"} unit={"calories"} amt={props.calories}/>
        </Grid>
        <Grid item>
        <AtAGlanceSquare metric={"carbs"} unit={"grams"}/>
