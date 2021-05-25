@@ -14,7 +14,7 @@ const AsOf = (props) => {
       <Today asOf={asOf}/>
     )
   }
-  const editButton = period !== 'Daily' ? '' : <Typography variant="h6" style={{position:'absolute', right:0, top:0}}>Edit Day's Intake: <EditIcon onClick={handleEdit}/></Typography>
+  const editButton = period !== 'Daily' ? '' : <Typography variant="h6" style={{position:'absolute', right:0, top:0}}>Edit Day's Intake: <EditIcon type="button" onClick={handleEdit}/></Typography>
 
 
   return(
