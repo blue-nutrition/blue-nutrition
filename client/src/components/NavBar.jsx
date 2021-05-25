@@ -49,7 +49,7 @@ export default function NavBar() {
   };
 
   return (
-    <div>
+    <>
       <AppBar position="static">
         <Tabs centered value={value} onChange={handleChange} aria-label="simple tabs example">
           <Tab label="Today" {...a11yProps(0)} />
@@ -66,6 +66,6 @@ export default function NavBar() {
       <TabPanel value={value} index={2}>
         <Goals />
       </TabPanel>
-    </div>
+    </>
   );
 }

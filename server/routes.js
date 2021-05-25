@@ -14,4 +14,7 @@ router.post('/weight', weightController.postWeight);
 router.post('/users', userController.postUser)
 
 
+router.post('/water', waterController.postWater);
+router.post('/food', foodController.postFood);
+
 module.exports = router;

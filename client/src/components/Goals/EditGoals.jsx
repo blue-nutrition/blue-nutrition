@@ -5,7 +5,7 @@ import { AppContext } from '../../Context.jsx';
 
 const EditGoals = ({ handleClose }) => {
   const {
-    email, password, userId, userGoals, setUserGoals
+    today, email, password, userId, userGoals, setUserGoals
   } = useContext(AppContext);
 
   const [editedWeight, setEditedWeight] = useState(userGoals.weight)
@@ -21,7 +21,7 @@ const EditGoals = ({ handleClose }) => {
   const weightData = {
     userId,
     weight: editedWeight,
-    date,
+    date: today,
   }
 
   const userData = {

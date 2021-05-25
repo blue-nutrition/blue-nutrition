@@ -1,5 +1,6 @@
 # sensitive files
 database/index.js
+server/AuthKeys.js
 
 # Logs
 logs
@@ -106,3 +107,5 @@ client/dist/bundle.js
 
 # TernJS port file
 .tern-port
+
+.DS_Store
