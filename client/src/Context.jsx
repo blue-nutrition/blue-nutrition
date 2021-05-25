@@ -1,5 +1,6 @@
 
 import React, { createContext, useState } from 'react';
+import axios from 'axios';
 const { zonedTimeToUtc, utcToZonedTime, format } = require('date-fns-tz')
 
 export const AppContext = createContext();
@@ -29,9 +30,43 @@ export const ContextProvider = (props) => {
     goalWeight: null,
   });
 
+  // sample userData and weightData
+  // const weightData = {
+  //   userId,
+  //   weight,
+  //   date,
+  // }
+
+  // const userData = {
+  //   email,
+  //   password,
+  //   goals
+  // }
+
+  const postUser = (userData, weightData, cb = () => {}) => {
+    axios.post('/data/users', userData)
+      .then(userResults => {
+        console.log("USER RESULTS", userResults)
+        axios.post('/data/weight', weightData)
+        .then(weightResults => {
+          console.log("WEIGHT RESULTS", weightResults);
+          setUserGoals({
+            weight: weightData.weight,
+            water: userData.goals.water,
+            calories: userData.goals.calories,
+            protein: userData.goals.protein,
+            carbs: userData.goals.carbs,
+            fats: userData.goals.fats,
+            goalWeight: userData.goals.goalWeight,
+          })
+          cb();
+        })
+      });
+  }
+
   return (
     <AppContext.Provider value={{exampleState, setExampleState, userId, setUserId, email, setEmail,
-      userGoals, setUserGoals, today, setToday, tomorrow, setTomorrow}}>
+      userGoals, setUserGoals, postUser, today, setToday, tomorrow, setTomorrow}}>
       {props.children}
     </AppContext.Provider>
   )
