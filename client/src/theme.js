@@ -66,7 +66,7 @@ let theme = createMuiTheme({
         html: {
           WebkitFontSmoothing: 'auto',
         },
-        '@font-face': [oxygen],
+        '@font-face': [oxygen]
       },
     },
     MuiButton: {
@@ -105,7 +105,8 @@ let theme = createMuiTheme({
     },
     MuiTableCell: {
       root: {
-        padding: '5px 16px'
+        padding: '5px 16px',
+        fontSize: '16px'
       }
     }
   },
