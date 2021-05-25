@@ -17,4 +17,6 @@ router.post('/users', userController.postUser)
 router.post('/water', waterController.postWater);
 router.post('/food', foodController.postFood);
 
+router.delete('/food', foodController.deleteFood);
+
 module.exports = router;
