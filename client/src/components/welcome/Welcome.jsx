@@ -5,12 +5,24 @@ import Typography from '@material-ui/core/Typography';
 import SignInModal from './SignInModal.jsx';
 import CreateAccountModal from './CreateAccountModal.jsx';
 import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
+import { makeStyles } from '@material-ui/core/styles';
 
+const useStyles = makeStyles(theme => ({
+  landing: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+  }
+}))
 
 const Welcome = () => {
+  const classes = useStyles();
 
   return (
-    <Box>
+    <Container>
+      <div className={classes.landing}>
       <Grid container justify="center">
         <Grid item>
           <Typography>
@@ -21,7 +33,8 @@ const Welcome = () => {
           </Typography>
         </Grid>
       </Grid>
-    </Box>
+      </div>
+    </Container>
   )
 };
 

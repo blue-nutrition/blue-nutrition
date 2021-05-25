@@ -10,6 +10,7 @@ import GoogleButton from './GoogleButton.jsx'
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
 
 
 const getModalStyle = () => {
@@ -27,6 +28,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    textAlign: 'center',
   },
   paper: {
     position: 'absolute',
@@ -34,6 +36,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
+    // textAlign: 'center',
   },
 }));
 
@@ -43,6 +46,7 @@ const CreateAccountModal = () => {
 
   const onSuccess = (res) => {
     setUserId(res.profileObj.googleId);
+    console.log(res.tokenId);
   };
 
   const onFailure = (res) => {
@@ -70,11 +74,8 @@ const CreateAccountModal = () => {
   }
 
   return (
-  <Box>
-    <Button type="button"
-      onClick={handleOpen}
-      variant="contained" color="primary"
-    >
+  <Container>
+    <Button onClick={handleOpen}>
       <h6>Create Account</h6>
     </Button>
     <Modal
@@ -85,10 +86,11 @@ const CreateAccountModal = () => {
       aria-labelledby="simple-modal-title"
       aria-describedby="simple-modal-description"
     >
+      <Container>
       <div style={modalStyle} className={classes.paper}>
         <h2>Please Sign in with Google and Enter Your Goals</h2>
         <GoogleLogin
-          clientID="223117457103-m37me8ugrqlb9nn8o2i48dr96arojlfv.apps.googleusercontent.com"
+          clientId="223117457103-m37me8ugrqlb9nn8o2i48dr96arojlfv.apps.googleusercontent.com"
           buttonText="Login"
           onSuccess={onSuccess}
           onFailure={onFailure}
@@ -165,7 +167,6 @@ const CreateAccountModal = () => {
             <FormHelperText id="carbs-macros-helper-text">Carbohydrates Macros</FormHelperText>
         </FormControl>
         </div>
-
         <div>
           <FormControl>
           <Input
@@ -200,8 +201,9 @@ const CreateAccountModal = () => {
           </Grid>
         </Grid>
       </div>
+      </Container>
     </Modal>
-  </Box>
+  </Container>
   )
 };
 

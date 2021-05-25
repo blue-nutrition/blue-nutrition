@@ -21,7 +21,7 @@ const GoogleButton = () => {
   return (
     <div class="g-signin2" data-width="300" data-height="200" data-longtitle="true">
     <GoogleLogin
-      clientID="223117457103-m37me8ugrqlb9nn8o2i48dr96arojlfv.apps.googleusercontent.com"
+      clientId="223117457103-m37me8ugrqlb9nn8o2i48dr96arojlfv.apps.googleusercontent.com"
       buttonText="Login with Google"
       onSuccess={onSuccess}
       onFailure={onFailure}
