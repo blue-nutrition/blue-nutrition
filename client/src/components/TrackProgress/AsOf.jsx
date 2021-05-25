@@ -10,7 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 const { zonedTimeToUtc, utcToZonedTime, format } = require('date-fns-tz')
 
 const AsOf = (props) => {
-  const {asOf, setAsOf, period, handleChange} = props;
+  const {asOf, setAsOf, period, handleChange, setStartDate, setEndDate} = props;
   const {setToday, setTomorrow} = useContext(AppContext);
 
   const handleEdit = () => {
@@ -27,6 +27,27 @@ const AsOf = (props) => {
   const editButton = period !== 'Daily' ? '' : <Typography variant="h6" style={{position:'absolute', right:0, top:0}}>Edit Day's Intake: <IconButton><EditIcon type="button" onClick={handleEdit}/></IconButton></Typography>
 
 
+  const handleDateChange = (date) => {
+    const dateFormat = new Date(date).setHours(0,0,0,0);
+    setAsOf(date);
+    setEndDate(date);
+    if(period === 'Daily') {
+      setStartDate(date)
+    } else if (period === 'Weekly') {
+      var utcDate = zonedTimeToUtc(date, 'America/Denver');
+      console.log('this is utcDate', utcDate)
+      var startDate = utcDate.setDate(utcDate.getDate() - 6);
+      var startDateUTC = zonedTimeToUtc(startDate, 'America/Denver');
+      setStartDate(startDateUTC)
+    } else if (period === 'Monthly') {
+      var utcDate = zonedTimeToUtc(date, 'America/Denver')
+      var startDate = utcDate.setDate(utcDate.getDate() - 29);
+      var startDateUTC = zonedTimeToUtc(startDate, 'America/Denver');
+      setStartDate(startDateUTC)
+    }
+  }
+
+
   return(
     <Grid container direction="row" justify="flex-start" alignItems="center" style={{position:'relative'}}>
         <Grid item xs={1}>
@@ -36,7 +57,7 @@ const AsOf = (props) => {
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <DatePicker
       value={asOf}
-      onChange={setAsOf} />
+      onChange={handleDateChange} />
       </MuiPickersUtilsProvider>
         </Grid>
         <Grid item xs={4}>

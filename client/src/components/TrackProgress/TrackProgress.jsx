@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { AppContext } from '../../Context.jsx'
 import axios from 'axios';
 import AsOf from './AsOf.jsx';
 import Container from '@material-ui/core/Container';
@@ -8,6 +9,10 @@ import SummaryStats from './SummaryStats/SummaryStats.jsx'
 const TrackProgress = (props) => {
   const today = new Date();
   const { handleChange } = props;
+  const { userId } = useContext(AppContext)
+
+  const[startDate, setStartDate] = useState(today);
+  const[endDate, setEndDate] = useState(today);
 
   const [period, setPeriod] = useState(props.period);
   const [asOf, setAsOf] = useState(today);
@@ -25,18 +30,26 @@ const TrackProgress = (props) => {
   );
   const [water, setWater] = useState(100);
 
+  console.log('this is start date', startDate, 'this is end date', endDate)
+
   // useEffect() {
-  //   axios.get('/food')
+  //   axios.get('/data/dailyfood', {
+  //     params: {
+  //       'userId': userId,
+  //       'startDate': startDate,
+  //       'endDate': endDate
+  //     }
+  //   })
   // }
 
-  //get request with previous 5 period information
+  // get request with previous 5 period information
 
 
 
   return (
     <Container>
       <div>
-        <AsOf setAsOf={setAsOf} asOf={asOf} period={period}  handleChange={handleChange}/>
+        <AsOf setAsOf={setAsOf} asOf={asOf} period={period}  handleChange={handleChange} setStartDate={setStartDate} setEndDate={setEndDate}/>
       </div>
       <div>
         <SummaryStats timePeriod={period} asOf={asOf} food={food} water={water}/>
