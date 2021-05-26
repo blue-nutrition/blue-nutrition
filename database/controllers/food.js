@@ -68,7 +68,7 @@ exports.getDailyFood = (req, res) => {
             $sum: '$carbs'
         },
         dailyFat: {
-          $sum: '$carbs'
+          $sum: '$fat'
       }
     }
 }], (err, resp) => {
