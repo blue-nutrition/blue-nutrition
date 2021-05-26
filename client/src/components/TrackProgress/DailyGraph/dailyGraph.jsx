@@ -53,10 +53,9 @@ export default function DailyGraphs() {
     setValue(newValue);
   };
 
-  if(period !== 'Daily') {
-    return ('')
-  } else {
-
+  // if(period !== 'Daily') {
+  //   return ('')
+  // } else {
     return (
       <div>
         <AppBar position="static" color='secondary'>
@@ -81,6 +80,6 @@ export default function DailyGraphs() {
         </TabPanel>
       </div>
     );
-  }
-};
+  // }
+}
 

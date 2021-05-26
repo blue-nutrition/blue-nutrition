@@ -99,6 +99,7 @@ const TrackProgress = (props) => {
   },[period, startDate, endDate]);
 
 
+
   if(dailyBreakDown) {
     return (
       <div>
@@ -122,8 +123,7 @@ const TrackProgress = (props) => {
               <SummaryStats timePeriod={period} asOf={asOf} dailyFood={dailyFood} dailyWater={dailyWater}/>
             </div>
             <div>
-              <DailyGraphs/>
-              <Graphs/>
+            {(period !== 'Daily') ? <Graphs/> : <DailyGraphs/>}
             </div>
           </Container>
         </TrackProgressContext.Provider>
