@@ -33,7 +33,7 @@ const AsOf = (props) => {
       setEdit(true);
       handleChange(null, 0);
   }
-  const editButton = period !== 'Daily' ? '' : <Typography variant="h6" style={{position:'absolute', right:0, top:0}}>Edit Day's Intake: <IconButton><EditIcon type="button" onClick={handleEdit}/></IconButton></Typography>
+  const editButton = period !== 'Daily' ? '' : <Typography variant="h6" style={{position:'absolute', right:0, top:0}}>Edit Day's Intake: <IconButton onClick={handleEdit}><EditIcon type="button"/></IconButton></Typography>
 
 
 

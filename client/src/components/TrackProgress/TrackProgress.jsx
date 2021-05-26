@@ -5,7 +5,8 @@ import axios from 'axios';
 import Graphs from './Graphs/Graphs.jsx';
 import AsOf from './AsOf.jsx';
 import Container from '@material-ui/core/Container';
-import SummaryStats from './SummaryStats/SummaryStats.jsx'
+import SummaryStats from './SummaryStats/SummaryStats.jsx';
+import DailyGraphs from './DailyGraph/dailyGraph.jsx'
 
 
 const TrackProgress = (props) => {
@@ -107,6 +108,7 @@ const TrackProgress = (props) => {
           dailyFood,
           dailyWater,
           dailyWeight,
+          dailyBreakDown
         }}
         >
           <Container>
@@ -117,7 +119,7 @@ const TrackProgress = (props) => {
               <SummaryStats timePeriod={period} asOf={asOf} dailyFood={dailyFood} dailyWater={dailyWater}/>
             </div>
             <div>
-              <Graphs />
+              <DailyGraphs />
             </div>
           </Container>
         </TrackProgressContext.Provider>
