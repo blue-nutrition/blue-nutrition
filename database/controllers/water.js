@@ -36,7 +36,7 @@ exports.getDailyWater = (req, res) => {
         oz: 1,
         yearMonthDayUTC: {
             $dateToString: {
-                format: "%Y-%m-%d",
+                format: "%m-%d",
                 date: "$date"
             }
         },
@@ -45,6 +45,10 @@ exports.getDailyWater = (req, res) => {
         _id: '$yearMonthDayUTC',
         dailyWater: { $sum: '$oz' },
     }
+}, {
+  $sort: {
+      _id: 1
+  }
 }], (err, resp) => {
   if(err) {
     console.log('error aggregating food', err);

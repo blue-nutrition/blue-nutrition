@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React, { useState, useContext, useEffect } from 'react';
 import { AppContext } from '../../Context.jsx';
 import { TrackProgressContext } from './TrackProgressContext.jsx';
