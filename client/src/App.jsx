@@ -12,9 +12,9 @@ const App = (props) => {
     <div style={{backgroundImage: 'url(./henry-co-tqu0IOMaiU8-unsplash.jpg)', backgroundSize: 'cover', height: '100vh'}}>
       <ContextProvider>
         <Container maxWidth="lg" >
-          {/* <Welcome /> */}
+          <Welcome />
           <NavBar/>
-          {/* <LogoutGoogle /> */}
+          <LogoutGoogle />
         </Container>
       </ContextProvider>
     </div>
