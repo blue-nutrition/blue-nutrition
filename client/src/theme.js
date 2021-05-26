@@ -24,7 +24,7 @@ let theme = createMuiTheme({
       fontFamily: [unica]
     },
     h5: {
-      fontFamily: [unica]
+      fontFamily: [unica],
     },
     h6: {
       fontFamily: [unica],
@@ -73,6 +73,10 @@ let theme = createMuiTheme({
       text: {
         fontFamily: unica,
         fontSize: '1.25rem'
+      },
+      sizeLarge: {
+        fontSize: '1.25rem',
+        margin: '5%'
       }
     },
     MuiTabs: {
