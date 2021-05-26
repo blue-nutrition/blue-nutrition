@@ -1,11 +1,9 @@
 import React, { useContext, useState, useEffect }from 'react';
-import { ContextProvider, AppContext } from '../../Context.jsx';
+import { AppContext } from '../../Context.jsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
-import { GoogleLogin, useGoogleLogin } from 'react-google-login';
-import Box from '@material-ui/core/Box';
 import GoogleButton from './GoogleButton.jsx'
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
@@ -42,7 +40,7 @@ const useStyles = makeStyles(theme => ({
 
 const CreateAccountModal = () => {
 
-  const {userId, setUserId, userGoals, setUserGoals, today, postUser, email, setLoggedIn} = useContext(AppContext);
+  const {userId, userGoals, setUserGoals, today, postUser, email, setLoggedIn} = useContext(AppContext);
 
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
@@ -85,8 +83,8 @@ const CreateAccountModal = () => {
   const handleAccountCreation = (e) => {
     e.preventDefault();
     e.persist();
-    console.log('New User Info: ', userData, weightData);
-    postUser(userData, weightData, handleClose)
+    // console.log('New User Info: ', userData, weightData);
+    postUser(userData, weightData, handleClose);
     setLoggedIn(true);
     return false;
   }

@@ -18,11 +18,11 @@ export const ContextProvider = (props) => {
   const [exampleState, setExampleState] = useState('Hello World');
   const [today, setToday] = useState(_2dayUTC);
   const [tomorrow, setTomorrow] = useState(_2morrowUTC);
-  const [userId, setUserId] = useState(5);
+  const [userId, setUserId] = useState();
   const [email, setEmail] = useState();
 
   // Landing page states
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState();
   const [userGoals, setUserGoals] = useState({
     weight: null,
     water: 100,
@@ -36,10 +36,10 @@ export const ContextProvider = (props) => {
   const postUser = (userData, weightData, cb = () => {}) => {
     axios.post('/data/users', userData)
       .then(userResults => {
-        console.log("USER RESULTS", userResults)
+        // console.log("USER RESULTS", userResults)
         axios.post('/data/weight', weightData)
         .then(weightResults => {
-          console.log("WEIGHT RESULTS", weightResults);
+          // console.log("WEIGHT RESULTS", weightResults);
           setUserGoals({
             weight: weightData.weight,
             water: userData.goals.water,
@@ -54,10 +54,28 @@ export const ContextProvider = (props) => {
       });
   }
 
+  const getUser = (cb = () => {}) => {
+    axios.get('/data/users', {params: {userId: userId}})
+      .then(userResults => {
+        // console.log(userResults);
+        const goals = userResults.data.goals
+        setUserGoals({
+          ...userGoals,
+          water: goals.water,
+          calories: goals.calories,
+          protein: goals.protein,
+          carbs: goals.carbs,
+          fats: goals.fats,
+          goalWeight: goals.goalWeight,
+        })
+        cb();
+      })
+  };
+
   return (
     <AppContext.Provider value={{exampleState, setExampleState, userId, setUserId, email, setEmail,
       userGoals, setUserGoals, postUser, today, setToday, tomorrow, setTomorrow,
-      loggedIn, setLoggedIn}}>
+      loggedIn, setLoggedIn, getUser}}>
       {props.children}
     </AppContext.Provider>
   )

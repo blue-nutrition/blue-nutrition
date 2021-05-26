@@ -17,7 +17,7 @@ export default function SalutAppBar() {
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h5">SALUT NUTRITION</Typography>
-        <div style={{marginLeft: 'auto', padding: '0 10px'}}>Logged in as {email}</div>
+        <div style={{marginLeft: 'auto', padding: '0 10px'}}>Logged in as: {email}</div>
         <div><LogoutGoogle/></div>
       </Toolbar>
     </AppBar>
