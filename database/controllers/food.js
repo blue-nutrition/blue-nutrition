@@ -2,7 +2,7 @@
 const Food = require('../models/food.js');
 
 exports.getFood = (req, res) => {
-  Food.find({userId: req.query.userId, date: { $gte: req.query.startDate, $lte: req.query.endDate }}, (err, result) => {
+  Food.find({userId: req.query.userId, date: { $gte: req.query.startDate, $lt: req.query.endDate }}, (err, result) => {
     if (err) {
       console.error(err);
       res.sendStatus(500);

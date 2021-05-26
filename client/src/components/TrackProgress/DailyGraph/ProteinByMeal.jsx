@@ -40,7 +40,7 @@ const ProteinByMeal = () => {
   } else {
     return (
       <div className="margin-auto">
-        <PieChart viewBoxSize={[80,80]} center={[40,40]} radius={25} data={pieData} label={({dataEntry}) => `${dataEntry.title} ${dataEntry.value} (${Math.floor(dataEntry.percentage)}%)`} labelStyle={{...defaultLabelStyle,}} labelPosition={70}/>
+        <PieChart viewBoxSize={[150,150]} center={[0,0]} radius={35} data={pieData} label={({dataEntry}) => `${dataEntry.title} ${dataEntry.value}g (${Math.floor(dataEntry.percentage)}%)`} labelStyle={{...defaultLabelStyle,}} labelPosition={60}/>
       </div>
     )
   }
