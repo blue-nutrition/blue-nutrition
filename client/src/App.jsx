@@ -4,7 +4,8 @@ import API from './API.jsx';
 import Welcome from './components/welcome/Welcome.jsx';
 import NavBar from './components/NavBar.jsx';
 import Container from '@material-ui/core/Container';
-import LogoutGoogle from './components/welcome/LogoutGoogle.jsx';
+
+import SalutAppBar from './components/SalutAppBar.jsx';
 
 const App = (props) => {
 
@@ -12,8 +13,8 @@ const App = (props) => {
     <div style={{backgroundImage: 'url(./henry-co-tqu0IOMaiU8-unsplash.jpg)', backgroundSize: 'cover', height: '100vh'}}>
       <ContextProvider>
         <Container maxWidth="lg" >
+          <SalutAppBar/>
           <NavBar/>
-          <LogoutGoogle />
         </Container>
       </ContextProvider>
     </div>
