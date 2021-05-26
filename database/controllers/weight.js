@@ -12,9 +12,7 @@ exports.getDailyWeight = (req, res) => {
 }
 
 exports.postWeight = (req, res) => {
-<<<<<<< HEAD
 
-=======
   const filter = { userId: req.body.UserId };
   const update = {
     weight: req.body.weight,
@@ -28,5 +26,4 @@ exports.postWeight = (req, res) => {
     if (err) throw err;
     res.send(results);
   })
->>>>>>> 202f9307e9d2c05bcb2987bec676d7cf4be8b4cf
 }
