@@ -23,7 +23,11 @@ const SummaryStats = (props) => {
       sum = sum + day[param]
     })
     var avg = Math.round(sum/totalDays);
-    return avg;
+    if(!avg) {
+      return 0
+    } else {
+      return avg;
+    }
   }
 
   const avgWater = (param) => {
