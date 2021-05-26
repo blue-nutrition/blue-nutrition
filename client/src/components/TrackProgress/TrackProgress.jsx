@@ -21,6 +21,29 @@ const TrackProgress = (props) => {
   "dailyFat": 104 }]);
   const [dailyWater, setDailyWater] = useState([{dailyWater:100}]);
   const [dailyWeight, setDailyWeight] = useState(150);
+  const [dailyBreakDown, setDailyBreakDown] = useState([
+    {
+        "_id": "Lunch",
+        "calorieBreakDown": 400,
+        "proteinBreakDown": 29,
+        "carbBreakDown": 74,
+        "fatBreakDown": 6
+    },
+    {
+        "_id": "Breakfast",
+        "calorieBreakDown": 1700,
+        "proteinBreakDown": 16,
+        "carbBreakDown": 35,
+        "fatBreakDown": 13
+    },
+    {
+        "_id": "Dinner",
+        "calorieBreakDown": 800,
+        "proteinBreakDown": 10,
+        "carbBreakDown": 45,
+        "fatBreakDown": 13
+    }
+])
 
   useEffect(() => {
     console.log(
@@ -43,8 +66,8 @@ const TrackProgress = (props) => {
           'endDate': endDate
         }
       })
-        .then((res) => {
-          setDailyWater(res.data);
+        .then((response) => {
+          setDailyWater(response.data);
           axios.get('/data/dailyWeight', {
             params: {
               'userId': userId,
@@ -54,6 +77,16 @@ const TrackProgress = (props) => {
           })
           .then((res) => {
             setDailyWeight(res.data);
+            axios.get('/data/dailyBreakDown', {
+              params: {
+                'userId': userId,
+                'startDate': startDate,
+                'endDate': endDate
+              }
+            })
+            .then((respo) => {
+              setDailyBreakDown(respo.data)
+            })
           })
         })
     })
@@ -62,7 +95,7 @@ const TrackProgress = (props) => {
     })
   },[period, startDate, endDate]);
 
-  if(dailyWeight) {
+  if(dailyBreakDown) {
     return (
       <div>
         <TrackProgressContext.Provider value={{
