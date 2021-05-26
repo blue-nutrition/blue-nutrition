@@ -46,6 +46,7 @@ export default function NavBar() {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    console.log('made it here')
   };
 
   return (
@@ -61,7 +62,7 @@ export default function NavBar() {
         <Today />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <TrackProgressNav/>
+        <TrackProgressNav handleChange={handleChange.bind(this)}/>
       </TabPanel>
       <TabPanel value={value} index={2}>
         <Goals />
