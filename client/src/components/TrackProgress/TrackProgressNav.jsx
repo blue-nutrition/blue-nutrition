@@ -53,9 +53,10 @@ export default function TrackProgressNav (props) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
     console.log('this is newValue', newValue)
-    const day = new Date(today).setHours(0,0,0,0);
+    const day = new Date(endDate).setHours(0,0,0,0);
     const startDate = zonedTimeToUtc(day, 'America/Denver');
     if(newValue === 0) {
+      startDate.setDate(startDate.getDate() - 1);
       setStartDate(startDate.toISOString())
     } else if (newValue === 1) {
       startDate.setDate(startDate.getDate() - 6);

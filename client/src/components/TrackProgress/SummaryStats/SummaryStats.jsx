@@ -14,7 +14,7 @@ const SummaryStats = (props) => {
     dailyFood.forEach((day) => {
       sum = sum + day[param]
     })
-    var avg = sum/totalDays;
+    var avg = Math.round(sum/totalDays);
     return avg;
   }
 

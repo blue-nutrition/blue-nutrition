@@ -10,8 +10,12 @@ import IconButton from '@material-ui/core/IconButton';
 const { zonedTimeToUtc, utcToZonedTime, format } = require('date-fns-tz')
 
 const AsOf = (props) => {
-  const {asOf, setAsOf, period, handleChange, setStartDate, setEndDate} = props;
-  const {setToday, setTomorrow} = useContext(AppContext);
+  const {asOf, setAsOf, period, handleChange, setStartDate, setEndDate, endDate} = props;
+  const {setToday, setTomorrow, today} = useContext(AppContext);
+
+  var label = zonedTimeToUtc(endDate, 'America/Denver')
+  label.setDate(label.getDate() -1);
+
 
   const handleEdit = () => {
     const day = new Date(asOf).setHours(0,0,0,0);
@@ -60,7 +64,7 @@ const AsOf = (props) => {
         <Grid item xs={7}>
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <DatePicker
-      value={asOf}
+      value={label}
       onChange={handleDateChange} />
       </MuiPickersUtilsProvider>
         </Grid>
