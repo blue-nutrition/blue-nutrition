@@ -109,7 +109,6 @@ const EditGoals = ({ handleClose }) => {
           <Input
             name="calories"
             type="number"
-            min="1200"
             value={editedGoals.calories}
             onChange={handleChange("calories")}
             endAdornment={<InputAdornment position="end">kcal</InputAdornment>}
