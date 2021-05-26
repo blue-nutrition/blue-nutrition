@@ -16,7 +16,7 @@ export const ContextProvider = (props) => {
   const [exampleState, setExampleState] = useState('Hello World');
   const [today, setToday] = useState(_2dayUTC);
   const [tomorrow, setTomorrow] = useState(_2morrowUTC);
-  const [userId, setUserId] = useState(5);
+  const [userId, setUserId] = useState();
   const [email, setEmail] = useState();
 
   // Landing page states
@@ -52,10 +52,22 @@ export const ContextProvider = (props) => {
       });
   }
 
+  const getUser = (cb = () => {}) => {
+    axios({
+      method: 'GET',
+      url: '/data/users',
+      body: {userId: userId}
+    })
+      .then(results => {
+        // console.log(results);
+        cb();
+      })
+  };
+
   return (
     <AppContext.Provider value={{exampleState, setExampleState, userId, setUserId, email, setEmail,
       userGoals, setUserGoals, postUser, today, setToday, tomorrow, setTomorrow,
-      loggedIn, setLoggedIn}}>
+      loggedIn, setLoggedIn, getUser}}>
       {props.children}
     </AppContext.Provider>
   )

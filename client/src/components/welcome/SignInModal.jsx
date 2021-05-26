@@ -1,4 +1,4 @@
-import React, { useContext, useState }from 'react';
+import React, { useContext, useState, useEffect }from 'react';
 import { ContextProvider, AppContext } from '../../Context.jsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
@@ -36,7 +36,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const SignInModal = () => {
-  const {userId, setUserId, setLoggedIn, email, setEmail, postUser} = useContext(AppContext);
+  const {userId, setUserId, setLoggedIn, email, setEmail, getUser} = useContext(AppContext);
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
   const [open, setOpen] = useState(false);
@@ -44,15 +44,21 @@ const SignInModal = () => {
   const userData = {
     email,
     userId,
+    goals: null
   }
+
+  useEffect(() => {
+    console.log(userData);
+    getUser(handleClose);
+  }, [userId]);
 
   const onSuccess = (res) => {
     // console.log(res.profileObj);
     setUserId(res.profileObj.googleId);
     setEmail(res.profileObj.email);
-    postUser(userData, null, handleClose);
     setLoggedIn(true);
-
+    // console.log(userId);
+    // getUser(userId, handleClose);
     // console.log(email);
   };
 

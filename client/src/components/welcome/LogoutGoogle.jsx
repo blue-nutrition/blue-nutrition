@@ -25,10 +25,6 @@ const LogoutGoogle = () => {
     // console.log(email);
   };
 
-  const onFailure = (res) => {
-    console.log(res);
-  }
-
   return (
     <div className="g-signin2" data-width="300" data-height="200" data-longtitle="true">
       <GoogleLogout
@@ -36,7 +32,6 @@ const LogoutGoogle = () => {
         buttonText="Logout from Salut"
         cookiePolicy={'single_host_origin'}
         onLogoutSuccess={logout}
-        onFailure={onFailure}
       />
     </div>
   )
