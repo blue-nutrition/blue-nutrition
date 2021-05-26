@@ -1,3 +1,6 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/display-name */
+/* eslint-disable no-unused-vars */
 import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
@@ -5,6 +8,7 @@ import { ArgumentAxis, ValueAxis, Chart, BarSeries, LineSeries, Tooltip } from '
 import { ArgumentScale, Stack, EventTracker, HoverState } from '@devexpress/dx-react-chart';
 import { scaleBand } from '@devexpress/dx-chart-core';
 import { TrackProgressContext } from '../TrackProgressContext.jsx';
+import { AppContext } from '../../../Context.jsx';
 
 const Label = symbol => (props) => {
   const { text } = props;
@@ -22,6 +26,7 @@ const CaloriesGraph = (props) => {
   const {
     dailyFood, period
   } = useContext(TrackProgressContext);
+  const { userGoals } = useContext(AppContext);
 
 
   if (dailyFood) {
@@ -34,7 +39,7 @@ const CaloriesGraph = (props) => {
           <ArgumentAxis />
           <ValueAxis labelComponent={CalorieLabel} />
           <BarSeries valueField="dailyCalories" argumentField="_id" color="lightslategrey" />
-          {/* <LineSeries  valueField="goal" argumentField="_id" color="bisque" /> */}
+          <LineSeries  valueField="calorieGoal" argumentField="_id" color="bisque" />
           <EventTracker />
           <Tooltip />
           <HoverState />
