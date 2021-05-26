@@ -1,6 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { AppContext } from '../../Context.jsx'
+import { AppContext } from '../../Context.jsx';
+import { TrackProgressContext } from './TrackProgressContext.jsx';
 import axios from 'axios';
+import Graphs from './Graphs/Graphs.jsx';
 import AsOf from './AsOf.jsx';
 import Container from '@material-ui/core/Container';
 import SummaryStats from './SummaryStats/SummaryStats.jsx'
@@ -19,11 +21,6 @@ const TrackProgress = (props) => {
   "dailyFat": 104 }]);
   const [dailyWater, setDailyWater] = useState([{dailyWater:100}]);
   const [dailyWeight, setDailyWeight] = useState(150);
-
-
-
-
-
 
   useEffect(() => {
     console.log(
@@ -46,8 +43,8 @@ const TrackProgress = (props) => {
           'endDate': endDate
         }
       })
-        .then((response) => {
-          setDailyWater(response.data);
+        .then((res) => {
+          setDailyWater(res.data);
           axios.get('/data/dailyWeight', {
             params: {
               'userId': userId,
@@ -65,19 +62,37 @@ const TrackProgress = (props) => {
     })
   },[period, startDate, endDate]);
 
-
-  return (
-    <Container>
+  if(dailyWeight) {
+    return (
       <div>
-        <AsOf setAsOf={setAsOf} asOf={asOf} period={period}  handleChange={handleChange} setStartDate={setStartDate} setEndDate={setEndDate} endDate={endDate}/>
+        <TrackProgressContext.Provider value={{
+          setAsOf,
+          asOf,
+          period,
+          handleChange,
+          setStartDate,
+          dailyFood,
+          dailyWater,
+          dailyWeight,
+        }}
+        >
+          <Container>
+            <div>
+              <AsOf setAsOf={setAsOf} asOf={asOf} period={period}  handleChange={handleChange} setStartDate={setStartDate} setEndDate={setEndDate} endDate={endDate}/>
+            </div>
+            <div>
+              <SummaryStats timePeriod={period} asOf={asOf} dailyFood={dailyFood} dailyWater={dailyWater}/>
+            </div>
+            <div>
+              <Graphs />
+            </div>
+          </Container>
+        </TrackProgressContext.Provider>
       </div>
-      <div>
-        <SummaryStats timePeriod={period} asOf={asOf} dailyFood={dailyFood} dailyWater={dailyWater}/>
-        </div>
-    <div>
-      Graphs
-    </div>
-    </Container>
+    )
+  }
+  return (
+    <h1>Loading....</h1>
   )
 };
 
