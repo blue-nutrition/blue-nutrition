@@ -7,9 +7,7 @@ const axios = require('axios');
 
 
 const Today = () => {
-  const { today, tomorrow } = useContext(AppContext);
-  // const { userId, setUserId } = useContext(AppContext);
-  const userId = '5';
+  const { today, tomorrow, userId } = useContext(AppContext);
   const date = new Date();
   const [water, setWaterData] = useState({});
   const [totalWater, setTotalWater] = useState(0);

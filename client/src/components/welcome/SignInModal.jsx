@@ -70,10 +70,11 @@ const SignInModal = () => {
   };
 
   return (
-  <Container>
-    <Button onClick={handleOpen}>
-      <h6>Sign In</h6>
+  <>
+    <Button onClick={handleOpen} variant="contained" size="large">
+      Sign In
     </Button>
+
     <Modal
       open={open}
       onClose={handleClose}
@@ -94,7 +95,7 @@ const SignInModal = () => {
       </div>
       </Container>
     </Modal>
-  </Container>
+  </>
   )
 };
 

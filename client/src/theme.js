@@ -73,6 +73,10 @@ let theme = createMuiTheme({
       text: {
         fontFamily: unica,
         fontSize: '1.25rem'
+      },
+      sizeLarge: {
+        fontSize: '1.25rem',
+        margin: '5%'
       }
     },
     MuiTabs: {

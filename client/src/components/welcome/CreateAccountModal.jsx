@@ -90,9 +90,9 @@ const CreateAccountModal = () => {
   }
 
   return (
-  <Container>
-    <Button onClick={handleOpen}>
-      <h6>Create Account</h6>
+  <>
+    <Button onClick={handleOpen} variant="contained" size="large">
+      Create Account
     </Button>
     <Modal
       className={classes.modal}
@@ -212,7 +212,7 @@ const CreateAccountModal = () => {
       </div>
       </Container>
     </Modal>
-  </Container>
+  </>
   )
 };
 
