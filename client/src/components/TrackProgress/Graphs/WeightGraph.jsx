@@ -1,3 +1,6 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/display-name */
+/* eslint-disable no-unused-vars */
 import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';

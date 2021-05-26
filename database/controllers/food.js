@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const Food = require('../models/food.js');
 
 exports.getFood = (req, res) => {
@@ -44,7 +45,6 @@ exports.deleteFood = (req, res) => {
   })
 }
 exports.getDailyFood = (req, res) => {
-<<<<<<< HEAD
   Food.aggregate ([{
     $match: {
         "date": {
@@ -93,9 +93,6 @@ exports.getDailyFood = (req, res) => {
     res.status(200).send(resp);
   }
 })
-=======
-  //TODO: write controllers
->>>>>>> main
 }
 
 exports.getWeeklyFood = (req, res) => {
