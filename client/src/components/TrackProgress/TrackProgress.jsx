@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { AppContext } from '../../Context.jsx'
 import axios from 'axios';
 import AsOf from './AsOf.jsx';
@@ -7,14 +7,12 @@ import SummaryStats from './SummaryStats/SummaryStats.jsx'
 
 
 const TrackProgress = (props) => {
-  const today = new Date();
-  const { handleChange } = props;
-  const { userId } = useContext(AppContext)
+  const { handleChange, period } = props;
+  const { userId, tomorrow, today } = useContext(AppContext)
 
   const[startDate, setStartDate] = useState(today);
-  const[endDate, setEndDate] = useState(today);
+  const[endDate, setEndDate] = useState(tomorrow);
 
-  const [period, setPeriod] = useState(props.period);
   const [asOf, setAsOf] = useState(today);
   const [food, setFood] = useState(
     {
@@ -30,20 +28,20 @@ const TrackProgress = (props) => {
   );
   const [water, setWater] = useState(100);
 
-  console.log('this is start date', startDate, 'this is end date', endDate)
+  console.log('this is start date', startDate, 'this is end date', endDate, 'this is period', period)
 
-  // useEffect() {
-  //   axios.get('/data/dailyfood', {
-  //     params: {
-  //       'userId': userId,
-  //       'startDate': startDate,
-  //       'endDate': endDate
-  //     }
-  //   })
-  // }
-
-  // get request with previous 5 period information
-
+  useEffect(() => {
+    axios.get('/data/dailyfood', {
+      params: {
+        'userId': userId,
+        'startDate': startDate,
+        'endDate': endDate
+      }
+    })
+    .then((resp) => {
+      console.log('this is the response data', resp)
+    })
+  },[period]);
 
 
   return (

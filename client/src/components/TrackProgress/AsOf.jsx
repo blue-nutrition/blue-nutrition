@@ -27,25 +27,29 @@ const AsOf = (props) => {
   const editButton = period !== 'Daily' ? '' : <Typography variant="h6" style={{position:'absolute', right:0, top:0}}>Edit Day's Intake: <IconButton><EditIcon type="button" onClick={handleEdit}/></IconButton></Typography>
 
 
+
   const handleDateChange = (date) => {
-    const dateFormat = new Date(date).setHours(0,0,0,0);
     setAsOf(date);
-    setEndDate(date);
+    const day = new Date(date).setHours(0,0,0,0);
+    const startDate = zonedTimeToUtc(day, 'America/Denver');
+    const endDate = zonedTimeToUtc(day, 'America/Denver');
+    endDate.setDate(endDate.getDate() + 1);
+    setEndDate(endDate.toISOString());
+
     if(period === 'Daily') {
-      setStartDate(date)
+      setStartDate(startDate.toISOString())
     } else if (period === 'Weekly') {
-      var utcDate = zonedTimeToUtc(date, 'America/Denver');
-      console.log('this is utcDate', utcDate)
-      var startDate = utcDate.setDate(utcDate.getDate() - 6);
-      var startDateUTC = zonedTimeToUtc(startDate, 'America/Denver');
-      setStartDate(startDateUTC)
+      startDate.setDate(startDate.getDate() - 6);
+      setStartDate(startDate.toISOString());
     } else if (period === 'Monthly') {
-      var utcDate = zonedTimeToUtc(date, 'America/Denver')
-      var startDate = utcDate.setDate(utcDate.getDate() - 29);
-      var startDateUTC = zonedTimeToUtc(startDate, 'America/Denver');
-      setStartDate(startDateUTC)
+      startDate.setDate(startDate.getDate() - 29);
+      setStartDate(startDate.toISOString());
+    } else {
+      const allTime = new Date('01/01/2021')
+      setStartDate(allTime.toISOString());
     }
-  }
+    }
+
 
 
   return(
