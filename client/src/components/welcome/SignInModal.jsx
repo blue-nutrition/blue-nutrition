@@ -36,16 +36,23 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const SignInModal = () => {
-  const {userId, setUserId, setLoggedIn} = useContext(AppContext);
+  const {userId, setUserId, setLoggedIn, email, setEmail, postUser} = useContext(AppContext);
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
   const [open, setOpen] = useState(false);
+
+  const userData = {
+    email,
+    userId,
+  }
 
   const onSuccess = (res) => {
     // console.log(res.profileObj);
     setUserId(res.profileObj.googleId);
     setEmail(res.profileObj.email);
+    postUser(userData, null, handleClose);
     setLoggedIn(true);
+
     // console.log(email);
   };
 

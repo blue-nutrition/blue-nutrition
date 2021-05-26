@@ -6,16 +6,17 @@ import Container from '@material-ui/core/Container';
 
 const LogoutGoogle = () => {
 
-  const { userId, setUserId, email, setEmail, setLoggedIn} = useContext(AppContext);
+  const { userId, setUserId, email, setEmail, setLoggedIn, loggedIn} = useContext(AppContext);
 
 
   const logout = (res) => {
     // console.log(res.profileObj);
     // console.log('success response: ', res);
-    setUserId();
-    setEmail();
-    setLoggedIn();
-    const auth2 = window.gapi.auth2.getAuthInstance()
+    setUserId(null);
+    setEmail('');
+    setLoggedIn(false);
+    console.log('LoggedIn?', loggedIn);
+    const auth2 = window.gapi.auth2.getAuthInstance();
     if (auth2 != null) {
       auth2.signOut().then(
         auth2.disconnect().then(setLoggedIn(false))

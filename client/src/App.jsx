@@ -13,8 +13,7 @@ const App = (props) => {
       <ContextProvider>
         <Container maxWidth="lg" >
           <Welcome />
-          <NavBar/>
-          {/* <LogoutGoogle /> */}
+          <LogoutGoogle />
         </Container>
       </ContextProvider>
     </div>

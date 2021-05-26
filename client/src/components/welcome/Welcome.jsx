@@ -7,6 +7,7 @@ import CreateAccountModal from './CreateAccountModal.jsx';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
+import NavBar from '../NavBar.jsx';
 
 const useStyles = makeStyles(theme => ({
   landing: {
@@ -23,6 +24,7 @@ const Welcome = () => {
 
   return (
     <>
+    {!loggedIn && (
       <Container>
         <div className={classes.landing}>
         <Grid container justify="center">
@@ -37,6 +39,10 @@ const Welcome = () => {
         </Grid>
         </div>
       </Container>
+    )}
+    {loggedIn &&(
+      <NavBar/>
+    )}
     </>
   )
 };
