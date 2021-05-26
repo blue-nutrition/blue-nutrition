@@ -15,6 +15,7 @@ exports.postWeight = (req, res) => {
 
   const filter = { userId: req.body.UserId };
   const update = {
+    userId: req.body.UserId,
     weight: req.body.weight,
     date: req.body.date
   };

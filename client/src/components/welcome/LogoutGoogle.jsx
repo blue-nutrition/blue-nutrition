@@ -4,15 +4,16 @@ import { GoogleLogout } from 'react-google-login';
 
 const LogoutGoogle = () => {
 
-  const { setUserId, setEmail, setLoggedIn, loggedIn} = useContext(AppContext);
+  const { setUserId, setEmail, setLoggedIn, loggedIn, setUserGoals} = useContext(AppContext);
 
-  const logout = (res) => {
+  const logout = (/*res*/) => {
     // console.log(res.profileObj);
-    console.log('success response: ', res);
+    // console.log('success response: ', res);
     setUserId(null);
     setEmail('');
+    setUserGoals({});
     setLoggedIn(false);
-    console.log('LoggedIn?', loggedIn);
+    // console.log('LoggedIn?', loggedIn);
     const auth2 = window.gapi.auth2.getAuthInstance();
     if (auth2 != null) {
       auth2.signOut().then(

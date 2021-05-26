@@ -56,9 +56,18 @@ export const ContextProvider = (props) => {
 
   const getUser = (cb = () => {}) => {
     axios.get('/data/users', {params: {userId: userId}})
-      .then(results => {
-        // console.log('Returned data: ', results);
-        setUserGoals({})
+      .then(userResults => {
+        // console.log(userResults);
+        const goals = userResults.data.goals
+        setUserGoals({
+          ...userGoals,
+          water: goals.water,
+          calories: goals.calories,
+          protein: goals.protein,
+          carbs: goals.carbs,
+          fats: goals.fats,
+          goalWeight: goals.goalWeight,
+        })
         cb();
       })
   };
