@@ -7,8 +7,7 @@ const axios = require('axios');
 
 
 const Today = () => {
-  const { today, setToday } = useContext(AppContext);
-  const { tomorrow, setTomorrow } = useContext(AppContext);
+  const { today, tomorrow } = useContext(AppContext);
   // const { userId, setUserId } = useContext(AppContext);
   const userId = '5';
   const date = new Date();

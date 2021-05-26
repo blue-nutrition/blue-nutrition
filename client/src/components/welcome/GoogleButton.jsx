@@ -1,11 +1,10 @@
 import React, { useContext }from 'react';
-import { ContextProvider, AppContext } from '../../Context.jsx';
-import Button from '@material-ui/core/Button';
-import { GoogleLogin, useGoogleLogin } from 'react-google-login';
+import { AppContext } from '../../Context.jsx';
+import { GoogleLogin } from 'react-google-login';
 
 const GoogleButton = () => {
 
-  const { userId, setUserId, email, setEmail } = useContext(AppContext);
+  const { setUserId, setEmail } = useContext(AppContext);
 
 
   const onSuccess = (res) => {

@@ -9,6 +9,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 
 
+
 const EditGoals = ({ handleClose }) => {
   const {
     today, email, password, userId, userGoals, postUser
@@ -112,6 +113,7 @@ const EditGoals = ({ handleClose }) => {
             value={editedGoals.calories}
             onChange={handleChange("calories")}
             endAdornment={<InputAdornment position="end">kcal</InputAdornment>}
+            InputProps={{ inputProps: { min: "1200" } }}
             />
         </FormControl>
       </div>

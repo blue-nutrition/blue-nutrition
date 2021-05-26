@@ -9,7 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
 const AtAGlance = (props) => {
-  const { today, setToday } = useContext(AppContext);
+  const { today, userGoals } = useContext(AppContext);
   return (
     <Grid container
       justify="center"
@@ -19,19 +19,19 @@ const AtAGlance = (props) => {
         <Typography variant="h6">{new Intl.DateTimeFormat('en-US').format(today)}</Typography>
       </Grid>
       <Grid item>
-        <AtAGlanceSquareWater metric={"water"} unit={"oz"} amt={props.water} goal={74}/>
+        <AtAGlanceSquareWater metric={"water"} unit={"oz"} amt={props.water} goal={userGoals.water}/>
       </Grid>
        <Grid item>
-         <AtAGlanceSquareCals metric={"calories"} unit={"calories"} amt={props.calories} goal={2000}/>
+         <AtAGlanceSquareCals metric={"calories"} unit={"calories"} amt={props.calories} goal={userGoals.calories}/>
        </Grid>
        <Grid item>
-       <AtAGlanceSquareCarbs metric={"carbs"} unit={"grams"} amt={props.carbs} goal={50}/>
+       <AtAGlanceSquareCarbs metric={"carbs"} unit={"grams"} amt={props.carbs} goal={userGoals.carbs}/>
        </Grid>
        <Grid item>
-         <AtAGlanceSquareProtein metric={"protein"} unit={"grams"} amt={props.protein} goal={50}/>
+         <AtAGlanceSquareProtein metric={"protein"} unit={"grams"} amt={props.protein} goal={userGoals.protein}/>
        </Grid>
        <Grid item>
-         <AtAGlanceSquareFat metric={"fat"} unit={"grams"} amt={props.fat} goal={50}/>
+         <AtAGlanceSquareFat metric={"fat"} unit={"grams"} amt={props.fat} goal={userGoals.fats}/>
        </Grid>
     </Grid>
   )

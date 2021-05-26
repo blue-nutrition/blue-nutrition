@@ -1,11 +1,10 @@
-import React, { useContext, useState }from 'react';
-import { ContextProvider, AppContext } from '../../Context.jsx';
+import React, { useContext, useState, useEffect }from 'react';
+import { AppContext } from '../../Context.jsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
-import { GoogleLogin, useGoogleLogin } from 'react-google-login';
+import { GoogleLogin } from 'react-google-login';
 import Container from '@material-ui/core/Container';
-import GoogleButton from './GoogleButton.jsx'
 
 
 const getModalStyle = () => {
@@ -36,16 +35,23 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const SignInModal = () => {
-  const {userId, setUserId, setLoggedIn} = useContext(AppContext);
+  const {userId, setUserId, setLoggedIn, setEmail, getUser} = useContext(AppContext);
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    // console.log(userId);
+    getUser(handleClose);
+  }, [userId]);
 
   const onSuccess = (res) => {
     // console.log(res.profileObj);
     setUserId(res.profileObj.googleId);
     setEmail(res.profileObj.email);
     setLoggedIn(true);
+    // console.log(userId);
+    // getUser(userId, handleClose);
     // console.log(email);
   };
 
