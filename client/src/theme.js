@@ -24,7 +24,7 @@ let theme = createMuiTheme({
       fontFamily: [unica]
     },
     h5: {
-      fontFamily: [unica]
+      fontFamily: [unica],
     },
     h6: {
       fontFamily: [unica],

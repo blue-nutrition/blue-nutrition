@@ -1,5 +1,5 @@
-import React, { useContext, useState, useEffect }from 'react';
-import { ContextProvider, AppContext } from '../../Context.jsx';
+import React, { useContext }from 'react';
+import { AppContext } from '../../Context.jsx';
 import AtAGlanceSquareWater from './AtAGlanceSquareWater.jsx';
 import AtAGlanceSquareCals from './AtAGlanceSquareCals.jsx';
 import AtAGlanceSquareFat from './AtAGlanceSquareFat.jsx';
@@ -12,6 +12,7 @@ const AtAGlance = (props) => {
   const { today, userGoals } = useContext(AppContext);
   return (
     <Grid container
+      spacing={2}
       justify="center"
     >
       <Grid item xs={12}>
