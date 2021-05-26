@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 
 const EditGoals = ({ handleClose }) => {
   const {
-    today, email, password, userId, userGoals, setUserGoals, postUser
+    today, email, userId, userGoals, setUserGoals, postUser
   } = useContext(AppContext);
 
   const [editedWeight, setEditedWeight] = useState(userGoals.weight)
@@ -37,7 +37,7 @@ const EditGoals = ({ handleClose }) => {
 
   const userData = {
     email,
-    password,
+    userId,
     goals: editedGoals
   }
 
