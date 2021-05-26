@@ -1,5 +1,5 @@
-import React, { useContext, useState, useEffect } from 'react';
-import axios from 'axios';
+/* eslint-disable react/prop-types */
+import React, { useContext, useState } from 'react';
 import { AppContext } from '../../Context.jsx';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -7,12 +7,11 @@ import Input from '@material-ui/core/Input';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
-import Grid from '@material-ui/core/Grid';
 
 
 const EditGoals = ({ handleClose }) => {
   const {
-    today, email, password, userId, userGoals, setUserGoals, postUser
+    today, email, password, userId, userGoals, postUser
   } = useContext(AppContext);
 
   const [editedWeight, setEditedWeight] = useState(userGoals.weight)
