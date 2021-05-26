@@ -9,6 +9,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography';
 
 
 const getModalStyle = () => {
@@ -91,9 +92,9 @@ const CreateAccountModal = () => {
   }
 
   return (
-  <Container>
-    <Button onClick={handleOpen}>
-      <h6>Create Account</h6>
+  <>
+    <Button onClick={handleOpen} variant="contained" size="large">
+      Create Account
     </Button>
     <Modal
       className={classes.modal}
@@ -105,9 +106,13 @@ const CreateAccountModal = () => {
     >
       <Container>
       <div style={modalStyle} className={classes.paper}>
-        <h2>Please Sign in with Google and Enter Your Goals</h2>
+        <Typography variant="h2">
+        Please Sign in with Google and Enter Your Goals
+        </Typography>
         <GoogleButton />
-        <h6>Set Your Baseline</h6>
+        <Typography variant="h6">
+          Set Your Baseline
+        </Typography>
         <div>
           <FormControl>
             <Input
@@ -122,7 +127,9 @@ const CreateAccountModal = () => {
             <FormHelperText id="current-weight-helper-text">{`Current Weight in lbs. (optional)`}</FormHelperText>
           </FormControl>
         </div>
-        <h6>Set Your Daily Goals</h6>
+        <Typography variant="h6">
+          Set Your Daily Goals
+        </Typography>
         <FormControl>
           <Input
             id="water-consumption"
@@ -213,7 +220,7 @@ const CreateAccountModal = () => {
       </div>
       </Container>
     </Modal>
-  </Container>
+  </>
   )
 };
 

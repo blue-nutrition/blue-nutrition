@@ -10,7 +10,7 @@ const UserSchema = new Schema({
     calories: Number,
     protein: Number,
     carbs: Number,
-    fat: Number,
+    fats: Number,
     goalWeight: Number
   }
 })

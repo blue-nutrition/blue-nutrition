@@ -14,6 +14,12 @@ const useStyles = makeStyles(() => ({
     alignItems: 'center',
     justifyContent: 'center',
     textAlign: 'center',
+    marginTop: '5%',
+    padding: '2.5%',
+    backgroundColor: 'rgba(255, 255, 255, .10)',
+    backdropFilter: 'blur(4px)',
+    boxShadow: 'inset 0 0 2000px rgba(255, 255, 255, .5)',
+    maxWidth: '750px'
   }
 }))
 
@@ -25,17 +31,19 @@ const Welcome = () => {
     <>
     {!loggedIn && (
       <Container>
-        <div className={classes.landing}>
         <Grid container justify="center">
-          <Grid item>
-            <Typography variant="h6">
-              Please Sign In or Create Account to continue.
-            </Typography>
-            <SignInModal />
-            <CreateAccountModal />
-          </Grid>
-        </Grid>
-        </div>
+           <div className={classes.landing}>
+            <Grid item>
+              <Typography variant="h4">
+                Please Sign In or Create Account to continue.
+              </Typography>
+              <div>
+                <SignInModal />
+                <CreateAccountModal />
+              </div>
+            </Grid>
+           </div>
+         </Grid>
       </Container>
     )}
     {loggedIn &&(
