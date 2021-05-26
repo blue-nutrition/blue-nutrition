@@ -7,11 +7,8 @@ import SummaryStats from './SummaryStats/SummaryStats.jsx'
 
 
 const TrackProgress = (props) => {
-  const { handleChange, period } = props;
+  const { handleChange, period, startDate, endDate, setStartDate, setEndDate } = props;
   const { userId, tomorrow, today } = useContext(AppContext)
-
-  const[startDate, setStartDate] = useState(today);
-  const[endDate, setEndDate] = useState(tomorrow);
 
   const [asOf, setAsOf] = useState(today);
   const [food, setFood] = useState(
@@ -41,7 +38,7 @@ const TrackProgress = (props) => {
     .then((resp) => {
       console.log('this is the response data', resp)
     })
-  },[period]);
+  },[period, startDate, endDate]);
 
 
   return (
