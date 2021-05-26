@@ -2,20 +2,20 @@ import React, { useContext }from 'react';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import RestaurantIcon from '@material-ui/icons/Restaurant';
-import {AppContext} from '../../../Context.jsx';
+import LocalDrinkIcon from '@material-ui/icons/LocalDrink';
+import { AppContext } from '../../../Context.jsx'
 
-const SummarySquareCals = (props) => {
+const SummarySquareWater = (props) => {
   const {userGoals} = useContext(AppContext);
-  const { amt } = props;
-  const calorieGoal = userGoals.calories;
+  const { amt, unit } = props;
+  const waterGoal = userGoals.water;
+
 
   const boxStyle = {
     width: '100px',
     height: '100px',
     position: 'relative',
-    overflow: 'hidden',
-    margin: 'auto'
+    overflow: 'hidden'
   }
 
   const iconStyle = {
@@ -38,24 +38,24 @@ const SummarySquareCals = (props) => {
     position: 'absolute',
     top: '0',
     left: '0',
-    height: `${amt <= calorieGoal ? 100 - ((amt/calorieGoal)*100) : 100}%`,
-    color: `${amt <= calorieGoal ? 'black' : 'red'}`
+    height: `${amt <= waterGoal ? 100 - ((amt/waterGoal)*100) : 100}%`,
+    color: `${amt <= waterGoal ? 'black' : '#99C1DE'}`
   }
 
   return (
     <Container>
-      <Typography variant="h6" > Avg Calories</Typography>
+      <Typography variant="h6" >Avg Water</Typography>
       <div style={boxStyle}>
         <div style={iconDivStyle}>
-          <RestaurantIcon style={iconStyle}/>
+          <LocalDrinkIcon style={iconStyle}/>
         </div>
         <div style={blackIconDivStyle}>
-          <RestaurantIcon style={blackIconStyle} />
+          <LocalDrinkIcon style={blackIconStyle} />
         </div>
       </div>
-      <Typography variant="h6" >{amt} / {calorieGoal} kcal</Typography>
+      <Typography variant="h6">{amt} / {waterGoal} {unit}</Typography>
     </Container>
   )
 };
 
-export default SummarySquareCals;
+export default SummarySquareWater;
