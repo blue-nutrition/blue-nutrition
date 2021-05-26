@@ -42,17 +42,9 @@ const SummarySquare = (props) => {
     textAlign: 'center'
   }
 
-  const classes = useStyles();
-
   const handleClick = () => {
     setOpen(true);
   }
-
-  const handleClose = () => {
-    setOpen(false);
-  }
-
-  const editButton = timePeriod !== 'Daily' ? '' : <Button variant="contained" onClick={handleClick}>Edit</Button>
 
 
   return (
