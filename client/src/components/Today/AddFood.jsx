@@ -26,7 +26,8 @@ const AddFood = (props) => {
   });
 
   const handleChange = (prop) => (event) => {
-    if (event.target.value >=0 || typeof(event.target.value) === 'string') {
+    console.log(event.target);
+    if (event.target.value >=0 || event.target.type === 'text') {
       setValues({...values, [prop]: event.target.value});
     }
   }
@@ -66,17 +67,17 @@ const AddFood = (props) => {
       <div>
         <FormControl>
           <Input
-            id="protein-form"
+            id="fat-form"
             type="number"
-            value={values.protein}
-            onChange={handleChange('protein')}
+            value={values.fat}
+            onChange={handleChange('fat')}
             endAdornment={<InputAdornment position="end">g</InputAdornment>}
-            aria-describedby="protein-helper-text"
+            aria-describedby="fat-helper-text"
             inputProps={{
-              'aria-label': 'protein',
+              'aria-label': 'fat',
             }}
           />
-          <FormHelperText id="protein-helper-text">Protein</FormHelperText>
+          <FormHelperText id="fat-helper-text">Fat</FormHelperText>
         </FormControl>
       </div>
       <div>
@@ -98,17 +99,17 @@ const AddFood = (props) => {
       <div>
         <FormControl>
           <Input
-            id="fat-form"
+            id="protein-form"
             type="number"
-            value={values.fat}
-            onChange={handleChange('fat')}
+            value={values.protein}
+            onChange={handleChange('protein')}
             endAdornment={<InputAdornment position="end">g</InputAdornment>}
-            aria-describedby="fat-helper-text"
+            aria-describedby="protein-helper-text"
             inputProps={{
-              'aria-label': 'fat',
+              'aria-label': 'protein',
             }}
           />
-          <FormHelperText id="fat-helper-text">Fat</FormHelperText>
+          <FormHelperText id="protein-helper-text">Protein</FormHelperText>
         </FormControl>
       </div>
       <Grid container justify="center">

@@ -12,16 +12,25 @@ exports.getFood = (req, res) => {
 }
 
 exports.postFood = (req, res) => {
-  newFood ={...req.body};
-  delete newFood.foodId;
-  Food.findByIdAndUpdate(req.body.foodId, newFood, {upsert: true}, (err, result) => {
-    if (err) {
-      console.error(err);
-      res.sendStatus(500);
-    } else {
-      res.status(204).send(result);
-    }
-  })
+  if (req.body.foodId !== null) {
+    Food.findByIdAndUpdate(req.body.foodId, req.body, {upsert: true}, (err, result) => {
+      if (err) {
+        console.error(err);
+        res.sendStatus(500);
+      } else {
+        res.status(204).send(result);
+      }
+    })
+  } else {
+    Food.create(req.body, (err, result) => {
+      if (err) {
+        console.error(err);
+        res.sendStatus(500);
+      } else {
+        res.status(204).send(result);
+      }
+    })
+  }
 }
 
 exports.deleteFood = (req, res) => {
@@ -35,6 +44,7 @@ exports.deleteFood = (req, res) => {
   })
 }
 exports.getDailyFood = (req, res) => {
+<<<<<<< HEAD
   Food.aggregate ([{
     $match: {
         "date": {
@@ -83,6 +93,9 @@ exports.getDailyFood = (req, res) => {
     res.status(200).send(resp);
   }
 })
+=======
+  //TODO: write controllers
+>>>>>>> main
 }
 
 exports.getWeeklyFood = (req, res) => {
