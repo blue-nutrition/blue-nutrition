@@ -77,7 +77,6 @@ exports.getDailyFood = (req, res) => {
     res.sendStatus(500);
   } else {
     res.status(200).send(resp);
-    console.log('this is req', req.query)
   }
 })
 }

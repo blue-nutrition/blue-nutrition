@@ -10,6 +10,7 @@ const TrackProgress = (props) => {
   const { handleChange, period, startDate, endDate, setStartDate, setEndDate } = props;
   const { userId, tomorrow, today } = useContext(AppContext)
 
+
   const [asOf, setAsOf] = useState(today);
   const [dailyFood, setDailyFood] = useState([{ "_id": "2021-05-20",
   "dailyCalories": 2300,
@@ -17,11 +18,17 @@ const TrackProgress = (props) => {
   "dailyCarbs": 104,
   "dailyFat": 104 }]);
   const [dailyWater, setDailyWater] = useState(100);
-  const [dailyWeight, setDailyWeight] = useState();
+  const [dailyWeight, setDailyWeight] = useState(150);
 
-  console.log('this is start date', startDate, 'this is end date', endDate, 'this is period', period)
+
+
+
+
 
   useEffect(() => {
+    console.log(
+      'this is startDate', startDate, 'this is End Date', endDate, 'this is period', period
+    )
     axios.get('/data/dailyfood', {
       params: {
         'userId': userId,
@@ -55,7 +62,7 @@ const TrackProgress = (props) => {
     .catch((err) => {
       console.log('this is what happens when you eat too much cake: ', err)
     })
-  },[period, asOf]);
+  },[period, startDate, endDate]);
 
 
   return (
