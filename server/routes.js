@@ -10,7 +10,8 @@ router.get('/users', userController.getUser);
 router.get('/food', foodController.getFood);
 router.get('/dailyfood', foodController.getDailyFood);
 router.get('/water', waterController.getWater);
-router.get('/weight', weightController.getWeight);
+router.get('/dailyWater', waterController.getDailyWater);
+router.get('/dailyWeight', weightController.getDailyWeight);
 router.post('/weight', weightController.postWeight);
 router.post('/users', userController.postUser)
 

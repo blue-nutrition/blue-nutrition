@@ -11,19 +11,13 @@ const TrackProgress = (props) => {
   const { userId, tomorrow, today } = useContext(AppContext)
 
   const [asOf, setAsOf] = useState(today);
-  const [food, setFood] = useState(
-    {
-  userId: 5,
-  calories: 1500,
-  protein: 100,
-  carbs: 200,
-  fat: 70,
-  meal: 'breakfast',
-  foodName: 'huevos rancheros',
-  date: "2021-05-25T01:16:17.280Z"
-    }
-  );
-  const [water, setWater] = useState(100);
+  const [dailyFood, setDailyFood] = useState([{ "_id": "2021-05-20",
+  "dailyCalories": 2300,
+  "dailyProtein": 36,
+  "dailyCarbs": 104,
+  "dailyFat": 104 }]);
+  const [dailyWater, setDailyWater] = useState(100);
+  const [dailyWeight, setDailyWeight] = useState();
 
   console.log('this is start date', startDate, 'this is end date', endDate, 'this is period', period)
 
@@ -36,9 +30,32 @@ const TrackProgress = (props) => {
       }
     })
     .then((resp) => {
-      console.log('this is the response data', resp)
+      setDailyFood(resp.data);
+      axios.get('/data/dailyWater', {
+        params: {
+          'userId': userId,
+          'startDate': startDate,
+          'endDate': endDate
+        }
+      })
+        .then((response) => {
+          setDailyWater(response.data);
+          axios.get('/data/dailyWeight', {
+            params: {
+              'userId': userId,
+              'startDate': startDate,
+              'endDate': endDate
+            }
+          })
+          .then((res) => {
+            setDailyWeight(res.data);
+          })
+        })
     })
-  },[period, startDate, endDate]);
+    .catch((err) => {
+      console.log('this is what happens when you eat too much cake: ', err)
+    })
+  },[period, asOf]);
 
 
   return (
@@ -47,7 +64,7 @@ const TrackProgress = (props) => {
         <AsOf setAsOf={setAsOf} asOf={asOf} period={period}  handleChange={handleChange} setStartDate={setStartDate} setEndDate={setEndDate}/>
       </div>
       <div>
-        <SummaryStats timePeriod={period} asOf={asOf} food={food} water={water}/>
+        <SummaryStats timePeriod={period} asOf={asOf} dailyFood={dailyFood} dailyWater={dailyWater}/>
         </div>
     <div>
       Graphs

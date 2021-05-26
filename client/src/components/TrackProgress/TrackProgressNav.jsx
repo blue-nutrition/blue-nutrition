@@ -85,16 +85,16 @@ export default function TrackProgressNav (props) {
           <Tab label="All Time" {...a11yProps(3)} />
         </Tabs>
       </AppBar>
-      <TabPanel value={value} index={0} onClick={() => {toggleTab('Weekly')}}>
+      <TabPanel value={value} index={0} onClick={() => {toggleTab('Daily')}}>
         <TrackProgress period={'Daily'} handleChange={props.handleChange} startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate}/>
       </TabPanel>
       <TabPanel value={value} index={1} onClick={() => {toggleTab('Weekly')}}>
       <TrackProgress period={'Weekly'} startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate}/>
       </TabPanel>
-      <TabPanel value={value} index={2} onClick={() => {toggleTab('Weekly')}}>
+      <TabPanel value={value} index={2} onClick={() => {toggleTab('Monthly')}}>
       <TrackProgress period={'Monthly'} startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate}/>
       </TabPanel>
-      <TabPanel value={value} index={3} onClick={() => {toggleTab('Weekly')}}>
+      <TabPanel value={value} index={3} onClick={() => {toggleTab('All Time')}}>
       <TrackProgress period={'All Time'} startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate}/>
       </TabPanel>
     </div>
