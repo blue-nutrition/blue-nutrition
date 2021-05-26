@@ -60,9 +60,15 @@ const EditGoals = ({ handleClose }) => {
     margin: '3vh'
   }
 
+  const container = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+
   return (
     <div>
-      <div>
+      <div style={container}>
         <FormControl>
           <Typography variant="h3">Edit Your Goals</Typography>
           <Input
@@ -95,6 +101,7 @@ const EditGoals = ({ handleClose }) => {
           <Input
             name="calories"
             type="number"
+            min="1200"
             value={editedGoals.calories}
             onChange={handleChange("calories")}
             endAdornment={<InputAdornment position="end">kcal</InputAdornment>}
