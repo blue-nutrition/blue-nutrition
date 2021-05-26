@@ -35,19 +35,13 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const SignInModal = () => {
-  const {userId, setUserId, setLoggedIn, email, setEmail, getUser} = useContext(AppContext);
+  const {userId, setUserId, setLoggedIn, setEmail, getUser} = useContext(AppContext);
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
   const [open, setOpen] = useState(false);
 
-  const userData = {
-    email,
-    userId,
-    goals: null
-  }
-
   useEffect(() => {
-    console.log(userData);
+    // console.log(userId);
     getUser(handleClose);
   }, [userId]);
 

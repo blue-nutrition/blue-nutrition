@@ -2,7 +2,7 @@ const User = require('../models/users.js');
 
 exports.getUser = (req, res) => {
   //TODO: write controllers
-  console.log('Get User req: ', req);
+  // console.log('Get User req: ', req);
   const filter = { userId: req.query.userId }
   User.findOne(filter, 'goals', (err, results) => {
     if (err) throw err;

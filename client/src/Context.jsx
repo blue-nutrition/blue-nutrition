@@ -36,10 +36,10 @@ export const ContextProvider = (props) => {
   const postUser = (userData, weightData, cb = () => {}) => {
     axios.post('/data/users', userData)
       .then(userResults => {
-        console.log("USER RESULTS", userResults)
+        // console.log("USER RESULTS", userResults)
         axios.post('/data/weight', weightData)
         .then(weightResults => {
-          console.log("WEIGHT RESULTS", weightResults);
+          // console.log("WEIGHT RESULTS", weightResults);
           setUserGoals({
             weight: weightData.weight,
             water: userData.goals.water,
@@ -55,13 +55,10 @@ export const ContextProvider = (props) => {
   }
 
   const getUser = (cb = () => {}) => {
-    axios({
-      method: 'GET',
-      url: '/data/users',
-      body: {userId: userId}
-    })
+    axios.get('/data/users', {params: {userId: userId}})
       .then(results => {
-        // console.log(results);
+        // console.log('Returned data: ', results);
+        setUserGoals({})
         cb();
       })
   };

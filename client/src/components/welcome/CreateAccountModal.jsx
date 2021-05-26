@@ -83,8 +83,8 @@ const CreateAccountModal = () => {
   const handleAccountCreation = (e) => {
     e.preventDefault();
     e.persist();
-    console.log('New User Info: ', userData, weightData);
-    postUser(userData, weightData, handleClose)
+    // console.log('New User Info: ', userData, weightData);
+    postUser(userData, weightData, handleClose);
     setLoggedIn(true);
     return false;
   }

@@ -28,12 +28,11 @@ const Welcome = () => {
         <div className={classes.landing}>
         <Grid container justify="center">
           <Grid item>
-            <Typography>
-              <h1>Welcome to Salut!</h1>
-              <h6>Please Sign In or Create Account to continue.</h6>
-              <SignInModal />
-              <CreateAccountModal />
+            <Typography variant="h6">
+              Please Sign In or Create Account to continue.
             </Typography>
+            <SignInModal />
+            <CreateAccountModal />
           </Grid>
         </Grid>
         </div>
