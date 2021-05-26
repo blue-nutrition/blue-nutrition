@@ -61,7 +61,7 @@ export default function NavBar() {
         <Today />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <TrackProgressNav/>
+        <TrackProgressNav handleChange={handleChange.bind(this)}/>
       </TabPanel>
       <TabPanel value={value} index={2}>
         <Goals />

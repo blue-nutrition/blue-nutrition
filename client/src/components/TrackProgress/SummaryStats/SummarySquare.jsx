@@ -6,7 +6,6 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Modal from '@material-ui/core/Modal'
-import EditDay from './EditDay.jsx';
 
 
 
@@ -80,22 +79,8 @@ const SummarySquare = (props) => {
             {amount} {unit}
             </Grid>
           </Grid>
-        {/* <div style={{ position:'absolute', bottom:0, right:0 }}>
-      {/* {editButton} */}
-        {/* </div> */}
       </div>
     </Grid>
-        {/* <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="Edit Day"
-        aria-describedby="Edit Your Day"
-        className={classes.modal}
-      >
-        <div className={classes.paper}>
-          <EditDay/>
-        </div>
-      </Modal> */}
     </div>
   )
 };

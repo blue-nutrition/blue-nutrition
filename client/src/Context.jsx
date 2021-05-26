@@ -1,5 +1,6 @@
 
 import React, { createContext, useState } from 'react';
+import axios from 'axios';
 const { zonedTimeToUtc, utcToZonedTime, format } = require('date-fns-tz')
 
 export const AppContext = createContext();
@@ -15,58 +16,49 @@ export const ContextProvider = (props) => {
   const [exampleState, setExampleState] = useState('Hello World');
   const [today, setToday] = useState(_2dayUTC);
   const [tomorrow, setTomorrow] = useState(_2morrowUTC);
-  const [userId, setUserId] = useState('5');
-  const [email, setEmail] = useState('');
+  const [userId, setUserId] = useState(5);
+  const [email, setEmail] = useState();
 
   // Landing page states
+  const [loggedIn, setLoggedIn] = useState(false);
   const [userGoals, setUserGoals] = useState({
     weight: null,
-    water: 0,
+    water: 100,
     calories: 2000,
-    protein: 0,
-    carbs: 0,
-    fats: 0,
+    protein: 75,
+    carbs: 150,
+    fats: 50,
     goalWeight: null,
   });
 
+  const postUser = (userData, weightData, cb = () => {}) => {
+    axios.post('/data/users', userData)
+      .then(userResults => {
+        console.log("USER RESULTS", userResults)
+        axios.post('/data/weight', weightData)
+        .then(weightResults => {
+          console.log("WEIGHT RESULTS", weightResults);
+          setUserGoals({
+            weight: weightData.weight,
+            water: userData.goals.water,
+            calories: userData.goals.calories,
+            protein: userData.goals.protein,
+            carbs: userData.goals.carbs,
+            fats: userData.goals.fats,
+            goalWeight: userData.goals.goalWeight,
+          })
+          cb();
+        })
+      });
+  }
+
   return (
     <AppContext.Provider value={{exampleState, setExampleState, userId, setUserId, email, setEmail,
-      userGoals, setUserGoals, today, setToday, tomorrow, setTomorrow}}>
+      userGoals, setUserGoals, postUser, today, setToday, tomorrow, setTomorrow,
+      loggedIn, setLoggedIn}}>
       {props.children}
     </AppContext.Provider>
   )
 }
 
 
-// import React, { createContext, useState } from 'react';
-
-// export const AppContext = createContext();
-
-// export const ContextProvider = (props) => {
-
-//   // list of useState items
-//   const [exampleState, setExampleState] = useState('Hello World');
-//   const [currentWeight, setCurrentWeight] = useState(0);
-//   const [waterGoal, setWaterGoal] = useState(64);
-//   const [caloriesGoal, setCaloriesGoal] = useState(2000);
-//   const [proteinMacrosGoal, setProteinMacrosGoal] = useState(50);
-//   const [carbsMacrosGoal, setCarbsMacrosGoal] = useState(100);
-//   const [fatsMacrosGoal, setFatsMacrosGoal] = useState(25);
-//   const [goalWeight, setGoalWeight] = useState();
-
-
-//   return (
-//     <AppContext.Provider value={{
-//       exampleState, setExampleState,
-//       currentWeight, setCurrentWeight,
-//       waterGoal, setWaterGoal,
-//       caloriesGoal, setCaloriesGoal,
-//       proteinMacrosGoal, setProteinMacrosGoal,
-//       carbsMacrosGoal, setCarbsMacrosGoal,
-//       fatsMacrosGoal, setFatsMacrosGoal,
-//       goalWeight, setGoalWeight
-//     }}>
-//       {props.children}
-//     </AppContext.Provider>
-//   )
-// }
