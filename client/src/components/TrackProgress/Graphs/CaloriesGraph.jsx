@@ -27,7 +27,7 @@ const CaloriesGraph = (props) => {
     dailyFood, period
   } = useContext(TrackProgressContext);
   const { userGoals } = useContext(AppContext);
-  // dailyFood.calorieGoal = userGoals.calories;
+
 
   if (dailyFood) {
     return (
