@@ -6,7 +6,9 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import CaloriesByMeal from './CaloriesByMeal.jsx';
-import CarbsByMeal from './CarbsByMeal.jsx'
+import CarbsByMeal from './CarbsByMeal.jsx';
+import FatByMeal from './FatByMeal.jsx';
+import ProteinByMeal from './ProteinByMeal.jsx';
 import { TrackProgressContext } from '../TrackProgressContext.jsx'
 
 
@@ -57,12 +59,14 @@ export default function DailyGraphs() {
 
     return (
       <div>
+        <AppBar position="static" color='secondary'>
         <Tabs value={value} onChange={handleChange} aria-label="Graph tabs" centered>
           <Tab label="Calories" {...a11yProps(0)} />
           <Tab label="Carbs" {...a11yProps(1)} />
           <Tab label="Protein" {...a11yProps(2)} />
           <Tab label="Fat" {...a11yProps(3)} />
         </Tabs>
+        </AppBar>
         <TabPanel value={value} index={0}>
           <CaloriesByMeal />
         </TabPanel>
@@ -70,10 +74,10 @@ export default function DailyGraphs() {
           <CarbsByMeal />
         </TabPanel>
         <TabPanel value={value} index={2}>
-          {/* < ProteinByMeal /> */}
+          < ProteinByMeal />
         </TabPanel>
         <TabPanel value={value} index={3}>
-          {/* <FatByMeal /> */}
+          <FatByMeal />
         </TabPanel>
       </div>
     );

@@ -2,7 +2,7 @@ import React, {useContext, useState} from 'react';
 import {TrackProgressContext} from '../TrackProgressContext.jsx'
 import { PieChart } from 'react-minimal-pie-chart';
 
-const CaloriesByMeal = () => {
+const ProteinByMeal = () => {
   const { dailyBreakDown } = useContext(TrackProgressContext);
 
 
@@ -13,21 +13,21 @@ const CaloriesByMeal = () => {
 
   for(var i = 0; i< dailyBreakDown.length; i++) {
     if(dailyBreakDown[i]._id === 'Breakfast') {
-      breakfast = dailyBreakDown[i].calorieBreakDown
+      breakfast = dailyBreakDown[i].proteinBreakDown
     }
     if(dailyBreakDown[i]._id === 'Lunch') {
-      lunch = dailyBreakDown[i].calorieBreakDown
+      lunch = dailyBreakDown[i].proteinBreakDown
     }
     if(dailyBreakDown[i]._id === 'Dinner') {
-      dinner = dailyBreakDown[i].calorieBreakDown
+      dinner = dailyBreakDown[i].proteinBreakDown
     }
   }
 
 
   const pieData = [
-    {title: 'Breakfast Calories', value: breakfast, color: '#D6E2E9'},
-    {title: 'Lunch Calories', value: lunch, color: '#DBE7E4'},
-    {title: 'Dinner Calories', value: dinner, color: '#BCD4E6'}
+    {title: 'Breakfast Protein:', value: breakfast, color: '#D6E2E9'},
+    {title: 'Lunch Protein:', value: lunch, color: '#DBE7E4'},
+    {title: 'Dinner Protein:', value: dinner, color: '#BCD4E6'}
   ]
 
   const defaultLabelStyle = {
@@ -36,17 +36,14 @@ const CaloriesByMeal = () => {
   };
 
   if(!breakfast && !lunch && !dinner) {
-    return ('')
+    return ("You haven't reported any meals yet! Start eating or update your day!")
   } else {
     return (
-      <div>
+      <div className="margin-auto">
         <PieChart viewBoxSize={[80,80]} center={[40,40]} radius={25} data={pieData} label={({dataEntry}) => `${dataEntry.title} ${dataEntry.value} (${Math.floor(dataEntry.percentage)}%)`} labelStyle={{...defaultLabelStyle,}} labelPosition={70}/>
       </div>
     )
   }
-
 };
 
-export default CaloriesByMeal;
-
-
+export default ProteinByMeal;

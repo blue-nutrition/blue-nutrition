@@ -2,7 +2,7 @@ import React, {useContext, useState} from 'react';
 import {TrackProgressContext} from '../TrackProgressContext.jsx'
 import { PieChart } from 'react-minimal-pie-chart';
 
-const CaloriesByMeal = () => {
+const FatByMeal = () => {
   const { dailyBreakDown } = useContext(TrackProgressContext);
 
 
@@ -13,30 +13,30 @@ const CaloriesByMeal = () => {
 
   for(var i = 0; i< dailyBreakDown.length; i++) {
     if(dailyBreakDown[i]._id === 'Breakfast') {
-      breakfast = dailyBreakDown[i].calorieBreakDown
+      breakfast = dailyBreakDown[i].fatBreakDown
     }
     if(dailyBreakDown[i]._id === 'Lunch') {
-      lunch = dailyBreakDown[i].calorieBreakDown
+      lunch = dailyBreakDown[i].fatBreakDown
     }
     if(dailyBreakDown[i]._id === 'Dinner') {
-      dinner = dailyBreakDown[i].calorieBreakDown
+      dinner = dailyBreakDown[i].fatBreakDown
     }
   }
 
 
   const pieData = [
-    {title: 'Breakfast Calories', value: breakfast, color: '#D6E2E9'},
-    {title: 'Lunch Calories', value: lunch, color: '#DBE7E4'},
-    {title: 'Dinner Calories', value: dinner, color: '#BCD4E6'}
+    {title: 'Breakfast Fat:', value: breakfast, color: '#D6E2E9'},
+    {title: 'Lunch Fat:', value: lunch, color: '#DBE7E4'},
+    {title: 'Dinner Fat:', value: dinner, color: '#BCD4E6'}
   ]
 
   const defaultLabelStyle = {
-    fontSize: '2',
+    fontSize: '32',
     fontFamily: 'sans-serif',
   };
 
   if(!breakfast && !lunch && !dinner) {
-    return ('')
+    return ("You haven't reported any meals yet! Start eating or update your day!")
   } else {
     return (
       <div>
@@ -44,9 +44,6 @@ const CaloriesByMeal = () => {
       </div>
     )
   }
-
 };
 
-export default CaloriesByMeal;
-
-
+export default FatByMeal;

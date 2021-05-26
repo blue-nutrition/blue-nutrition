@@ -25,13 +25,13 @@ const CarbsByMeal = () => {
 
 
   const pieData = [
-    {title: 'Breakfast Carbs', value: breakfast, color: '#D6E2E9'},
-    {title: 'Lunch Carbs', value: lunch, color: '#DBE7E4'},
-    {title: 'Dinner Carbs', value: dinner, color: '#BCD4E6'}
+    {title: 'Breakfast Carbs:', value: breakfast, color: '#D6E2E9'},
+    {title: 'Lunch Carbs:', value: lunch, color: '#DBE7E4'},
+    {title: 'Dinner Carbs:', value: dinner, color: '#BCD4E6'}
   ]
 
   const defaultLabelStyle = {
-    fontSize: '3',
+    fontSize: '2',
     fontFamily: 'sans-serif',
   };
 
@@ -40,7 +40,7 @@ const CarbsByMeal = () => {
   } else {
     return (
       <div>
-        <PieChart viewBoxSize={[150,150]} radius={35} data={pieData} label={({dataEntry}) => `${dataEntry.title} ${dataEntry.value}`} labelStyle={{...defaultLabelStyle,}} labelPosition={70}/>
+        <PieChart viewBoxSize={[80,80]} center={[40,40]} radius={25} data={pieData} label={({dataEntry}) => `${dataEntry.title} ${dataEntry.value} (${Math.floor(dataEntry.percentage)}%)`} labelStyle={{...defaultLabelStyle,}} labelPosition={70}/>
       </div>
     )
   }
