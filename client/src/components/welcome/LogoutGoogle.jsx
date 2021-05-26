@@ -1,17 +1,14 @@
 import React, { useContext }from 'react';
-import { ContextProvider, AppContext } from '../../Context.jsx';
-import Button from '@material-ui/core/Button';
-import { GoogleLogout, useGoogleLogout } from 'react-google-login';
-import Container from '@material-ui/core/Container';
+import {  AppContext } from '../../Context.jsx';
+import { GoogleLogout } from 'react-google-login';
 
 const LogoutGoogle = () => {
 
-  const { userId, setUserId, email, setEmail, setLoggedIn, loggedIn} = useContext(AppContext);
-
+  const { setUserId, setEmail, setLoggedIn, loggedIn} = useContext(AppContext);
 
   const logout = (res) => {
     // console.log(res.profileObj);
-    // console.log('success response: ', res);
+    console.log('success response: ', res);
     setUserId(null);
     setEmail('');
     setLoggedIn(false);
@@ -26,7 +23,7 @@ const LogoutGoogle = () => {
   };
 
   return (
-    <div className="g-signin2" data-width="300" data-height="200" data-longtitle="true">
+    <div data-width="300" data-height="200" data-longtitle="true">
       <GoogleLogout
         clientId="223117457103-m37me8ugrqlb9nn8o2i48dr96arojlfv.apps.googleusercontent.com"
         buttonText="Logout from Salut"

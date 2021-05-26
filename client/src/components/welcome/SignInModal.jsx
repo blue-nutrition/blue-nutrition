@@ -1,11 +1,10 @@
 import React, { useContext, useState, useEffect }from 'react';
-import { ContextProvider, AppContext } from '../../Context.jsx';
+import { AppContext } from '../../Context.jsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
-import { GoogleLogin, useGoogleLogin } from 'react-google-login';
+import { GoogleLogin } from 'react-google-login';
 import Container from '@material-ui/core/Container';
-import GoogleButton from './GoogleButton.jsx'
 
 
 const getModalStyle = () => {

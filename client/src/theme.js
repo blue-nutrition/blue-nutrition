@@ -108,8 +108,13 @@ let theme = createMuiTheme({
         padding: '5px 16px',
         fontSize: '16px'
       }
+    },
+    MuiToolbar: {
+      root: {
+        backgroundColor: '#BCD4E6'
+      }
     }
-  },
+  }
 });
 
 theme = responsiveFontSizes(theme);

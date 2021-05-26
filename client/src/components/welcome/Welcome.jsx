@@ -1,6 +1,5 @@
 import React, { useContext }from 'react';
-import { ContextProvider, AppContext } from '../../Context.jsx';
-import Box from '@material-ui/core/Box';
+import { AppContext } from '../../Context.jsx';
 import Typography from '@material-ui/core/Typography';
 import SignInModal from './SignInModal.jsx';
 import CreateAccountModal from './CreateAccountModal.jsx';
@@ -9,7 +8,7 @@ import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import NavBar from '../NavBar.jsx';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   landing: {
     display: 'flex',
     alignItems: 'center',
