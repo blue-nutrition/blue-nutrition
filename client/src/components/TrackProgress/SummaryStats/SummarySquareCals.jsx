@@ -3,8 +3,13 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import RestaurantIcon from '@material-ui/icons/Restaurant';
+import {AppContext} from '../../../Context.jsx';
 
 const SummarySquareCals = (props) => {
+  const {userGoals} = useContext(AppContext);
+  const { amt } = props;
+  const calorieGoal = userGoals.calories;
+
   const boxStyle = {
     width: '100px',
     height: '100px',
@@ -33,13 +38,13 @@ const SummarySquareCals = (props) => {
     position: 'absolute',
     top: '0',
     left: '0',
-    height: `${props.amt <= props.goal ? 100 - ((props.amt/props.goal)*100) : 100}%`,
-    color: `${props.amt <= props.goal ? 'black' : 'red'}`
+    height: `${amt <= calorieGoal ? 100 - ((amt/calorieGoal)*100) : 100}%`,
+    color: `${amt <= calorieGoal ? 'black' : 'red'}`
   }
 
   return (
     <Container>
-      <Typography variant="h6" >Calories</Typography>
+      <Typography variant="h6" > Avg Calories</Typography>
       <div style={boxStyle}>
         <div style={iconDivStyle}>
           <RestaurantIcon style={iconStyle}/>
@@ -48,7 +53,7 @@ const SummarySquareCals = (props) => {
           <RestaurantIcon style={blackIconStyle} />
         </div>
       </div>
-      <Typography variant="h6" >{props.amt} / {props.goal} kcal</Typography>
+      <Typography variant="h6" >{amt} / {calorieGoal} kcal</Typography>
     </Container>
   )
 };

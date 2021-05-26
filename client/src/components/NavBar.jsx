@@ -46,7 +46,6 @@ export default function NavBar() {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    console.log('made it here')
   };
 
   return (

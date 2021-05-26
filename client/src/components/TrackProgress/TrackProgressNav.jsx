@@ -8,6 +8,7 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import TrackProgress from './TrackProgress.jsx';
 import {AppContext} from '../../Context.jsx'
+const { zonedTimeToUtc, utcToZonedTime, format } = require('date-fns-tz')
 
 
 function TabPanel(props) {
@@ -44,33 +45,33 @@ function a11yProps(index) {
 
 export default function TrackProgressNav (props) {
   const [value, setValue] = React.useState(0);
+  const { userId, tomorrow, today } = useContext(AppContext)
+
+  const[startDate, setStartDate] = useState(today);
+  const[endDate, setEndDate] = useState(tomorrow);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-  };
-
-  const toggleTab = (period) => {
+    console.log('this is newValue', newValue)
     const day = new Date(endDate).setHours(0,0,0,0);
     const startDate = zonedTimeToUtc(day, 'America/Denver');
-    if(period === 'Daily') {
+    if(newValue === 0) {
+      startDate.setDate(startDate.getDate() - 1);
       setStartDate(startDate.toISOString())
-    } else if (period === 'Weekly') {
+    } else if (newValue === 1) {
       startDate.setDate(startDate.getDate() - 6);
       setStartDate(startDate.toISOString());
-    } else if (period === 'Monthly') {
+    } else if (newValue === 2) {
       startDate.setDate(startDate.getDate() - 29);
       setStartDate(startDate.toISOString());
     } else {
       const allTime = new Date('01/01/2021')
       setStartDate(allTime.toISOString());
     }
-    console.log('this is start Date', startDate)
-  }
+  };
 
-  const { userId, tomorrow, today } = useContext(AppContext)
 
-  const[startDate, setStartDate] = useState(today);
-  const[endDate, setEndDate] = useState(tomorrow);
+
 
   return (
     <div>
@@ -85,16 +86,16 @@ export default function TrackProgressNav (props) {
           <Tab label="All Time" {...a11yProps(3)} />
         </Tabs>
       </AppBar>
-      <TabPanel value={value} index={0} onClick={() => {toggleTab('Daily')}}>
+      <TabPanel value={value} index={0}>
         <TrackProgress period={'Daily'} handleChange={props.handleChange} startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate}/>
       </TabPanel>
-      <TabPanel value={value} index={1} onClick={() => {toggleTab('Weekly')}}>
+      <TabPanel value={value} index={1}>
       <TrackProgress period={'Weekly'} startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate}/>
       </TabPanel>
-      <TabPanel value={value} index={2} onClick={() => {toggleTab('Monthly')}}>
+      <TabPanel value={value} index={2}>
       <TrackProgress period={'Monthly'} startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate}/>
       </TabPanel>
-      <TabPanel value={value} index={3} onClick={() => {toggleTab('All Time')}}>
+      <TabPanel value={value} index={3}>
       <TrackProgress period={'All Time'} startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate}/>
       </TabPanel>
     </div>
