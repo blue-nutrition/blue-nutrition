@@ -87,7 +87,7 @@ let Goals = () => {
 
 
   return (
-    <div id="goals" className={"mainContainer"} style={goalsContainer}>
+    <div id="goals" style={goalsContainer}>
       <div style={goalsStyle}>
         <Typography variant="h3" style={titleStyle}>Your Nutrition Goals</Typography>
         <Box style={box}>
