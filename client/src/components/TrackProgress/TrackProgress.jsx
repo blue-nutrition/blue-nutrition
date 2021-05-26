@@ -1,4 +1,5 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import { AppContext } from '../../Context.jsx'
 import axios from 'axios';
 import AsOf from './AsOf.jsx';
 import Container from '@material-ui/core/Container';
@@ -6,39 +7,72 @@ import SummaryStats from './SummaryStats/SummaryStats.jsx'
 
 
 const TrackProgress = (props) => {
-  const today = new Date();
+  const { handleChange, period, startDate, endDate, setStartDate, setEndDate } = props;
+  const { userId, tomorrow, today } = useContext(AppContext)
 
-  const [period, setPeriod] = useState(props.period);
+
   const [asOf, setAsOf] = useState(today);
-  const [food, setFood] = useState(
-    {
-  userId: 5,
-  calories: 1500,
-  protein: 100,
-  carbs: 200,
-  fat: 70,
-  meal: 'breakfast',
-  foodName: 'huevos rancheros',
-  date: "2021-05-25T01:16:17.280Z"
-    }
-  );
-  const [water, setWater] = useState(100);
+  const [dailyFood, setDailyFood] = useState([{ "_id": "2021-05-20",
+  "dailyCalories": 2300,
+  "dailyProtein": 36,
+  "dailyCarbs": 104,
+  "dailyFat": 104 }]);
+  const [dailyWater, setDailyWater] = useState([{dailyWater:100}]);
+  const [dailyWeight, setDailyWeight] = useState(150);
 
-  // useEffect() {
-  //   axios.get('/food')
-  // }
 
-  //get request with previous 5 period information
 
+
+
+
+  useEffect(() => {
+    console.log(
+      'this is startDate', startDate, 'this is End Date', endDate, 'this is period', period
+    )
+    axios.get('/data/dailyfood', {
+      params: {
+        'userId': userId,
+        'startDate': startDate,
+        'endDate': endDate
+      }
+    })
+    .then((resp) => {
+      console.log('this is response data for food', resp.data)
+      setDailyFood(resp.data);
+      axios.get('/data/dailyWater', {
+        params: {
+          'userId': userId,
+          'startDate': startDate,
+          'endDate': endDate
+        }
+      })
+        .then((response) => {
+          setDailyWater(response.data);
+          axios.get('/data/dailyWeight', {
+            params: {
+              'userId': userId,
+              'startDate': startDate,
+              'endDate': endDate
+            }
+          })
+          .then((res) => {
+            setDailyWeight(res.data);
+          })
+        })
+    })
+    .catch((err) => {
+      console.log('this is what happens when you eat too much cake: ', err)
+    })
+  },[period, startDate, endDate]);
 
 
   return (
     <Container>
       <div>
-        <AsOf setAsOf={setAsOf} asOf={asOf} period={period}/>
+        <AsOf setAsOf={setAsOf} asOf={asOf} period={period}  handleChange={handleChange} setStartDate={setStartDate} setEndDate={setEndDate} endDate={endDate}/>
       </div>
       <div>
-        <SummaryStats timePeriod={period} asOf={asOf} food={food} water={water}/>
+        <SummaryStats timePeriod={period} asOf={asOf} dailyFood={dailyFood} dailyWater={dailyWater}/>
         </div>
     <div>
       Graphs

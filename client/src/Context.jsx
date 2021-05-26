@@ -16,18 +16,18 @@ export const ContextProvider = (props) => {
   const [exampleState, setExampleState] = useState('Hello World');
   const [today, setToday] = useState(_2dayUTC);
   const [tomorrow, setTomorrow] = useState(_2morrowUTC);
-  const [userId, setUserId] = useState();
+  const [userId, setUserId] = useState(5);
   const [email, setEmail] = useState();
 
   // Landing page states
   const [loggedIn, setLoggedIn] = useState();
   const [userGoals, setUserGoals] = useState({
     weight: null,
-    water: 0,
+    water: 100,
     calories: 2000,
-    protein: 0,
-    carbs: 0,
-    fats: 0,
+    protein: 75,
+    carbs: 150,
+    fats: 50,
     goalWeight: null,
   });
 

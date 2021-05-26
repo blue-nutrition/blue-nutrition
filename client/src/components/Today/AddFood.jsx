@@ -11,7 +11,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Grid from '@material-ui/core/Grid';
 
 const AddFood = (props) => {
-  const { userId } = useContext(AppContext);
+  const { userId, today } = useContext(AppContext);
 
   const [values, setValues] = useState({
     calories: props.currentFood.calories || 0,
@@ -22,11 +22,13 @@ const AddFood = (props) => {
     foodId: props.currentFood._id || null,
     userId: userId,
     meal: props.meal,
-    date: new Date()
+    date: props.date || new Date(today)
   });
 
   const handleChange = (prop) => (event) => {
-    setValues({...values, [prop]: event.target.value});
+    if (event.target.value >=0 || typeof(event.target.value) === 'string') {
+      setValues({...values, [prop]: event.target.value});
+    }
   }
 
   return (
