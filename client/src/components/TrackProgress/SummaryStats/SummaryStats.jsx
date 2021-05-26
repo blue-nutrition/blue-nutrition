@@ -12,11 +12,22 @@ import SummarySquareFat from './SummarySquareFat.jsx'
 const SummaryStats = (props) => {
   const {timePeriod, asOf, dailyWater, dailyFood} = props;
 
+  console.log('this is daily Water', dailyWater)
+
   const totalDays = dailyFood.length;
 
   const avgCalc = (param) => {
     var sum = 0;
     dailyFood.forEach((day) => {
+      sum = sum + day[param]
+    })
+    var avg = Math.round(sum/totalDays);
+    return avg;
+  }
+
+  const avgWater = (param) => {
+    var sum = 0;
+    dailyWater.forEach((day) => {
       sum = sum + day[param]
     })
     var avg = Math.round(sum/totalDays);
@@ -29,7 +40,7 @@ const SummaryStats = (props) => {
       justify="center"
     >
       <Grid item xs={2}>
-        <SummarySquareWater title={'Water'} unit={"oz"} period={props.timePeriod} amt={dailyWater.dailyWater}/>
+        <SummarySquareWater title={'Water'} unit={"oz"} period={props.timePeriod} amt={avgWater('dailyWater')}/>
       </Grid>
        <Grid item xs={2}>
          <SummarySquareCals title={"Calorie"} period={props.timePeriod} unit={"kcal"} amt={avgCalc('dailyCalories')}/>

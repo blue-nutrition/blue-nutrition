@@ -12,9 +12,13 @@ const { zonedTimeToUtc, utcToZonedTime, format } = require('date-fns-tz')
 const AsOf = (props) => {
   const {asOf, setAsOf, period, handleChange, setStartDate, setEndDate, endDate} = props;
   const {setToday, setTomorrow, today} = useContext(AppContext);
+  const [edit, setEdit] = useState(false)
 
   var label = zonedTimeToUtc(endDate, 'America/Denver')
   label.setDate(label.getDate()-1);
+
+  var dateLabel = !edit ? label : label.setDate(label.getDate()+1)
+
 
 
   const handleEdit = () => {
@@ -26,6 +30,7 @@ const AsOf = (props) => {
   const morrowUTC = zonedTimeToUtc(morrow, 'America/Denver');
       setToday(dayUTC);
       setTomorrow(dayUTC);
+      setEdit(true);
       handleChange(null, 0);
   }
   const editButton = period !== 'Daily' ? '' : <Typography variant="h6" style={{position:'absolute', right:0, top:0}}>Edit Day's Intake: <IconButton><EditIcon type="button" onClick={handleEdit}/></IconButton></Typography>
@@ -54,17 +59,15 @@ const AsOf = (props) => {
     }
     }
 
-
-
   return(
-    <Grid container direction="row" justify="flex-start" alignItems="center" style={{position:'relative'}}>
+    <Grid container direction="row" justify="flex-start" alignItems="center" style={{position:'relative', paddingBottom:'1rem'}}>
         <Grid item xs={1}>
         <Typography variant="h6">As Of: &nbsp;</Typography>
         </Grid>
         <Grid item xs={7}>
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <DatePicker
-      value={label}
+      value={dateLabel}
       onChange={handleDateChange} />
       </MuiPickersUtilsProvider>
         </Grid>

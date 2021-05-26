@@ -44,7 +44,7 @@ const SummarySquareFat = (props) => {
 
   return (
     <Container>
-      <Typography variant="h6" >Fat</Typography>
+      <Typography variant="h6" >Avg Fat</Typography>
       <div style={boxStyle}>
         <div style={iconDivStyle}>
           <CakeIcon style={iconStyle}/>

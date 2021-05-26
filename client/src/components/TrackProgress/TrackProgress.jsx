@@ -17,7 +17,7 @@ const TrackProgress = (props) => {
   "dailyProtein": 36,
   "dailyCarbs": 104,
   "dailyFat": 104 }]);
-  const [dailyWater, setDailyWater] = useState(100);
+  const [dailyWater, setDailyWater] = useState([{dailyWater:100}]);
   const [dailyWeight, setDailyWeight] = useState(150);
 
 
