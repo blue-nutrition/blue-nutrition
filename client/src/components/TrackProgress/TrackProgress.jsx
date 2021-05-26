@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { AppContext } from '../../Context.jsx';
-import { TrackProgressContext } from '../../TrackProgressContext.jsx';
+import { TrackProgressContext } from './TrackProgressContext.jsx';
 import axios from 'axios';
 import Graphs from './Graphs/Graphs.jsx';
 import AsOf from './AsOf.jsx';
@@ -19,20 +19,8 @@ const TrackProgress = (props) => {
   "dailyProtein": 36,
   "dailyCarbs": 104,
   "dailyFat": 104 }]);
-<<<<<<< HEAD
-  const [dailyWater, setDailyWater] = useState(0);
-  const [dailyWeight, setDailyWeight] = useState();
-
-  console.log('this is start date', startDate, 'this is end date', endDate, 'this is period', period, 'this is usedId', userId)
-=======
   const [dailyWater, setDailyWater] = useState([{dailyWater:100}]);
   const [dailyWeight, setDailyWeight] = useState(150);
-
-
-
-
-
->>>>>>> main
 
   useEffect(() => {
     console.log(
@@ -45,15 +33,9 @@ const TrackProgress = (props) => {
         'endDate': endDate
       }
     })
-<<<<<<< HEAD
-    .then((res) => {
-      console.log('this is response for daily food request: ', res.data);
-      setDailyFood(res.data);
-=======
     .then((resp) => {
       console.log('this is response data for food', resp.data)
       setDailyFood(resp.data);
->>>>>>> main
       axios.get('/data/dailyWater', {
         params: {
           'userId': userId,
@@ -83,7 +65,6 @@ const TrackProgress = (props) => {
   if(dailyWeight) {
     return (
       <div>
-<<<<<<< HEAD
         <TrackProgressContext.Provider value={{
           setAsOf,
           asOf,
@@ -97,7 +78,7 @@ const TrackProgress = (props) => {
         >
           <Container>
             <div>
-              <AsOf setAsOf={setAsOf} asOf={asOf} period={period}  handleChange={handleChange} setStartDate={setStartDate} setEndDate={setEndDate}/>
+              <AsOf setAsOf={setAsOf} asOf={asOf} period={period}  handleChange={handleChange} setStartDate={setStartDate} setEndDate={setEndDate} endDate={endDate}/>
             </div>
             <div>
               <SummaryStats timePeriod={period} asOf={asOf} dailyFood={dailyFood} dailyWater={dailyWater}/>
@@ -107,9 +88,6 @@ const TrackProgress = (props) => {
             </div>
           </Container>
         </TrackProgressContext.Provider>
-=======
-        <AsOf setAsOf={setAsOf} asOf={asOf} period={period}  handleChange={handleChange} setStartDate={setStartDate} setEndDate={setEndDate} endDate={endDate}/>
->>>>>>> main
       </div>
     )
   }
