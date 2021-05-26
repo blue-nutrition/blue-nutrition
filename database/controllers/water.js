@@ -21,3 +21,37 @@ exports.postWater = (req, res) => {
     }
   })
 }
+
+exports.getDailyWater = (req, res) => {
+  Water.aggregate ([{
+    $match: {
+        "date": {
+            $gte: new Date(req.query.startDate),
+            $lt: new Date(req.query.endDate)
+        },
+        "userId": req.query.userId
+    }
+}, {
+    $project: {
+        oz: 1,
+        yearMonthDayUTC: {
+            $dateToString: {
+                format: "%Y-%m-%d",
+                date: "$date"
+            }
+        },
+    }
+}, {$group: {
+        _id: '$yearMonthDayUTC',
+        dailyWater: { $sum: '$oz' },
+    }
+}], (err, resp) => {
+  if(err) {
+    console.log('error aggregating food', err);
+    res.sendStatus(500);
+  } else {
+    res.status(200).send(resp);
+    console.log('this is req', req.query)
+  }
+})
+}
