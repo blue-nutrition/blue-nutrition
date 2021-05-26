@@ -26,7 +26,9 @@ const AddFood = (props) => {
   });
 
   const handleChange = (prop) => (event) => {
-    setValues({...values, [prop]: event.target.value});
+    if (event.target.value >=0) {
+      setValues({...values, [prop]: event.target.value});
+    }
   }
 
   return (

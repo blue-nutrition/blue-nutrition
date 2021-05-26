@@ -1,4 +1,4 @@
-import React, { useContext }from 'react';
+import React, { useContext, useState, useEffect }from 'react';
 import { ContextProvider, AppContext } from '../../Context.jsx';
 const axios = require('axios');
 
@@ -187,11 +187,11 @@ const Meal = (props) => {
                       <TableCell align="right">{item.carbs}</TableCell>
                       <TableCell align="right">{item.protein}</TableCell>
                       <TableCell align="right">
-                        <IconButton>
-                          <EditIcon onClick={() => handleFoodOpen({foodName: item.foodName, calories: item.calories, fat: item.fat, carbs: item.carbs, protein: item.protein, _id: item._id})} />
+                        <IconButton onClick={() => handleFoodOpen({foodName: item.foodName, calories: item.calories, fat: item.fat, carbs: item.carbs, protein: item.protein, _id: item._id})}>
+                          <EditIcon />
                         </IconButton>
-                        <IconButton>
-                          <DeleteIcon onClick={() => handleFoodDelete(item._id)}/>
+                        <IconButton onClick={() => handleFoodDelete(item._id)}>
+                          <DeleteIcon />
                         </IconButton>
                       </TableCell>
                     </TableRow>

@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
+  userId: Number,
   email: String,
-  password: String,
   goals: {
     water: Number,
     calories: Number,
