@@ -17,21 +17,6 @@ import Paper from '@material-ui/core/Paper';
 import EditGoals from './EditGoals.jsx';
 
 
-
-const rand = () => (
-  Math.round(Math.random() * 20) - 10
-)
-
-const getModalStyle = () => {
-  const top = 50 + rand();
-  const left = 50 + rand();
-  return {
-      top: `${top}%`,
-      left: `${left}%`,
-      transform: `translate(-${top}%, -${left}%)`,
-  };
-}
-
 const useStyles = makeStyles(theme => ({
   modal: {
     display: 'flex',
@@ -45,6 +30,13 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     padding: '1.5rem'
   },
+  // paper: {
+  //   position: 'absolute',
+  //   width: 450,
+  //   backgroundColor: theme.palette.background.paper,
+  //   boxShadow: theme.shadows[5],
+  //   padding: theme.spacing(2, 4, 3),
+  // },
   modalPaper: {
     backgroundColor: 'white',
     boxShadow: theme.shadows[5],
@@ -60,12 +52,20 @@ const goalsContainer = {
 }
 
 const goalsStyle = {
-  width: '50%',
+  maxWidth: 'lg',
   minHeight: '20%',
   borderRadius: '5px',
   marginBottom: '3vh',
   marginTop: '4vh',
   boxShadow: 'rgba(23, 51, 71, 0.3) 0px 19px 19px, rgba(23, 51, 71, 0.22) 0px 15px 12px',
+}
+
+const titleStyle = {
+  margin: '3vh'
+}
+
+const subtitleStyle = {
+  margin: '1vh'
 }
 
 let Goals = () => {
@@ -74,7 +74,6 @@ let Goals = () => {
 
   const { userGoals } = useContext(AppContext);
   const [open, setOpen] = useState(false);
-  const [modalStyle] = useState(getModalStyle);
   const classes = useStyles();
 
   const handleOpen = () => {
@@ -89,24 +88,20 @@ let Goals = () => {
   return (
     <div id="goals" className={"mainContainer"} style={goalsContainer}>
       <div style={goalsStyle}>
-        <Typography variant="h3">Your Nutrition Goals</Typography>
+        <Typography variant="h3" style={titleStyle}>Your Nutrition Goals</Typography>
         <Button
-          type="button"
           onClick={handleOpen}
-          variant="contained"
-          color="primary"
-        >
-          <h6>Edit Goals</h6>
+        >Edit Goals
         </Button>
         <Modal
+              className={classes.modal}
               open={open}
               onClose={handleClose}
               aria-labelledby="simple-modal-title"
               aria-describedby="simple-modal-description"
         >
           <div
-              style={modalStyle}
-              className={classes.paper}
+              className={classes.modalPaper}
           >
             <EditGoals
               handleClose={handleClose}
@@ -125,7 +120,7 @@ let Goals = () => {
             </TableRow>
           </Table>
         </TableContainer>
-        <Typography variant="h6">Your Goals</Typography>
+        <Typography variant="h6" style={subtitleStyle}>Your Goals</Typography>
         <TableContainer component={Paper}>
           <Table className={classes.paper}>
             <TableHead>
