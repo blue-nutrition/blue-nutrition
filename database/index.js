@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 const uri = "mongodb://localhost:27017/salut";
-mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false })
 .then(() => {
   console.log('Successfully connected to MongoDB.');
 })

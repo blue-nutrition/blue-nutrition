@@ -30,13 +30,6 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     padding: '1.5rem'
   },
-  // paper: {
-  //   position: 'absolute',
-  //   width: 450,
-  //   backgroundColor: theme.palette.background.paper,
-  //   boxShadow: theme.shadows[5],
-  //   padding: theme.spacing(2, 4, 3),
-  // },
   modalPaper: {
     backgroundColor: 'white',
     boxShadow: theme.shadows[5],

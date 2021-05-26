@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 
 import React, { createContext, useState } from 'react';
 import axios from 'axios';
@@ -39,8 +41,8 @@ export const ContextProvider = (props) => {
 
   // const userData = {
   //   email,
-  //   password,
-  //   goals
+  //   userId,
+  //   goals: {}
   // }
 
   const postUser = (userData, weightData, cb = () => {}) => {
