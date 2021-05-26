@@ -12,6 +12,7 @@ router.get('/dailyfood', foodController.getDailyFood);
 router.get('/water', waterController.getWater);
 router.get('/dailyWater', waterController.getDailyWater);
 router.get('/dailyWeight', weightController.getDailyWeight);
+// router.get('/dailyBreakDown', foodController.getDailyBreakDown);
 router.post('/weight', weightController.postWeight);
 router.post('/users', userController.postUser)
 
