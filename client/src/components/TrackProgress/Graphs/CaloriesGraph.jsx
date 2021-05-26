@@ -28,8 +28,7 @@ const CaloriesGraph = (props) => {
   } = useContext(TrackProgressContext);
   const { userGoals } = useContext(AppContext);
 
-
-  if (dailyFood) {
+  if (dailyFood && userGoals) {
     return (
       <Paper>
         <Chart
@@ -39,7 +38,7 @@ const CaloriesGraph = (props) => {
           <ArgumentAxis />
           <ValueAxis labelComponent={CalorieLabel} />
           <BarSeries valueField="dailyCalories" argumentField="_id" color="lightslategrey" />
-          <LineSeries  valueField="calorieGoal" argumentField="_id" color="bisque" />
+          <LineSeries  valueField="calories" argumentField="_id" color="bisque" />
           <EventTracker />
           <Tooltip />
           <HoverState />

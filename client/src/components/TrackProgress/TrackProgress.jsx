@@ -12,7 +12,7 @@ import SummaryStats from './SummaryStats/SummaryStats.jsx'
 
 const TrackProgress = (props) => {
   const { handleChange, period, startDate, endDate, setStartDate, setEndDate } = props;
-  const { userId, tomorrow, today } = useContext(AppContext)
+  const { userId, tomorrow, today, userGoals } = useContext(AppContext)
 
 
   const [asOf, setAsOf] = useState(today);
@@ -35,9 +35,9 @@ const TrackProgress = (props) => {
         'endDate': endDate
       }
     })
-    .then((resp) => {
-      console.log('this is response data for food', resp.data)
-      setDailyFood(resp.data);
+    .then((res) => {
+      console.log('this is response data for food', res.data)
+      setDailyFood(res.data);
       axios.get('/data/dailyWater', {
         params: {
           'userId': userId,
@@ -47,6 +47,7 @@ const TrackProgress = (props) => {
       })
         .then((res) => {
           setDailyWater(res.data);
+          // setDailyFood([...dailyFood, userGoals]);
           axios.get('/data/dailyWeight', {
             params: {
               'userId': userId,
