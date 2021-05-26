@@ -29,7 +29,7 @@ const AsOf = (props) => {
   morrow.setDate(morrow.getDate() + 1);
   const morrowUTC = zonedTimeToUtc(morrow, 'America/Denver');
       setToday(dayUTC);
-      setTomorrow(dayUTC);
+      setTomorrow(morrowUTC);
       setEdit(true);
       handleChange(null, 0);
   }
