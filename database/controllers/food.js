@@ -12,16 +12,25 @@ exports.getFood = (req, res) => {
 }
 
 exports.postFood = (req, res) => {
-  newFood ={...req.body};
-  delete newFood.foodId;
-  Food.findByIdAndUpdate(req.body.foodId, newFood, {upsert: true}, (err, result) => {
-    if (err) {
-      console.error(err);
-      res.sendStatus(500);
-    } else {
-      res.status(204).send(result);
-    }
-  })
+  if (req.body.foodId !== null) {
+    Food.findByIdAndUpdate(req.body.foodId, req.body, {upsert: true}, (err, result) => {
+      if (err) {
+        console.error(err);
+        res.sendStatus(500);
+      } else {
+        res.status(204).send(result);
+      }
+    })
+  } else {
+    Food.create(req.body, (err, result) => {
+      if (err) {
+        console.error(err);
+        res.sendStatus(500);
+      } else {
+        res.status(204).send(result);
+      }
+    })
+  }
 }
 
 exports.deleteFood = (req, res) => {
@@ -35,50 +44,7 @@ exports.deleteFood = (req, res) => {
   })
 }
 exports.getDailyFood = (req, res) => {
-  Food.aggregate ([{
-    $match: {
-        "date": {
-            $gte: new Date(req.query.startDate),
-            $lt: new Date(req.query.endDate)
-        },
-        "userId": req.query.userId
-    }
-}, {
-    $project: {
-        protein: 1,
-        fat: 1,
-        carbs: 1,
-        calories: 1,
-        yearMonthDayUTC: {
-            $dateToString: {
-                format: "%Y-%m-%d",
-                date: "$date"
-            }
-        },
-    }
-}, {$group: {
-        _id: '$yearMonthDayUTC',
-        dailyCalories: {
-            $sum: '$calories'
-        },
-        dailyProtein: {
-            $sum: '$protein'
-       },
-        dailyCarbs: {
-            $sum: '$carbs'
-        },
-        dailyFat: {
-          $sum: '$fat'
-      }
-    }
-}], (err, resp) => {
-  if(err) {
-    console.log('error aggregating food', err);
-    res.sendStatus(500);
-  } else {
-    res.status(200).send(resp);
-  }
-})
+  //TODO: write controllers
 }
 
 
