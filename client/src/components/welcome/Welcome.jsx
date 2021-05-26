@@ -5,23 +5,39 @@ import Typography from '@material-ui/core/Typography';
 import SignInModal from './SignInModal.jsx';
 import CreateAccountModal from './CreateAccountModal.jsx';
 import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
+import { makeStyles } from '@material-ui/core/styles';
 
+const useStyles = makeStyles(theme => ({
+  landing: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+  }
+}))
 
 const Welcome = () => {
+  const {loggedIn} =useContext(AppContext);
+  const classes = useStyles();
 
   return (
-    <Box>
-      <Grid container justify="center">
-        <Grid item>
-          <Typography>
-            <h1>Welcome to Salut!</h1>
-            <h6>Please Login or Sign Up to continue.</h6>
-            <SignInModal />
-            <CreateAccountModal />
-          </Typography>
+    <>
+      <Container>
+        <div className={classes.landing}>
+        <Grid container justify="center">
+          <Grid item>
+            <Typography>
+              <h1>Welcome to Salut!</h1>
+              <h6>Please Sign In or Create Account to continue.</h6>
+              <SignInModal />
+              <CreateAccountModal />
+            </Typography>
+          </Grid>
         </Grid>
-      </Grid>
-    </Box>
+        </div>
+      </Container>
+    </>
   )
 };
 

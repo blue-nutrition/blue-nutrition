@@ -1,4 +1,4 @@
-import React, { useContext, useState }from 'react';
+import React, { useContext, useState, useEffect }from 'react';
 import { ContextProvider, AppContext } from '../../Context.jsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
@@ -10,6 +10,7 @@ import GoogleButton from './GoogleButton.jsx'
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
 
 
 const getModalStyle = () => {
@@ -27,6 +28,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    textAlign: 'center',
   },
   paper: {
     position: 'absolute',
@@ -34,24 +36,30 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
+    // textAlign: 'center',
   },
 }));
 
 const CreateAccountModal = () => {
 
-  const {userId, setUserId, userGoals, setUserGoals} = useContext(AppContext);
-
-  const onSuccess = (res) => {
-    setUserId(res.profileObj.googleId);
-  };
-
-  const onFailure = (res) => {
-    console.log(res);
-  }
+  const {userId, setUserId, userGoals, setUserGoals, today, postUser, email, setLoggedIn} = useContext(AppContext);
 
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
   const [open, setOpen] = useState(false);
+  const [newUserGoals, setNewUserGoals ]= useState();
+
+
+  useEffect(() => {
+    setNewUserGoals({
+      water: userGoals.water,
+      calories: userGoals.calories,
+      protein: userGoals.protein,
+      carbs: userGoals.carbs,
+      fats: userGoals.fats,
+      goalWeight: userGoals.goalWeight
+    })
+  }, [userGoals])
 
 
   const handleOpen = () => {
@@ -62,19 +70,30 @@ const CreateAccountModal = () => {
       setOpen(false);
   };
 
+  const userData = {
+    email,
+    userId,
+    goals: newUserGoals
+  }
+
+  const weightData = {
+    userId,
+    weight: userGoals.weight,
+    date: today,
+  }
+
   const handleAccountCreation = (e) => {
     e.preventDefault();
     e.persist();
-    console.log('New User Info: ', userId, newUserPackage);
+    console.log('New User Info: ', userData, weightData);
+    postUser(userData, weightData, handleClose)
+    setLoggedIn(true);
     return false;
   }
 
   return (
-  <Box>
-    <Button type="button"
-      onClick={handleOpen}
-      variant="contained" color="primary"
-    >
+  <Container>
+    <Button onClick={handleOpen}>
       <h6>Create Account</h6>
     </Button>
     <Modal
@@ -85,25 +104,19 @@ const CreateAccountModal = () => {
       aria-labelledby="simple-modal-title"
       aria-describedby="simple-modal-description"
     >
+      <Container>
       <div style={modalStyle} className={classes.paper}>
         <h2>Please Sign in with Google and Enter Your Goals</h2>
-        <GoogleLogin
-          clientID="223117457103-m37me8ugrqlb9nn8o2i48dr96arojlfv.apps.googleusercontent.com"
-          buttonText="Login"
-          onSuccess={onSuccess}
-          onFailure={onFailure}
-          cookiePolicy={'single_host_origin'}
-          isSignedIn={true}
-        />
+        <GoogleButton />
         <h6>Set Your Baseline</h6>
         <div>
           <FormControl>
             <Input
               id="current-weight"
-              type="number" name="currentWeight"
+              type="number" name="weight"
               value={userGoals.weight}
-              onChange={(e) => setNewUserPackage({
-                ...newUserPackage,
+              onChange={(e) => setUserGoals({
+                ...userGoals,
                 [e.target.name]: e.target.value
               })}
             />
@@ -114,10 +127,10 @@ const CreateAccountModal = () => {
         <FormControl>
           <Input
             id="water-consumption"
-            type="number" name="waterConsumption"
+            type="number" name="water"
             value={userGoals.water}
-            onChange={(e) => setNewUserPackage({
-              ...newUserPackage,
+            onChange={(e) => setUserGoals({
+              ...userGoals,
               [e.target.name]: e.target.value
             })}
           />
@@ -127,10 +140,10 @@ const CreateAccountModal = () => {
         <FormControl>
           <Input
             id="calorie-intake"
-            type="number" name="caloricIntake"
+            type="number" name="calories"
             value={userGoals.calories}
-            onChange={(e) => setNewUserPackage({
-              ...newUserPackage,
+            onChange={(e) => setUserGoals({
+              ...userGoals,
               [e.target.name]: e.target.value
             })}
           />
@@ -141,10 +154,10 @@ const CreateAccountModal = () => {
         <FormControl>
           <Input
             id="protein-macros"
-            type="number" name="proteinMacros"
+            type="number" name="protein"
             value={userGoals.protein}
-            onChange={(e) => setNewUserPackage({
-              ...newUserPackage,
+            onChange={(e) => setUserGoals({
+              ...userGoals,
               [e.target.name]: e.target.value
             })}
           />
@@ -155,25 +168,24 @@ const CreateAccountModal = () => {
         <FormControl>
           <Input
             id="carbs-macros"
-            type="number" name="carbMacros"
+            type="number" name="carbs"
             value={userGoals.carbs}
-            onChange={(e) => setNewUserPackage({
-              ...newUserPackage,
+            onChange={(e) => setUserGoals({
+              ...userGoals,
               [e.target.name]: e.target.value
             })}
           />
             <FormHelperText id="carbs-macros-helper-text">Carbohydrates Macros</FormHelperText>
         </FormControl>
         </div>
-
         <div>
           <FormControl>
           <Input
             id="fat-macros"
-            type="number" name="fatMacros"
+            type="number" name="fats"
             value={userGoals.fats}
-            onChange={(e) => setNewUserPackage({
-              ...newUserPackage,
+            onChange={(e) => setUserGoals({
+              ...userGoals,
               [e.target.name]: e.target.value
             })}
           />
@@ -186,12 +198,12 @@ const CreateAccountModal = () => {
             id="goal-weight"
             type="number" name="goalWeight"
             value={userGoals.goalWeight}
-            onChange={(e) => setNewUserPackage({
-              ...newUserPackage,
+            onChange={(e) => setUserGoals({
+              ...userGoals,
               [e.target.name]: e.target.value
             })}
           />
-            <FormHelperText id="goal-weight-helper-text">Goal Weight in lbs.</FormHelperText>
+            <FormHelperText id="goal-weight-helper-text">{`Goal Weight in lbs. (optional)`}</FormHelperText>
           </FormControl>
         </div>
         <Grid container justify="center">
@@ -200,8 +212,9 @@ const CreateAccountModal = () => {
           </Grid>
         </Grid>
       </div>
+      </Container>
     </Modal>
-  </Box>
+  </Container>
   )
 };
 
