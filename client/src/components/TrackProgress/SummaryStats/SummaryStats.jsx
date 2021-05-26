@@ -6,6 +6,7 @@ import { format } from 'date-fns';
 import SummarySquareCals from './SummarySquareCals.jsx';
 import SummarySquareWater from './SummarySquareWater.jsx';
 import SummarySquareCarbs from './SummarySquareCarbs.jsx';
+import SummarySquareProtein from './SummarySquareProtein.jsx'
 
 const SummaryStats = (props) => {
   const {timePeriod, asOf, dailyWater, dailyFood} = props;
@@ -36,7 +37,7 @@ const SummaryStats = (props) => {
        <SummarySquareCarbs title={"Carb"} period={props.timePeriod} unit={"g"} amt={avgCalc('dailyCarbs')}/>
        </Grid>
        <Grid item xs={2}>
-         <SummarySquare title={"Protein"} period={props.timePeriod} unit={"g"} amt={avgCalc('dailyProtein')}/>
+         <SummarySquareProtein title={"Protein"} period={props.timePeriod} unit={"g"} amt={avgCalc('dailyProtein')}/>
        </Grid>
        <Grid item xs={2}>
          <SummarySquare title={"Fat"} period={props.timePeriod} unit={"g"} image={'fat.png'} amt={avgCalc('dailyFat')}/>

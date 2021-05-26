@@ -2,13 +2,14 @@ import React, { useContext }from 'react';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import EcoIcon from '@material-ui/icons/Eco';
+import OutdoorGrillIcon from '@material-ui/icons/OutdoorGrill';
 import {AppContext} from '../../../Context.jsx';
 
-const SummarySquareCarbs = (props) => {
+const SummarySquareProtein = (props) => {
   const {userGoals} = useContext(AppContext);
   const { amt, unit } = props;
-  const carbGoal = userGoals.carbs;
+  const proteinGoal = userGoals.protein;
+
 
   const boxStyle = {
     width: '100px',
@@ -38,24 +39,24 @@ const SummarySquareCarbs = (props) => {
     position: 'absolute',
     top: '0',
     left: '0',
-    height: `${amt <= carbGoal ? 100 - ((amt/carbGoal)*100) : 100}%`,
-    color: `${amt <= carbGoal ? 'black' : '#99C1DE'}`
+    height: `${amt <= proteinGoal ? 100 - ((amt/proteinGoal)*100) : 100}%`,
+    color: `${amt <= proteinGoal ? 'black' : '#99C1DE'}`
   }
 
   return (
     <Container>
-      <Typography variant="h6" >Avg Carbs</Typography>
+      <Typography variant="h6" >Avg Protein</Typography>
       <div style={boxStyle}>
         <div style={iconDivStyle}>
-          <EcoIcon style={iconStyle}/>
+          <OutdoorGrillIcon style={iconStyle}/>
         </div>
         <div style={blackIconDivStyle}>
-          <EcoIcon style={blackIconStyle} />
+          <OutdoorGrillIcon style={blackIconStyle} />
         </div>
       </div>
-      <Typography variant="h6" >{amt} / {carbGoal} grams</Typography>
+      <Typography variant="h6" >{amt} / {proteinGoal} grams</Typography>
     </Container>
   )
 };
 
-export default SummarySquareCarbs;
+export default SummarySquareProtein;
