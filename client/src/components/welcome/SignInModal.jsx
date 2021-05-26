@@ -42,7 +42,9 @@ const SignInModal = () => {
 
   useEffect(() => {
     // console.log(userId);
-    getUser(handleClose);
+    if (userId !== null) {
+      getUser(handleClose);
+    }
   }, [userId]);
 
   const onSuccess = (res) => {
