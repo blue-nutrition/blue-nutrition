@@ -2,13 +2,13 @@ import React, { useContext }from 'react';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import RestaurantIcon from '@material-ui/icons/Restaurant';
+import CakeIcon from '@material-ui/icons/Cake';
 import {AppContext} from '../../../Context.jsx';
 
-const SummarySquareCals = (props) => {
+const SummarySquareFat = (props) => {
   const {userGoals} = useContext(AppContext);
-  const { amt } = props;
-  const calorieGoal = userGoals.calories;
+  const { amt, unit } = props;
+  const fatGoal = userGoals.fats;
 
   const boxStyle = {
     width: '100px',
@@ -38,24 +38,24 @@ const SummarySquareCals = (props) => {
     position: 'absolute',
     top: '0',
     left: '0',
-    height: `${amt <= calorieGoal ? 100 - ((amt/calorieGoal)*100) : 100}%`,
-    color: `${amt <= calorieGoal ? 'black' : 'red'}`
+    height: `${amt <= fatGoal ? 100 - ((amt/fatGoal)*100) : 100}%`,
+    color: `${amt <= fatGoal ? 'black' : '#99C1DE'}`
   }
 
   return (
     <Container>
-      <Typography variant="h6" > Avg Calories</Typography>
+      <Typography variant="h6" >Avg Fat</Typography>
       <div style={boxStyle}>
         <div style={iconDivStyle}>
-          <RestaurantIcon style={iconStyle}/>
+          <CakeIcon style={iconStyle}/>
         </div>
         <div style={blackIconDivStyle}>
-          <RestaurantIcon style={blackIconStyle} />
+          <CakeIcon style={blackIconStyle} />
         </div>
       </div>
-      <Typography variant="h6" >{amt} / {calorieGoal} kcal</Typography>
+      <Typography variant="h6" >{amt} / {fatGoal} grams</Typography>
     </Container>
   )
 };
 
-export default SummarySquareCals;
+export default SummarySquareFat;

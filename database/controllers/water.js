@@ -1,7 +1,7 @@
 const Water = require('../models/water.js');
 
 exports.getWater = (req, res) => {
-  Water.find({userId: req.query.userId, date: { $gte: req.query.startDate, $lte: req.query.endDate }}, (err, result) => {
+  Water.find({userId: req.query.userId, date: { $gte: req.query.startDate, $lt: req.query.endDate }}, (err, result) => {
     if (err) {
       console.error(err);
       res.sendStatus(500);
@@ -51,7 +51,6 @@ exports.getDailyWater = (req, res) => {
     res.sendStatus(500);
   } else {
     res.status(200).send(resp);
-    console.log('this is req', req.query)
   }
 })
 }

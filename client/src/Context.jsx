@@ -23,11 +23,11 @@ export const ContextProvider = (props) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [userGoals, setUserGoals] = useState({
     weight: null,
-    water: 0,
+    water: 100,
     calories: 2000,
-    protein: 0,
-    carbs: 0,
-    fats: 0,
+    protein: 75,
+    carbs: 150,
+    fats: 50,
     goalWeight: null,
   });
 

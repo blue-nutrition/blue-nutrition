@@ -26,7 +26,7 @@ const AddFood = (props) => {
   });
 
   const handleChange = (prop) => (event) => {
-    if (event.target.value >=0) {
+    if (event.target.value >=0 || typeof(event.target.value) === 'string') {
       setValues({...values, [prop]: event.target.value});
     }
   }
