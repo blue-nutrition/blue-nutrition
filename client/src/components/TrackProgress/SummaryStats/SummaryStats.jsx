@@ -4,7 +4,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { format } from 'date-fns';
 import SummarySquareCals from './SummarySquareCals.jsx';
-import SummarySquareWater from './SummarySquareWater.jsx'
+import SummarySquareWater from './SummarySquareWater.jsx';
+import SummarySquareCarbs from './SummarySquareCarbs.jsx';
 
 const SummaryStats = (props) => {
   const {timePeriod, asOf, dailyWater, dailyFood} = props;
@@ -32,7 +33,7 @@ const SummaryStats = (props) => {
          <SummarySquareCals title={"Calorie"} period={props.timePeriod} unit={"kcal"} amt={avgCalc('dailyCalories')}/>
        </Grid>
        <Grid item xs={2}>
-       <SummarySquare title={"Carb"} period={props.timePeriod} unit={"g"} amt={avgCalc('dailyCarbs')}/>
+       <SummarySquareCarbs title={"Carb"} period={props.timePeriod} unit={"g"} amt={avgCalc('dailyCarbs')}/>
        </Grid>
        <Grid item xs={2}>
          <SummarySquare title={"Protein"} period={props.timePeriod} unit={"g"} amt={avgCalc('dailyProtein')}/>
