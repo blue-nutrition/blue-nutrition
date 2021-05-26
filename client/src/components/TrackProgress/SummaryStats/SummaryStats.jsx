@@ -15,6 +15,7 @@ const SummaryStats = (props) => {
   console.log('this is daily Water', dailyWater)
 
   const totalDays = dailyFood.length;
+  const totalWaterDays = dailyWater.length;
 
   const avgCalc = (param) => {
     var sum = 0;
@@ -30,7 +31,7 @@ const SummaryStats = (props) => {
     dailyWater.forEach((day) => {
       sum = sum + day[param]
     })
-    var avg = Math.round(sum/totalDays);
+    var avg = Math.round(sum/totalWaterDays);
     return avg;
   }
 
