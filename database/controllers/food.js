@@ -68,7 +68,6 @@ exports.getDailyFood = (req, res) => {
         },
     }
 }, {$group: {
-<<<<<<< HEAD
         _id: "$yearMonthDayUTC",
         dailyCalories: {
             $sum: "$calories"
@@ -81,20 +80,6 @@ exports.getDailyFood = (req, res) => {
         },
         dailyFat: {
           $sum: "$fat"
-=======
-        _id: '$yearMonthDayUTC',
-        dailyCalories: {
-            $sum: '$calories'
-        },
-        dailyProtein: {
-            $sum: '$protein'
-       },
-        dailyCarbs: {
-            $sum: '$carbs'
-        },
-        dailyFat: {
-          $sum: '$fat'
->>>>>>> 32defaa1836dd5447320e683e19fe8220cf1642a
       }
     }
 }, {
@@ -103,11 +88,7 @@ exports.getDailyFood = (req, res) => {
   }
 }], (err, resp) => {
   if(err) {
-<<<<<<< HEAD
-    console.log("error aggregating food", err);
-=======
     console.log('error aggregating food', err);
->>>>>>> 32defaa1836dd5447320e683e19fe8220cf1642a
     res.sendStatus(500);
   } else {
     res.status(200).send(resp);
