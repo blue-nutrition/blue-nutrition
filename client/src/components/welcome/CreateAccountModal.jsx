@@ -85,6 +85,7 @@ const CreateAccountModal = () => {
     e.persist();
     // console.log('New User Info: ', userData, weightData);
     postUser(userData, weightData, handleClose);
+    console.log()
     setLoggedIn(true);
     return false;
   }
