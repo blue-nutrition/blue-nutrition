@@ -14,15 +14,15 @@ const AsOf = (props) => {
   const {setToday, setTomorrow, today} = useContext(AppContext);
 
   var label = zonedTimeToUtc(endDate, 'America/Denver')
-  label.setDate(label.getDate() -1);
+  label.setDate(label.getDate()-1);
 
 
   const handleEdit = () => {
     const day = new Date(asOf).setHours(0,0,0,0);
     const dayUTC = zonedTimeToUtc(day, 'America/Denver');
 
-    const morrow = zonedTimeToUtc(day, 'America/Denver');
-  morrow.setDate(dayUTC.getDate() + 1);
+  const morrow = zonedTimeToUtc(day, 'America/Denver');
+  morrow.setDate(morrow.getDate() + 1);
   const morrowUTC = zonedTimeToUtc(morrow, 'America/Denver');
       setToday(dayUTC);
       setTomorrow(dayUTC);

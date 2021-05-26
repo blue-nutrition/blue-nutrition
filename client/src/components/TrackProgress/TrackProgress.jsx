@@ -37,6 +37,7 @@ const TrackProgress = (props) => {
       }
     })
     .then((resp) => {
+      console.log('this is response data for food', resp.data)
       setDailyFood(resp.data);
       axios.get('/data/dailyWater', {
         params: {
