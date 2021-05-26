@@ -1,7 +1,29 @@
 const Weight = require('../models/weight.js');
 
 exports.getDailyWeight = (req, res) => {
-  Weight.find({userId: req.query.userId, date: { $gte: req.query.startDate, $lte: req.query.endDate }}, (err, result) => {
+  Weight.aggregate ([{
+    $match: {
+        "date": {
+            $gte: new Date(req.query.startDate),
+            $lt: new Date(req.query.endDate)
+        },
+        "userId": req.query.userId
+    }
+}, {
+    $project: {
+        weight: 1,
+        yearMonthDayUTC: {
+            $dateToString: {
+                format: "%m-%d",
+                date: "$date"
+            }
+        },
+    }
+}, {
+  $sort: {
+    yearMonthDayUTC: 1
+  }
+}], (err, result) => {
     if (err) {
       console.error(err);
       res.sendStatus(500);

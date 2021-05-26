@@ -5,6 +5,7 @@ import { ArgumentAxis, ValueAxis, Chart, BarSeries, LineSeries, Tooltip } from '
 import { ArgumentScale, Stack, EventTracker, HoverState } from '@devexpress/dx-react-chart';
 import { scaleBand } from '@devexpress/dx-chart-core';
 import { TrackProgressContext } from '../TrackProgressContext.jsx';
+import { AppContext } from '../../../Context.jsx';
 
 const Label = symbol => (props) => {
   const { text } = props;
@@ -22,7 +23,7 @@ const CaloriesGraph = (props) => {
   const {
     dailyFood, period
   } = useContext(TrackProgressContext);
-
+  const { userGoals } = useContext(AppContext);
 
   if (dailyFood) {
     return (
@@ -34,7 +35,7 @@ const CaloriesGraph = (props) => {
           <ArgumentAxis />
           <ValueAxis labelComponent={CalorieLabel} />
           <BarSeries valueField="dailyCalories" argumentField="_id" color="lightslategrey" />
-          {/* <LineSeries  valueField="goal" argumentField="_id" color="bisque" /> */}
+          {/* <LineSeries  valueField="calories" argumentField="_id" color="bisque" /> */}
           <EventTracker />
           <Tooltip />
           <HoverState />

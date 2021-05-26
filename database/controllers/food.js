@@ -51,7 +51,7 @@ exports.getDailyFood = (req, res) => {
         calories: 1,
         yearMonthDayUTC: {
             $dateToString: {
-                format: "%Y-%m-%d",
+                format: "%m-%d",
                 date: "$date"
             }
         },
@@ -71,6 +71,10 @@ exports.getDailyFood = (req, res) => {
           $sum: '$fat'
       }
     }
+}, {
+  $sort: {
+      _id: 1
+  }
 }], (err, resp) => {
   if(err) {
     console.log('error aggregating food', err);
