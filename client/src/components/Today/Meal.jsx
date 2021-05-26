@@ -63,8 +63,7 @@ const Meal = (props) => {
   const [waterModal, setWaterModal] = React.useState(false);
   const [foodModal, setFoodModal] = React.useState(false);
   const [currentFood, setCurrentFood] = React.useState({});
-  const { today, setToday } = useContext(AppContext);
-  const { tomorrow, setTomorrow } = useContext(AppContext);
+  const { today, userId, tomorrow } = useContext(AppContext);
 
   const handleWaterOpen = () => {
     setWaterModal(true);
@@ -85,7 +84,7 @@ const Meal = (props) => {
 
   const handleWaterSubmit = (oz) => {
     setWaterModal(false);
-    axios.post('/data/water', {userId: '5', date: new Date(), startDate: today, endDate: tomorrow, oz: oz, meal: props.name })
+    axios.post('/data/water', {userId: userId, date: new Date(), startDate: today, endDate: tomorrow, oz: oz, meal: props.name })
     .then((response) => {
       props.reRenderWater();
     })
