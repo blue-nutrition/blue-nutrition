@@ -5,6 +5,7 @@ import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 import { GoogleLogin } from 'react-google-login';
 import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography';
 
 
 const getModalStyle = () => {
@@ -42,7 +43,9 @@ const SignInModal = () => {
 
   useEffect(() => {
     // console.log(userId);
-    getUser(handleClose);
+    if (userId !== null) {
+      getUser(handleClose);
+    }
   }, [userId]);
 
   const onSuccess = (res) => {
@@ -81,7 +84,9 @@ const SignInModal = () => {
     >
       <Container>
       <div style={modalStyle} className={classes.paper}>
-        <h2>Please Sign In</h2>
+        <Typography variant="h2">
+          Please Sign In
+        </Typography>
         <GoogleLogin
           clientId="223117457103-m37me8ugrqlb9nn8o2i48dr96arojlfv.apps.googleusercontent.com"
           buttonText="Login to Salut"

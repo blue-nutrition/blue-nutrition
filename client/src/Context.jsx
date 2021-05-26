@@ -59,16 +59,18 @@ export const ContextProvider = (props) => {
       .then(userResults => {
         // console.log(userResults);
         const goals = userResults.data.goals
-        setUserGoals({
-          ...userGoals,
-          water: goals.water,
-          calories: goals.calories,
-          protein: goals.protein,
-          carbs: goals.carbs,
-          fats: goals.fats,
-          goalWeight: goals.goalWeight,
-        })
-        cb();
+        if (goals) {
+          setUserGoals({
+            ...userGoals,
+            water: goals.water,
+            calories: goals.calories,
+            protein: goals.protein,
+            carbs: goals.carbs,
+            fats: goals.fats,
+            goalWeight: goals.goalWeight,
+          })
+          cb();
+        }
       })
   };
 
