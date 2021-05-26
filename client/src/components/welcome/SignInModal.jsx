@@ -1,11 +1,11 @@
-import React, { useContext, useState }from 'react';
-import { ContextProvider, AppContext } from '../../Context.jsx';
+import React, { useContext, useState, useEffect }from 'react';
+import { AppContext } from '../../Context.jsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
-import { GoogleLogin, useGoogleLogin } from 'react-google-login';
+import { GoogleLogin } from 'react-google-login';
 import Container from '@material-ui/core/Container';
-import GoogleButton from './GoogleButton.jsx'
+import Typography from '@material-ui/core/Typography';
 
 
 const getModalStyle = () => {
@@ -36,16 +36,25 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const SignInModal = () => {
-  const {userId, setUserId, setLoggedIn} = useContext(AppContext);
+  const {userId, setUserId, setLoggedIn, setEmail, getUser} = useContext(AppContext);
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    // console.log(userId);
+    if (userId !== null) {
+      getUser(handleClose);
+    }
+  }, [userId]);
 
   const onSuccess = (res) => {
     // console.log(res.profileObj);
     setUserId(res.profileObj.googleId);
     setEmail(res.profileObj.email);
     setLoggedIn(true);
+    // console.log(userId);
+    // getUser(userId, handleClose);
     // console.log(email);
   };
 
@@ -62,10 +71,11 @@ const SignInModal = () => {
   };
 
   return (
-  <Container>
-    <Button onClick={handleOpen}>
-      <h6>Sign In</h6>
+  <>
+    <Button onClick={handleOpen} variant="contained" size="large">
+      Sign In
     </Button>
+
     <Modal
       open={open}
       onClose={handleClose}
@@ -74,7 +84,9 @@ const SignInModal = () => {
     >
       <Container>
       <div style={modalStyle} className={classes.paper}>
-        <h2>Please Sign In</h2>
+        <Typography variant="h2">
+          Please Sign In
+        </Typography>
         <GoogleLogin
           clientId="223117457103-m37me8ugrqlb9nn8o2i48dr96arojlfv.apps.googleusercontent.com"
           buttonText="Login to Salut"
@@ -86,7 +98,7 @@ const SignInModal = () => {
       </div>
       </Container>
     </Modal>
-  </Container>
+  </>
   )
 };
 

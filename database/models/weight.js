@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const WeightSchema = new Schema({
-  userId: String,
+  userId: Number,
   weight: Number,
   date: Date
 })
