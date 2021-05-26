@@ -5,6 +5,8 @@ import { PieChart } from 'react-minimal-pie-chart';
 const CaloriesByMeal = () => {
   const { dailyBreakDown } = useContext(TrackProgressContext);
 
+
+
   let breakfast = 0;
   let lunch = 0;
   let dinner = 0;
@@ -25,20 +27,20 @@ const CaloriesByMeal = () => {
   const pieData = [
     {title: 'Breakfast Calories', value: breakfast, color: '#D6E2E9'},
     {title: 'Lunch Calories', value: lunch, color: '#DBE7E4'},
-    {title: 'Dinner Calories', value: dinner, color: '#F0EFEB'}
+    {title: 'Dinner Calories', value: dinner, color: '#BCD4E6'}
   ]
 
   const defaultLabelStyle = {
-    fontSize: '1',
+    fontSize: '3',
     fontFamily: 'sans-serif',
   };
 
   if(!breakfast && !lunch && !dinner) {
-    return ("You haven't reported any food intake! Update your day or start eating to view this feature!")
+    return ('')
   } else {
     return (
       <div>
-        <PieChart radius={10} data={pieData} label={({dataEntry}) => `${dataEntry.title} ${dataEntry.value}`} labelStyle={{...defaultLabelStyle,}} labelPosition={70}/>
+        <PieChart viewBoxSize={[150,150]} radius={35} data={pieData} label={({dataEntry}) => `${dataEntry.title} ${dataEntry.value}`} labelStyle={{...defaultLabelStyle,}} labelPosition={70}/>
       </div>
     )
   }

@@ -12,8 +12,6 @@ import SummarySquareFat from './SummarySquareFat.jsx'
 const SummaryStats = (props) => {
   const {timePeriod, asOf, dailyWater, dailyFood} = props;
 
-  console.log('this is daily Water', dailyWater)
-
   const totalDays = dailyFood.length;
   const totalWaterDays = dailyWater.length;
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
@@ -6,6 +6,8 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import CaloriesByMeal from './CaloriesByMeal.jsx';
+import CarbsByMeal from './CarbsByMeal.jsx'
+import { TrackProgressContext } from '../TrackProgressContext.jsx'
 
 
 function TabPanel(props) {
@@ -41,33 +43,40 @@ function a11yProps(index) {
 }
 
 export default function DailyGraphs() {
+  const { period } = useContext(TrackProgressContext)
+
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  return (
-    <div>
-      <TabPanel value={value} index={0}>
-        <CaloriesByMeal />
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        {/* <CarbsByMeal /> */}
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        {/* < ProteinByMeal /> */}
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        {/* <FatByMeal /> */}
-      </TabPanel>
-      <Tabs value={value} onChange={handleChange} aria-label="Graph tabs" centered>
-        <Tab label="Calories" {...a11yProps(0)} />
-        <Tab label="Carbs" {...a11yProps(1)} />
-        <Tab label="Protein" {...a11yProps(2)} />
-        <Tab label="Fat" {...a11yProps(3)} />
-      </Tabs>
-    </div>
-  );
+  if(period !== 'Daily') {
+    return ('')
+  } else {
+
+    return (
+      <div>
+        <Tabs value={value} onChange={handleChange} aria-label="Graph tabs" centered>
+          <Tab label="Calories" {...a11yProps(0)} />
+          <Tab label="Carbs" {...a11yProps(1)} />
+          <Tab label="Protein" {...a11yProps(2)} />
+          <Tab label="Fat" {...a11yProps(3)} />
+        </Tabs>
+        <TabPanel value={value} index={0}>
+          <CaloriesByMeal />
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          <CarbsByMeal />
+        </TabPanel>
+        <TabPanel value={value} index={2}>
+          {/* < ProteinByMeal /> */}
+        </TabPanel>
+        <TabPanel value={value} index={3}>
+          {/* <FatByMeal /> */}
+        </TabPanel>
+      </div>
+    );
+  }
 };
 
