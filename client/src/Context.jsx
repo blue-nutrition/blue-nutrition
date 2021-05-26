@@ -18,32 +18,20 @@ export const ContextProvider = (props) => {
   const [exampleState, setExampleState] = useState('Hello World');
   const [today, setToday] = useState(_2dayUTC);
   const [tomorrow, setTomorrow] = useState(_2morrowUTC);
-  const [userId, setUserId] = useState('5');
-  const [email, setEmail] = useState('');
+  const [userId, setUserId] = useState(5);
+  const [email, setEmail] = useState();
 
   // Landing page states
+  const [loggedIn, setLoggedIn] = useState(false);
   const [userGoals, setUserGoals] = useState({
     weight: null,
-    water: 0,
+    water: 100,
     calories: 2000,
-    protein: 0,
-    carbs: 0,
-    fats: 0,
+    protein: 75,
+    carbs: 150,
+    fats: 50,
     goalWeight: null,
   });
-
-  // sample userData and weightData
-  // const weightData = {
-  //   userId,
-  //   weight,
-  //   date,
-  // }
-
-  // const userData = {
-  //   email,
-  //   userId,
-  //   goals: {}
-  // }
 
   const postUser = (userData, weightData, cb = () => {}) => {
     axios.post('/data/users', userData)
@@ -68,7 +56,8 @@ export const ContextProvider = (props) => {
 
   return (
     <AppContext.Provider value={{exampleState, setExampleState, userId, setUserId, email, setEmail,
-      userGoals, setUserGoals, postUser, today, setToday, tomorrow, setTomorrow}}>
+      userGoals, setUserGoals, postUser, today, setToday, tomorrow, setTomorrow,
+      loggedIn, setLoggedIn}}>
       {props.children}
     </AppContext.Provider>
   )

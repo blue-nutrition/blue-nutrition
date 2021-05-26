@@ -7,7 +7,7 @@ exports.getUser = (req, res) => {
 exports.postUser = (req, res) => {
   const filter = { email: req.body.email };
   const update = {
-    password: req.body.password,
+    userId: req.body.userId,
     goals: req.body.goals
   };
 

@@ -5,9 +5,10 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import Today from './Today/Today.jsx';
-import Goals from './Goals/Goals.jsx';
-import TrackProgressNav from './TrackProgress/TrackProgressNav.jsx';
+import Calories from './CaloriesGraph.jsx';
+import Macros from './MacrosGraph.jsx';
+import WaterIntake from './WaterIntakeGraph.jsx';
+import Weight from './WeightGraph.jsx';
 
 function TabPanel(props) {
   const { children, value, index } = props;
@@ -41,7 +42,7 @@ function a11yProps(index) {
   };
 }
 
-export default function NavBar() {
+export default function Graphs() {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -49,23 +50,25 @@ export default function NavBar() {
   };
 
   return (
-    <>
-      <AppBar position="static">
-        <Tabs centered value={value} onChange={handleChange} aria-label="simple tabs example">
-          <Tab label="Today" {...a11yProps(0)} />
-          <Tab label="Progress" {...a11yProps(1)} />
-          <Tab label="Goals" {...a11yProps(2)} />
-        </Tabs>
-      </AppBar>
+    <div>
       <TabPanel value={value} index={0}>
-        <Today />
+        <Calories />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <TrackProgressNav handleChange={handleChange.bind(this)}/>
+        <Macros />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <Goals />
+        < WaterIntake />
       </TabPanel>
-    </>
+      <TabPanel value={value} index={3}>
+        <Weight />
+      </TabPanel>
+      <Tabs value={value} onChange={handleChange} aria-label="Graph tabs" centered>
+        <Tab label="Calories" {...a11yProps(0)} />
+        <Tab label="Macros" {...a11yProps(1)} />
+        <Tab label="Water Intake" {...a11yProps(2)} />
+        <Tab label="Weight" {...a11yProps(3)} />
+      </Tabs>
+    </div>
   );
 }
