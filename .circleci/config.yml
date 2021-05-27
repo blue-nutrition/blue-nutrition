@@ -6,8 +6,8 @@ jobs:
     - checkout
     - run: npm install --ignore-engines
     # - run: npm run jest
-    - store_artifacts:
-      path: coverage
+    # - store_artifacts:
+    #   path: coverage
 
 workflows:
   version: 2
