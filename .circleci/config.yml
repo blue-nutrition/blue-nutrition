@@ -1,16 +1,9 @@
+orbs:
+  node: circleci/node@4.2.1
+
 version: 2.1
-welcome: circleci/welcome-orb@0.4.1
-jobs:
-  build_and_save:
-    steps:
-    - checkout
-    - run: npm install --ignore-engines
-    - run: npm run jest
-    - store_artifacts:
-      path: coverage
 
 workflows:
-  version: 2
-  main:
+  app-tests:
     jobs:
-      - build_and_save
+      - node/test
