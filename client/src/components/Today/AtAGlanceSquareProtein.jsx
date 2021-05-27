@@ -6,15 +6,15 @@ import OutdoorGrillIcon from '@material-ui/icons/OutdoorGrill';
 
 const AtAGlanceSquareProtein = (props) => {
   const boxStyle = {
-    width: '100px',
-    height: '100px',
+    width: '75px',
+    height: '75px',
     position: 'relative',
     overflow: 'hidden',
     margin: 'auto'
   }
 
   const iconStyle = {
-    fontSize: '100px',
+    fontSize: '75px',
     color: "#BCD4E6",
   }
   const iconDivStyle = {
@@ -25,7 +25,7 @@ const AtAGlanceSquareProtein = (props) => {
   }
 
   const blackIconStyle ={
-    fontSize: '100px',
+    fontSize: '75px',
   }
 
   const blackIconDivStyle = {

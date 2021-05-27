@@ -6,14 +6,14 @@ import LocalDrinkIcon from '@material-ui/icons/LocalDrink';
 
 const AtAGlanceSquareWater = (props) => {
   const boxStyle = {
-    width: '100px',
-    height: '100px',
+    width: '75px',
+    height: '75px',
     position: 'relative',
     overflow: 'hidden'
   }
 
   const iconStyle = {
-    fontSize: '100px',
+    fontSize: '75px',
     color: "#BCD4E6",
   }
   const iconDivStyle = {
@@ -24,7 +24,7 @@ const AtAGlanceSquareWater = (props) => {
   }
 
   const blackIconStyle ={
-    fontSize: '100px',
+    fontSize: '75px',
   }
 
   const blackIconDivStyle = {

@@ -1,17 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
 import { ArgumentAxis, ValueAxis, Chart, BarSeries, Tooltip, Legend } from '@devexpress/dx-react-chart-material-ui';
 import { ArgumentScale, Stack, EventTracker, HoverState } from '@devexpress/dx-react-chart';
 import { scaleBand } from '@devexpress/dx-chart-core';
-
-const data = [
-  { day: 'Monday', protein: 150, carbs: 100, fat: 50 },
-  { day: 'Tuesday', protein: 75, carbs: 150, fat: 80 },
-  { day: 'Wednesday', protein: 125, carbs: 200, fat: 90 },
-  { day: 'Thursday', protein: 92, carbs: 175, fat: 75 },
-  { day: 'Friday', protein: 80, carbs: 250, fat: 92 },
-]
+import { TrackProgressContext } from '../TrackProgressContext.jsx';
 
 const Label = symbol => (props) => {
   const { text } = props;
@@ -26,31 +19,32 @@ const Label = symbol => (props) => {
 const MacroLabel = Label(' grams');
 
 const MacrosGraph = (props) => {
-  const [targetItem, setTargetItem] = useState();
-  const handleTargetItemChange = targetItem => {setTargetItem(targetItem)};
+  const {
+    dailyFood, period
+  } = useContext(TrackProgressContext);
 
   return (
     <Paper>
       <Chart
-        data={data}
+        data={dailyFood}
       >
         <ArgumentScale factory={scaleBand} />
         <ArgumentAxis />
         <ValueAxis labelComponent={MacroLabel}/>
 
         <BarSeries
-          valueField="protein"
-          argumentField="day"
+          valueField="dailyProtein"
+          argumentField="_id"
           name="Protein"
         />
         <BarSeries
-          valueField="carbs"
-          argumentField="day"
+          valueField="dailyCarbs"
+          argumentField="_id"
           name="Carbs"
         />
         <BarSeries
-          valueField="fat"
-          argumentField="day"
+          valueField="dailyFat"
+          argumentField="_id"
           name="Fat"
         />
         <Stack
@@ -59,7 +53,7 @@ const MacrosGraph = (props) => {
           ]}
         />
         <EventTracker />
-        <Tooltip targetItem={targetItem} onTargetItemChange={handleTargetItemChange} />
+        <Tooltip />
         <HoverState />
         <Legend />
       </Chart>

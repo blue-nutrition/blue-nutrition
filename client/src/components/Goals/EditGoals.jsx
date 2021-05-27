@@ -9,6 +9,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 
 
+
 const EditGoals = ({ handleClose }) => {
   const {
     today, email, password, userId, userGoals, postUser
@@ -57,7 +58,12 @@ const EditGoals = ({ handleClose }) => {
   }
 
   const subtitleStyle = {
-    margin: '3vh'
+    margin: '3vh 0'
+  }
+
+  const formStyle = {
+    display: 'flex',
+    alignItems: 'center'
   }
 
   return (
@@ -78,10 +84,14 @@ const EditGoals = ({ handleClose }) => {
         </FormControl>
       </div>
       <div>
-        <FormControl>
+        <FormControl style={formStyle}>
           <div style=  {subtitleStyle}>
             <Typography variant="h5">Set Your Daily Goals</Typography>
           </div>
+        </FormControl>
+      </div>
+      <div>
+        <FormControl>
           <Input
             name="water"
             type="number"
@@ -89,6 +99,10 @@ const EditGoals = ({ handleClose }) => {
             onChange={handleChange("water")}
             endAdornment={<InputAdornment position="end">oz</InputAdornment>}
             />
+        </FormControl>
+      </div>
+      <div>
+        <FormControl>
           <FormHelperText>
             Water Consumption
           </FormHelperText>
@@ -98,7 +112,12 @@ const EditGoals = ({ handleClose }) => {
             value={editedGoals.calories}
             onChange={handleChange("calories")}
             endAdornment={<InputAdornment position="end">kcal</InputAdornment>}
+            InputProps={{ inputProps: { min: "1200" } }}
             />
+        </FormControl>
+      </div>
+      <div>
+        <FormControl>
           <FormHelperText>
             Caloric Intake
           </FormHelperText>
@@ -109,6 +128,10 @@ const EditGoals = ({ handleClose }) => {
             onChange={handleChange("protein")}
             endAdornment={<InputAdornment position="end">g</InputAdornment>}
             />
+        </FormControl>
+      </div>
+      <div>
+        <FormControl>
           <FormHelperText>
           Protein Macros
           </FormHelperText>
@@ -119,6 +142,10 @@ const EditGoals = ({ handleClose }) => {
             onChange={handleChange("carbs")}
             endAdornment={<InputAdornment position="end">g</InputAdornment>}
             />
+        </FormControl>
+      </div>
+      <div>
+        <FormControl>
           <FormHelperText>
           Carbohydrate Macros</FormHelperText>
           <Input
@@ -128,6 +155,10 @@ const EditGoals = ({ handleClose }) => {
             onChange={handleChange("fats")}
             endAdornment={<InputAdornment position="end">g</InputAdornment>}
             />
+        </FormControl>
+      </div>
+      <div>
+        <FormControl>
           <FormHelperText>
           Fats Macros</FormHelperText>
           <Input
@@ -137,6 +168,10 @@ const EditGoals = ({ handleClose }) => {
             onChange={handleChange("goalWeight")}
             endAdornment={<InputAdornment position="end">lbs</InputAdornment>}
             />
+        </FormControl>
+      </div>
+      <div>
+        <FormControl>
           <FormHelperText>
           Goal Weight</FormHelperText>
           <br></br>

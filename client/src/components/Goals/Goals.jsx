@@ -3,8 +3,10 @@ import { AppContext } from '../../Context.jsx';
 import { Modal } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography';
 import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
@@ -57,10 +59,21 @@ const subtitleStyle = {
   margin: '1vh'
 }
 
+const box = {
+  height: '3vh',
+  display: 'flex',
+  alignItems: 'flex-end',
+  justifyContent: 'flex-end'
+}
+
+const button = {
+  borderWidth: '1px',
+  borderColor: 'black',
+  margin: '10px',
+  backgroundColor: 'rgba(23, 51, 71, 0.1)'
+}
+
 let Goals = () => {
-
-
-
   const { userGoals } = useContext(AppContext);
   const [open, setOpen] = useState(false);
   const classes = useStyles();
@@ -75,13 +88,16 @@ let Goals = () => {
 
 
   return (
-    <div id="goals" className={"mainContainer"} style={goalsContainer}>
+    <div id="goals" style={goalsContainer}>
       <div style={goalsStyle}>
         <Typography variant="h3" style={titleStyle}>Your Nutrition Goals</Typography>
-        <Button
-          onClick={handleOpen}
-        >Edit Goals
-        </Button>
+        <Box style={box}>
+          <Button
+            style={button}
+            onClick={handleOpen}
+          >Edit Goals
+          </Button>
+        </Box>
         <Modal
               className={classes.modal}
               open={open}
@@ -104,9 +120,11 @@ let Goals = () => {
                 <TableCell><b>Your current weight:  (optional)</b></TableCell>
               </TableRow>
             </TableHead>
-            <TableRow>
-              <TableCell>{userGoals.weight} lbs </TableCell>
-            </TableRow>
+            <TableBody>
+              <TableRow>
+                <TableCell>{userGoals.weight} lbs </TableCell>
+              </TableRow>
+            </TableBody>
           </Table>
         </TableContainer>
         <Typography variant="h6" style={subtitleStyle}>Your Goals</Typography>
@@ -117,49 +135,61 @@ let Goals = () => {
                 <TableCell><b>Water Consumption</b></TableCell>
               </TableRow>
             </TableHead>
-            <TableRow>
-              <TableCell>{userGoals.water} oz</TableCell>
-            </TableRow>
+            <TableBody>
+              <TableRow>
+                <TableCell>{userGoals.water} oz</TableCell>
+              </TableRow>
+            </TableBody>
             <TableHead>
               <TableRow>
                 <TableCell><b>Caloric Intake</b></TableCell>
               </TableRow>
             </TableHead>
-            <TableRow>
-              <TableCell>{userGoals.calories} kcal</TableCell>
-            </TableRow>
+            <TableBody>
+              <TableRow>
+                <TableCell>{userGoals.calories} kcal</TableCell>
+              </TableRow>
+            </TableBody>
             <TableHead>
               <TableRow>
                 <TableCell><b>Protein Macros</b></TableCell>
               </TableRow>
             </TableHead>
-            <TableRow>
-              <TableCell>{userGoals.protein} g</TableCell>
-            </TableRow>
+            <TableBody>
+              <TableRow>
+                <TableCell>{userGoals.protein} g</TableCell>
+              </TableRow>
+            </TableBody>
             <TableHead>
               <TableRow>
                 <TableCell><b>Carbohydrate Macros</b></TableCell>
               </TableRow>
             </TableHead>
-            <TableRow>
-              <TableCell>{userGoals.carbs} g</TableCell>
-            </TableRow>
+            <TableBody>
+              <TableRow>
+                <TableCell>{userGoals.carbs} g</TableCell>
+              </TableRow>
+            </TableBody>
             <TableHead>
               <TableRow>
                 <TableCell><b>Fat Macros</b></TableCell>
               </TableRow>
             </TableHead>
-            <TableRow>
-              <TableCell>{userGoals.fats} g</TableCell>
-            </TableRow>
+            <TableBody>
+              <TableRow>
+                <TableCell>{userGoals.fats} g</TableCell>
+              </TableRow>
+            </TableBody>
             <TableHead>
               <TableRow>
                 <TableCell><b>Goal Weight (optional)</b></TableCell>
               </TableRow>
             </TableHead>
-            <TableRow>
-              <TableCell>{userGoals.goalWeight} lbs</TableCell>
-            </TableRow>
+            <TableBody>
+              <TableRow>
+                <TableCell>{userGoals.goalWeight} lbs</TableCell>
+              </TableRow>
+            </TableBody>
           </Table>
         </TableContainer>
       </div>
