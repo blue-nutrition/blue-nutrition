@@ -1,6 +1,7 @@
 import React, {useContext, useState} from 'react';
 import {TrackProgressContext} from '../TrackProgressContext.jsx'
 import { PieChart } from 'react-minimal-pie-chart';
+import Container from '@material-ui/core/Container';
 
 const FatByMeal = () => {
   const { dailyBreakDown } = useContext(TrackProgressContext);
@@ -31,7 +32,7 @@ const FatByMeal = () => {
   ]
 
   const defaultLabelStyle = {
-    fontSize: '2',
+    fontSize: '3',
     fontFamily: 'sans-serif',
   };
 
@@ -39,9 +40,9 @@ const FatByMeal = () => {
     return ("You haven't reported any meals yet! Start eating or update your day!")
   } else {
     return (
-      <div>
-        <PieChart viewBoxSize={[80,80]} center={[40,40]} radius={25} data={pieData} label={({dataEntry}) => `${dataEntry.title} ${dataEntry.value}g (${Math.floor(dataEntry.percentage)}%)`} labelStyle={{...defaultLabelStyle,}} labelPosition={70}/>
-      </div>
+      <Container maxWidth="xs">
+        <PieChart viewBoxSize={[100,100]} radius={45} data={pieData} label={({dataEntry}) => `${dataEntry.title} ${dataEntry.value}g (${Math.floor(dataEntry.percentage)}%)`} labelStyle={{...defaultLabelStyle,}} labelPosition={60}/>
+      </Container>
     )
   }
 };
