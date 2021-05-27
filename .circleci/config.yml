@@ -5,7 +5,7 @@ jobs:
     steps:
     - checkout
     - run: npm install --ignore-engines
-    - run: npm run jest
+    # - run: npm run jest
     - store_artifacts:
       path: coverage
 
