@@ -1,15 +1,13 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import CaloriesByMeal from './CaloriesByMeal.jsx';
 import CarbsByMeal from './CarbsByMeal.jsx';
 import FatByMeal from './FatByMeal.jsx';
 import ProteinByMeal from './ProteinByMeal.jsx';
-import { TrackProgressContext } from '../TrackProgressContext.jsx'
 
 
 function TabPanel(props) {
@@ -45,7 +43,6 @@ function a11yProps(index) {
 }
 
 export default function DailyGraphs() {
-  const { period } = useContext(TrackProgressContext)
 
   const [value, setValue] = React.useState(0);
 
@@ -53,9 +50,6 @@ export default function DailyGraphs() {
     setValue(newValue);
   };
 
-  // if(period !== 'Daily') {
-  //   return ('')
-  // } else {
     return (
       <div>
         <AppBar position="static" color='secondary'>
@@ -80,6 +74,5 @@ export default function DailyGraphs() {
         </TabPanel>
       </div>
     );
-  // }
 }
 

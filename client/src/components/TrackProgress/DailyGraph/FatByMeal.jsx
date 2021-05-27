@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 import {TrackProgressContext} from '../TrackProgressContext.jsx'
 import { PieChart } from 'react-minimal-pie-chart';
 import Container from '@material-ui/core/Container';

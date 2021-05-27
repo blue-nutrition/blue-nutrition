@@ -1,34 +1,11 @@
-import React, { useState, useContext }from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
+/* eslint-disable react/prop-types */
+import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import Modal from '@material-ui/core/Modal'
-
-
 
 const SummarySquare = (props) => {
   const timePeriod = props.period
   const {title, image, unit, amount} = props;
-  const [open, setOpen] = useState(false);
-
-  const useStyles = makeStyles((theme) => ({
-    modal: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    paper: {
-      backgroundColor: '#F0EFEB',
-      width: 'auto',
-      paddingTop: '1.0rem',
-      paddingBottom: '1.0rem',
-      paddingRight:'1.5rem',
-      paddingLeft:'1.5rem'
-    },
-  }));
 
   const boxStyle = {
     maxWidth: '160px',
@@ -40,10 +17,6 @@ const SummarySquare = (props) => {
     boxShadow: 'rgba(23, 51, 71, 0.3) 0px 19px 19px, rgba(23, 51, 71, 0.22) 0px 15px 12px',
     backgroundColor: '#D6E2E9',
     textAlign: 'center'
-  }
-
-  const handleClick = () => {
-    setOpen(true);
   }
 
 
