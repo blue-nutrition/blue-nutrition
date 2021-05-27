@@ -1,10 +1,8 @@
-import React, { useContext, useState, useEffect }from 'react';
-import { ContextProvider, AppContext } from '../../Context.jsx';
+import React, { useContext }from 'react';
+import { AppContext } from '../../Context.jsx';
 const axios = require('axios');
 
 //MaterialUI
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -85,7 +83,7 @@ const Meal = (props) => {
   const handleWaterSubmit = (oz) => {
     setWaterModal(false);
     axios.post('/data/water', {userId: userId, date: new Date(), startDate: today, endDate: tomorrow, oz: oz, meal: props.name })
-    .then((response) => {
+    .then(() => {
       props.reRenderWater();
     })
     .catch((err) => {
@@ -97,7 +95,7 @@ const Meal = (props) => {
   const handleFoodSubmit = (food) => {
     setFoodModal(false);
     axios.post('/data/food', food)
-    .then((response) => {
+    .then(() => {
       props.reRenderFood();
     })
     .catch((err) => {

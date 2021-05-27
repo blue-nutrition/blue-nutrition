@@ -21,6 +21,7 @@ export const ContextProvider = (props) => {
   const [userId, setUserId] = useState();
   const [email, setEmail] = useState();
 
+
   // Landing page states
   const [loggedIn, setLoggedIn] = useState();
   const [userGoals, setUserGoals] = useState({

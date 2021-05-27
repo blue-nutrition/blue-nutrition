@@ -9,7 +9,8 @@ const AtAGlanceSquareWater = (props) => {
     width: '75px',
     height: '75px',
     position: 'relative',
-    overflow: 'hidden'
+    overflow: 'hidden',
+    margin: 'auto'
   }
 
   const iconStyle = {
