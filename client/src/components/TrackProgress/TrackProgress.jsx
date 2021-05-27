@@ -102,7 +102,7 @@ const TrackProgress = (props) => {
 
   if(dailyBreakDown) {
     return (
-      <div className={'mainContainer'}>
+      <div>
         <TrackProgressContext.Provider value={{
           setAsOf,
           asOf,
