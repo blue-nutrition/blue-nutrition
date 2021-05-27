@@ -76,7 +76,7 @@ export default function TrackProgressNav (props) {
 
 
   return (
-    <div>
+    <div className={'mainContainer'}>
       <Grid item xs={12}>
     <Typography variant="h3">Your Progress</Typography>
   </Grid>

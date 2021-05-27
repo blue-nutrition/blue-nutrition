@@ -1,13 +1,13 @@
+/* eslint-disable react/prop-types */
 import React, { useContext }from 'react';
 import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import OutdoorGrillIcon from '@material-ui/icons/OutdoorGrill';
 import {AppContext} from '../../../Context.jsx';
 
 const SummarySquareProtein = (props) => {
   const {userGoals} = useContext(AppContext);
-  const { amt, unit } = props;
+  const { amt } = props;
   const proteinGoal = userGoals.protein;
 
 

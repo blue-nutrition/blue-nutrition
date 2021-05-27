@@ -10,6 +10,7 @@ const goalsController = require('../database/controllers/goals');
 router.get('/users', userController.getUser);
 router.get('/food', foodController.getFood);
 router.get('/dailyfood', foodController.getDailyFood);
+router.get('/dailyBreakDown', foodController.getDailyBreakDown);
 router.get('/water', waterController.getWater);
 router.get('/dailyWater', waterController.getDailyWater);
 router.get('/dailyWeight', weightController.getDailyWeight);
