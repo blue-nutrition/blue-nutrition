@@ -49,9 +49,6 @@ const TrackProgress = (props) => {
 ])
 
   useEffect(() => {
-    console.log(
-      'this is startDate', startDate, 'this is End Date', endDate, 'this is period', period
-    )
     axios.get('/data/dailyfood', {
       params: {
         'userId': userId,
@@ -60,7 +57,6 @@ const TrackProgress = (props) => {
       }
     })
     .then((resp) => {
-      console.log('this is response data for food', resp.data)
       setDailyFood(resp.data);
       axios.get('/data/dailyWater', {
         params: {
