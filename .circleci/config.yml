@@ -1,21 +1,9 @@
+orbs:
+  node: circleci/node@4.2.1
+
 version: 2.1
-welcome: circleci/node@3.0.0
-jobs:
-  build_and_save:
-    executor: node/default
-    steps:
-    - checkout
-    - node/install-npm
-    - node/install-packages:
-      app-dir: mern-starter
-      cache-path: node_modules
-      override-ci-command: npm i
-    # - run: npm run jest
-    # - store_artifacts:
-    #   path: coverage
 
 workflows:
-  version: 2
-  main:
+  app-tests:
     jobs:
-      - build_and_save
+      - node/test
