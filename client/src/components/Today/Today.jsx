@@ -141,7 +141,7 @@ const Today = () => {
 
       if (calorieTotal >= userGoals.calories && goalsStatus.calories.met === false && goalsStatus.calories.notified === false && calorieModal === false) {
         setQuote(foodQuotesGoalsMet[Math.floor(Math.random()*foodQuotesGoalsMet.length)]);
-        console.log('Calorie total')
+        // console.log('Calorie total')
 
         let newGoalsStatus = JSON.parse(JSON.stringify(goalsStatus))
         newGoalsStatus.calories.met = true;
@@ -158,8 +158,8 @@ const Today = () => {
 
       if (fatTotal >= userGoals.fats) {
         setQuote(foodQuotesGoalsMet[Math.floor(Math.random()*foodQuotesGoalsMet.length)]);
-        console.log('Fat total');
-        console.log(goalsStatus);
+        // console.log('Fat total');
+        // console.log(goalsStatus);
         if (goalsStatus["fats"].met === false && goalsStatus["fats"].notified === false && fatModal === false) {
           let newGoalsStatus = JSON.parse(JSON.stringify(goalsStatus))
           newGoalsStatus["fats"].met = true;
@@ -240,7 +240,7 @@ const Today = () => {
 
 
   return (
-    <div className={'mainContainer'}>
+    <div data-testid="today" className={'mainContainer'}>
       <AtAGlance water={totalWater} calories={totalCals} fat={totalFat} carbs={totalCarbs} protein={totalProtein}/>
       <Meal name={"Breakfast"} water={water['Breakfast']} food={food['Breakfast']} reRenderWater={getWater.bind(this)} reRenderFood={getFood.bind(this)}/>
       <Meal name={"Lunch"} water={water['Lunch']} food={food['Lunch']} reRenderWater={getWater.bind(this)} reRenderFood={getFood.bind(this)}/>
