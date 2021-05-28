@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
 
 const CreateAccountModal = () => {
 
-  const {userId, userGoals, setUserGoals, today, postUser, email, setLoggedIn} = useContext(AppContext);
+  const {userId, userGoals, setUserGoals, today, postUser, email, setLoggedIn, setUserName} = useContext(AppContext);
 
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
@@ -86,7 +86,10 @@ const CreateAccountModal = () => {
     e.persist();
     // console.log('New User Info: ', userData, weightData);
     postUser(userData, weightData, handleClose);
-    console.log()
+    setUserName({
+      familyName: res.profileObj.familyName,
+      givenName: res.profileObj.givenName,
+    });
     setLoggedIn(true);
     return false;
   }
