@@ -1,7 +1,7 @@
 const Goals = require('../models/goals.js');
 
 exports.getGoals = (req, res) => {
-  Goals.find({userId: req.query.userId}, (err, result) => {
+  Goals.find({userId: req.query.userId, date: { $gte: req.query.startDate, $lt: req.query.endDate }}, (err, result) => {
     if (err) {
       console.error(err);
       res.sendStatus(500);
@@ -47,12 +47,12 @@ exports.postGoals = (req, res) => {
       })
     }
 
-    exports.updateGoals = (req, res) => {
-      Goals.findByIdAndUpdate(req.body._id, req.body, (err, result) => {
-        if (err) {
-          console.log(err);
-        } else {
-          res.send(result);
-        }
-      })
+exports.updateGoals = (req, res) => {
+  Goals.findByIdAndUpdate(req.body._id, req.body, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
     }
+  })
+}
