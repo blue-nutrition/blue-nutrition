@@ -5,7 +5,7 @@ jest.mock('axios');
 import React from "react";
 import "@testing-library/react/dont-cleanup-after-each";
 import { render, screen, cleanup } from '@testing-library/react'; //Allows artificial rendering
-import userEvent from '@testing-library/user-event'; //Allows triggering of user events. Not demo'd on this page.
+// import userEvent from '@testing-library/user-event'; //Allows triggering of user events. Not demo'd on this page.
 import '@testing-library/jest-dom'; //Provides a set of custom jest matchers that you can use to extend jest. These will make your tests more declarative, clear to read and to maintain.
 import { ContextProvider } from '../client/src/Context.jsx';
 import Welcome from '../client/src/components/welcome/Welcome.jsx';
