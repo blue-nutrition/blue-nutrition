@@ -56,14 +56,8 @@ const TrackProgress = (props) => {
         'endDate': endDate
       }
     })
-<<<<<<< HEAD
-    .then((res) => {
-      console.log('this is response data for food', res.data)
-      setDailyFood(res.data);
-=======
     .then((resp) => {
       setDailyFood(resp.data);
->>>>>>> main
       axios.get('/data/dailyWater', {
         params: {
           'userId': userId,
@@ -71,14 +65,8 @@ const TrackProgress = (props) => {
           'endDate': endDate
         }
       })
-<<<<<<< HEAD
-        .then((res) => {
-          setDailyWater(res.data);
-          // setDailyFood([...dailyFood, userGoals]);
-=======
         .then((response) => {
           setDailyWater(response.data);
->>>>>>> main
           axios.get('/data/dailyWeight', {
             params: {
               'userId': userId,
