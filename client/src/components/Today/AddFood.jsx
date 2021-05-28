@@ -1,8 +1,7 @@
-import React, { useContext, useState, useEffect }from 'react';
-import { ContextProvider, AppContext } from '../../Context.jsx';
+import React, { useContext, useState }from 'react';
+import {AppContext } from '../../Context.jsx';
 
 //MaterialUI
-import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -26,7 +25,6 @@ const AddFood = (props) => {
   });
 
   const handleChange = (prop) => (event) => {
-    console.log(event.target);
     if (event.target.value >=0 || event.target.type === 'text') {
       setValues({...values, [prop]: event.target.value});
     }
