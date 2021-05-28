@@ -41,7 +41,7 @@ const CaloriesByMeal = () => {
   } else {
     return (
       <Container maxWidth="xs">
-        <PieChart viewBoxSize={[100,100]} radius={45} data={pieData} label={({dataEntry}) => `${dataEntry.title} ${dataEntry.value}g (${Math.floor(dataEntry.percentage)}%)`} labelStyle={{...defaultLabelStyle,}} labelPosition={60}/>
+        <PieChart viewBoxSize={[100,100]} radius={45} data={pieData} label={({dataEntry}) => `${dataEntry.title} ${dataEntry.value}kcal (${Math.floor(dataEntry.percentage)}%)`} labelStyle={{...defaultLabelStyle,}} labelPosition={60}/>
       </Container>
     )
   }

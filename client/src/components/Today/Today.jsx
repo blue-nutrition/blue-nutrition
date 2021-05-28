@@ -177,8 +177,8 @@ const Today = () => {
 
       if (proteinTotal >= userGoals.protein) {
         setQuote(foodQuotesGoalsMet[Math.floor(Math.random()*foodQuotesGoalsMet.length)]);
-        console.log('Protein total');
-        console.log(goalsStatus);
+        // console.log('Protein total');
+        // console.log(goalsStatus);
         if (goalsStatus["protein"].met === false && goalsStatus["protein"].notified === false && proteinModal === false) {
           let newGoalsStatus = JSON.parse(JSON.stringify(goalsStatus))
           newGoalsStatus["protein"].met = true;
@@ -195,8 +195,8 @@ const Today = () => {
       }
       if (carbTotal >= userGoals.carbs) {
         setQuote(foodQuotesGoalsMet[Math.floor(Math.random()*foodQuotesGoalsMet.length)]);
-        console.log('Carb total');
-        console.log(goalsStatus);
+        // console.log('Carb total');
+        // console.log(goalsStatus);
         if (goalsStatus["carbs"].met === false && goalsStatus["carbs"].notified === false && fatModal === false) {
           let newGoalsStatus = JSON.parse(JSON.stringify(goalsStatus))
           newGoalsStatus["carbs"].met = true;
@@ -228,7 +228,7 @@ const Today = () => {
         })
       } else {
         setGoalsStatus(response.data[0]);
-        console.log('getting previous goals')
+        // console.log('getting previous goals')
       }
     })
   },[])

@@ -58,6 +58,7 @@ const TrackProgress = (props) => {
     })
     .then((resp) => {
       setDailyFood(resp.data);
+      console.log('this is daily food', resp.data, startDate, endDate)
       axios.get('/data/dailyWater', {
         params: {
           'userId': userId,
