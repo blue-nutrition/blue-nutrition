@@ -2,7 +2,7 @@
 const Food = require('../models/food.js');
 
 exports.getFood = (req, res) => {
-  Food.find({userId: req.query.userId, date: { $gte: req.query.startDate, $lte: req.query.endDate }}, (err, result) => {
+  Food.find({userId: req.query.userId, date: { $gte: req.query.startDate, $lt: req.query.endDate }}, (err, result) => {
     if (err) {
       console.error(err);
       res.sendStatus(500);
@@ -43,7 +43,8 @@ exports.deleteFood = (req, res) => {
       res.status(200).send(result);
     }
   })
-}
+};
+
 exports.getDailyFood = (req, res) => {
   Food.aggregate ([{
     $match: {
@@ -67,18 +68,18 @@ exports.getDailyFood = (req, res) => {
         },
     }
 }, {$group: {
-        _id: '$yearMonthDayUTC',
+        _id: "$yearMonthDayUTC",
         dailyCalories: {
-            $sum: '$calories'
+            $sum: "$calories"
         },
         dailyProtein: {
-            $sum: '$protein'
+            $sum: "$protein"
        },
         dailyCarbs: {
-            $sum: '$carbs'
+            $sum: "$carbs"
         },
         dailyFat: {
-          $sum: '$fat'
+          $sum: "$fat"
       }
     }
 }, {
@@ -95,7 +96,42 @@ exports.getDailyFood = (req, res) => {
 })
 }
 
-exports.getWeeklyFood = (req, res) => {
-  //TODO: write controllers
+
+exports.getDailyBreakDown = (req, res) => {
+  Food.aggregate ([{
+    $match: {
+        "date": {
+            $gte: new Date(req.query.startDate),
+            $lt: new Date(req.query.endDate)
+        },
+        "userId": req.query.userId
+    }
+},  {
+  $group: {
+        _id: '$meal',
+        calorieBreakDown: {
+            $sum: '$calories'
+        },
+        proteinBreakDown: {
+            $sum: '$protein'
+       },
+        carbBreakDown: {
+            $sum: '$carbs'
+        },
+        fatBreakDown: {
+          $sum: '$fat'
+      }
+    }
+}], (err, resp) => {
+  if(err) {
+    console.log('error aggregating daily breakdown of food', err);
+    res.sendStatus(500);
+  } else {
+    res.status(200).send(resp);
+  }
+})
 }
+
+
+
 

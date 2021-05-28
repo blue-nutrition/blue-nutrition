@@ -1,8 +1,6 @@
-import React, { useContext }from 'react';
-import SummarySquare from './SummarySquare.jsx';
+/* eslint-disable react/prop-types */
+import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import { format } from 'date-fns';
 import SummarySquareCals from './SummarySquareCals.jsx';
 import SummarySquareWater from './SummarySquareWater.jsx';
 import SummarySquareCarbs from './SummarySquareCarbs.jsx';
@@ -10,9 +8,7 @@ import SummarySquareProtein from './SummarySquareProtein.jsx';
 import SummarySquareFat from './SummarySquareFat.jsx'
 
 const SummaryStats = (props) => {
-  const {timePeriod, asOf, dailyWater, dailyFood} = props;
-
-  console.log('this is daily Water', dailyWater)
+  const {dailyWater, dailyFood} = props;
 
   const totalDays = dailyFood.length;
   const totalWaterDays = dailyWater.length;

@@ -1,6 +1,6 @@
+/* eslint-disable react/prop-types */
 import React, { useContext }from 'react';
 import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import RestaurantIcon from '@material-ui/icons/Restaurant';
 import {AppContext} from '../../../Context.jsx';
