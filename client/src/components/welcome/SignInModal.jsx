@@ -36,7 +36,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const SignInModal = () => {
-  const {userId, setUserId, setLoggedIn, setEmail, getUser} = useContext(AppContext);
+  const {userId, setUserId, setLoggedIn, setEmail, getUser, setUserName} = useContext(AppContext);
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
   const [open, setOpen] = useState(false);
@@ -52,6 +52,10 @@ const SignInModal = () => {
     // console.log(res.profileObj);
     setUserId(res.profileObj.googleId);
     setEmail(res.profileObj.email);
+    setUserName({
+      familyName: res.profileObj.familyName,
+      givenName: res.profileObj.givenName,
+    });
     setLoggedIn(true);
     // console.log(userId);
     // getUser(userId, handleClose);
