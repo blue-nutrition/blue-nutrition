@@ -66,7 +66,7 @@ const Today = () => {
   }, [])
 
   return (
-    <div className={'mainContainer'}>
+    <div data-testid="today" className={'mainContainer'}>
       <AtAGlance water={totalWater} calories={totalCals} fat={totalFat} carbs={totalCarbs} protein={totalProtein}/>
       <Meal name={"Breakfast"} water={water['Breakfast']} food={food['Breakfast']} reRenderWater={getWater.bind(this)} reRenderFood={getFood.bind(this)}/>
       <Meal name={"Lunch"} water={water['Lunch']} food={food['Lunch']} reRenderWater={getWater.bind(this)} reRenderFood={getFood.bind(this)}/>

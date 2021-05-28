@@ -32,7 +32,7 @@ const Welcome = () => {
     {!loggedIn && (
       <Container>
         <Grid container justify="center">
-           <div className={classes.landing}>
+           <div data-testid="welcome" className={classes.landing}>
             <Grid item>
               <Typography variant="h4">
                 Please Sign In or Create Account to continue.
