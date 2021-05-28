@@ -24,6 +24,10 @@ export const ContextProvider = (props) => {
 
   // Landing page states
   const [loggedIn, setLoggedIn] = useState();
+  const [userName, setUserName] = useState({
+    familyName: '',
+    givenName: '',
+  });
   const [userGoals, setUserGoals] = useState({
     weight: null,
     water: 100,
@@ -78,7 +82,7 @@ export const ContextProvider = (props) => {
   return (
     <AppContext.Provider value={{exampleState, setExampleState, userId, setUserId, email, setEmail,
       userGoals, setUserGoals, postUser, today, setToday, tomorrow, setTomorrow,
-      loggedIn, setLoggedIn, getUser}}>
+      loggedIn, setLoggedIn, getUser, userName, setUserName}}>
       {props.children}
     </AppContext.Provider>
   )
