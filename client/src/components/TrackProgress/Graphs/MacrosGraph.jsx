@@ -1,5 +1,6 @@
-import React, { useState, useContext } from 'react';
-import PropTypes from 'prop-types';
+/* eslint-disable react/display-name */
+/* eslint-disable react/prop-types */
+import React, { useContext } from 'react';
 import Paper from '@material-ui/core/Paper';
 import { ArgumentAxis, ValueAxis, Chart, BarSeries, Tooltip, Legend } from '@devexpress/dx-react-chart-material-ui';
 import { ArgumentScale, Stack, EventTracker, HoverState } from '@devexpress/dx-react-chart';
@@ -18,9 +19,9 @@ const Label = symbol => (props) => {
 
 const MacroLabel = Label(' grams');
 
-const MacrosGraph = (props) => {
+const MacrosGraph = () => {
   const {
-    dailyFood, period
+    dailyFood
   } = useContext(TrackProgressContext);
 
   return (

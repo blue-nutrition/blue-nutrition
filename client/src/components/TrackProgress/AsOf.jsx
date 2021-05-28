@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import React, {useState, useContext} from 'react';
 import {AppContext} from '../../Context.jsx'
