@@ -36,13 +36,11 @@ const AddFood = (props) => {
       <div>
         <FormControl>
           <Input
+            inputProps={{'data-testid': "foodNameFormDiv"}}
             id="foodName-form"
             value={values.foodName}
             onChange={handleChange('foodName')}
             aria-describedby="food-name-helper-text"
-            inputProps={{
-              'aria-label': 'food name',
-            }}
           />
           <FormHelperText id="food-name-helper-text">Food name</FormHelperText>
         </FormControl>
@@ -113,7 +111,7 @@ const AddFood = (props) => {
       </div>
       <Grid container justify="center">
         <Grid item>
-          <Button onClick={() => props.handleClose(values)}>Submit</Button>
+          <Button data-testid="closeAddFoodModal" onClick={() => props.handleClose(values)}>Submit</Button>
         </Grid>
       </Grid>
     </div>

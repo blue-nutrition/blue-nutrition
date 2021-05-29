@@ -23,11 +23,7 @@ export const ContextProvider = (props) => {
 
 
   // Landing page states
-  const [loggedIn, setLoggedIn] = useState();
-  const [userName, setUserName] = useState({
-    familyName: '',
-    givenName: '',
-  });
+  const [loggedIn, setLoggedIn] = useState(false);
   const [userGoals, setUserGoals] = useState({
     weight: null,
     water: 100,
