@@ -24,7 +24,7 @@ import { users, water, food } from './mockData.js';
 3)optionally insert user events to manipulate elements: https://testing-library.com/docs/ecosystem-user-event
 4)test assertions about the component: https://github.com/testing-library/jest-dom */
 
-describe('Product Information component', () => {
+describe('Welcome component', () => {
   beforeAll(async () => {
     axios.get.mockResolvedValueOnce({ data: users });
     axios.get.mockResolvedValueOnce({ data: water });

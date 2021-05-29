@@ -98,7 +98,7 @@ const Today = () => {
       setTotalWater(waterTotal);
       if (waterTotal >= userGoals.water && goalsStatus.water.met === false && goalsStatus.water.notified === false && waterModal === false) {
         setQuote(waterQuotes[Math.floor(Math.random()*waterQuotes.length)]);
-        let newGoalsStatus = {...goalsStatus};
+        let newGoalsStatus = JSON.parse(JSON.stringify(goalsStatus));
         newGoalsStatus.water.met = true;
         newGoalsStatus.water.notified = true;
         axios.put('/data/goals', newGoalsStatus)
@@ -177,8 +177,6 @@ const Today = () => {
 
       if (proteinTotal >= userGoals.protein) {
         setQuote(foodQuotesGoalsMet[Math.floor(Math.random()*foodQuotesGoalsMet.length)]);
-        console.log('Protein total');
-        console.log(goalsStatus);
         if (goalsStatus["protein"].met === false && goalsStatus["protein"].notified === false && proteinModal === false) {
           let newGoalsStatus = JSON.parse(JSON.stringify(goalsStatus))
           newGoalsStatus["protein"].met = true;
@@ -246,6 +244,7 @@ const Today = () => {
       <Meal name={"Lunch"} water={water['Lunch']} food={food['Lunch']} reRenderWater={getWater.bind(this)} reRenderFood={getFood.bind(this)}/>
       <Meal name={"Dinner"} water={water['Dinner']} food={food['Dinner']} reRenderWater={getWater.bind(this)} reRenderFood={getFood.bind(this)}/>
       <Modal
+          data-testid="waterGoalModal"
           className={classes.modal}
           open={waterModal}
           onClose={handleWaterClose}
@@ -255,7 +254,7 @@ const Today = () => {
               <div className={classes.modalPaper}>
                 <div>You have met your water goal for today!</div><br/>
                 <div><i>{quote}</i></div>
-                <Button onClick={handleWaterClose}>Ok</Button>
+                <Button data-testid="closeWaterGoalModal" onClick={handleWaterClose}>Ok</Button>
               </div>
         </Modal>
         <Modal
@@ -298,6 +297,7 @@ const Today = () => {
               </div>
         </Modal>
         <Modal
+          data-testid="proteinGoalModal"
           className={classes.modal}
           open={proteinModal}
           onClose={handleProteinClose}
@@ -307,7 +307,7 @@ const Today = () => {
               <div className={classes.modalPaper}>
                 <div>You have met your protein goal for today!</div><br/>
                 <div><i>{quote}</i></div>
-                <Button onClick={handleProteinClose}>Ok</Button>
+                <Button  data-testid="closeProteinGoalModal" onClick={handleProteinClose}>Ok</Button>
               </div>
         </Modal>
     </div>

@@ -28,13 +28,14 @@ const AddWater = (props) => {
           aria-describedby="oz-helper-text"
           inputProps={{
             'aria-label': 'water oz',
+            'data-testid': "waterFormDiv"
           }}
         />
         <FormHelperText id="oz-helper-text">Water</FormHelperText>
       </FormControl>
       <Grid container justify="center">
         <Grid item>
-          <Button onClick={() => props.handleClose(water)}>Submit</Button>
+          <Button data-testid='closeWaterModalButton' onClick={() => props.handleClose(water)}>Submit</Button>
         </Grid>
       </Grid>
     </div>
