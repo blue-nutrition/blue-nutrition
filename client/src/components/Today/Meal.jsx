@@ -116,14 +116,15 @@ const Meal = (props) => {
   return (
       <div style={mealStyle}>
         <Grid container>
-          <Grid item xs={6}>
+          <Grid item xs={6} data-testid="meal">
             <Typography variant="h5" style={{padding: '6px 8px'}}>{props.name}</Typography>
           </Grid>
           <Grid item xs={6} container direction="row-reverse">
             <Grid item>
 
-              <Button onClick={handleFoodOpen}>Add Food</Button>
+              <Button data-testid="addFoodButton" onClick={handleFoodOpen}>Add Food</Button>
               <Modal
+                data-testid="addFoodModal"
                 className={classes.modal}
                 open={foodModal}
                 onClose={handleFoodClose}
@@ -140,8 +141,9 @@ const Meal = (props) => {
                   </Fade>
               </Modal>
 
-              <Button onClick={handleWaterOpen}>Add Water</Button>
+              <Button data-testid="addWaterButton" onClick={handleWaterOpen}>Add Water</Button>
               <Modal
+                 data-testid="addWaterModal"
                 className={classes.modal}
                 open={waterModal}
                 onClose={handleWaterClose}
@@ -177,8 +179,8 @@ const Meal = (props) => {
               <TableBody>
                 {props.food.map((item) => {
                   return(
-                    <TableRow key={item._id}>
-                      <TableCell>{item.foodName}</TableCell>
+                    <TableRow data-testid="foodItem" key={item._id}>
+                      <TableCell data-testid="foodItemName">{item.foodName}</TableCell>
                       <TableCell align="right">{item.calories}</TableCell>
                       <TableCell align="right">{item.fat}</TableCell>
                       <TableCell align="right">{item.carbs}</TableCell>
@@ -187,7 +189,7 @@ const Meal = (props) => {
                         <IconButton onClick={() => handleFoodOpen({foodName: item.foodName, calories: item.calories, fat: item.fat, carbs: item.carbs, protein: item.protein, _id: item._id})}>
                           <EditIcon />
                         </IconButton>
-                        <IconButton onClick={() => handleFoodDelete(item._id)}>
+                        <IconButton data-testid="deleteFoodButton" onClick={() => handleFoodDelete(item._id)}>
                           <DeleteIcon />
                         </IconButton>
                       </TableCell>
@@ -195,7 +197,7 @@ const Meal = (props) => {
                   )
                 })}
                 <TableRow>
-                  <TableCell>Water: {props.water} oz</TableCell>
+                  <TableCell data-testid="water">Water: {props.water} oz</TableCell>
                 </TableRow>
               </TableBody>
             </Table>

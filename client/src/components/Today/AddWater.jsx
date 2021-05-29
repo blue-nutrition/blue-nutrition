@@ -28,6 +28,7 @@ const AddWater = (props) => {
           aria-describedby="oz-helper-text"
           inputProps={{
             'aria-label': 'water oz',
+            'data-testid': "waterFormDiv"
           }}
         />
         <FormHelperText id="oz-helper-text">Water</FormHelperText>
