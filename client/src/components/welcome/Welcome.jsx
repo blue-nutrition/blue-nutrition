@@ -49,6 +49,7 @@ const Welcome = () => {
     {loggedIn &&(
       <NavBar/>
     )}
+
     </>
   )
 };
