@@ -35,7 +35,7 @@ const AddWater = (props) => {
       </FormControl>
       <Grid container justify="center">
         <Grid item>
-          <Button onClick={() => props.handleClose(water)}>Submit</Button>
+          <Button data-testid='closeWaterModalButton' onClick={() => props.handleClose(water)}>Submit</Button>
         </Grid>
       </Grid>
     </div>

@@ -10,7 +10,7 @@ import '@testing-library/jest-dom'; //Provides a set of custom jest matchers tha
 import Today from '../../components/Today/Today.jsx';
 import { ContextProvider } from '../../Context.jsx';
 
-import { water, food, goals, deleteFood1, deleteFood2 } from './mockData.js';
+import { water, food, food2, goals, deleteFood1, deleteFood2, water2, goalsTwo, goalsThree } from './mockData.js';
 
 describe('Product Information component', () => {
   beforeAll(async() => {
@@ -21,6 +21,14 @@ describe('Product Information component', () => {
     axios.get.mockResolvedValueOnce({ data: deleteFood2 });
     axios.post.mockResolvedValueOnce({ data: [] });
     axios.get.mockResolvedValueOnce({ data: food });
+    axios.post.mockResolvedValueOnce({ data: [] });
+    axios.get.mockResolvedValueOnce({ data: water });
+    axios.post.mockResolvedValueOnce({ data: [] });
+    axios.get.mockResolvedValueOnce({ data: water2 });
+    axios.put.mockResolvedValueOnce({ data: goalsTwo});
+    axios.post.mockResolvedValueOnce({ data: [] });
+    axios.get.mockResolvedValueOnce({ data: food2 });
+    axios.put.mockResolvedValueOnce({ data: goalsThree});
 
     await render(
         <div>
@@ -110,16 +118,41 @@ describe('Product Information component', () => {
     fireEvent.change(waterFormDiv, { target: {value: 10}})
     expect(waterFormDiv).toHaveValue(10);
 
-    // const closeFoodModalButton = screen.getByTestId('closeAddFoodModal');
-    // userEvent.click(closeFoodModalButton);
-
-    // await waitFor(() => {
-    //   const foodItemDivs = screen.queryAllByTestId('foodItem');
-    //   expect(foodItemDivs.length).toBe(3);
-    // })
+    const closeWaterModalButton = screen.getByTestId('closeWaterModalButton');
+    userEvent.click(closeWaterModalButton);
 
   });
 
+  test('The user should be alerted upon reaching their water goal', async () => {
+    const addWaterButtons = screen.queryAllByTestId('addWaterButton');
+    userEvent.click(addWaterButtons[0]);
+
+    const closeWaterModalButton = screen.getByTestId('closeWaterModalButton');
+    userEvent.click(closeWaterModalButton);
+
+
+    await waitFor(() => {
+      expect(screen.getByTestId('waterGoalModal')).toBeInTheDocument();
+      const closeWaterGoalModal = screen.getByTestId('closeWaterGoalModal');
+      userEvent.click(closeWaterGoalModal);
+    })
+
+  });
+
+  test('The user should be alerted upon reaching a food goal', async () => {
+    const addFoodButtons = screen.queryAllByTestId('addFoodButton');
+    userEvent.click(addFoodButtons[0]);
+
+    const closeFoodModalButton = screen.getByTestId('closeAddFoodModal');
+    userEvent.click(closeFoodModalButton);
+
+    await waitFor(() => {
+      expect(screen.getByTestId('proteinGoalModal')).toBeInTheDocument();
+      const closeProteinGoalModal = screen.getByTestId('closeProteinGoalModal');
+      userEvent.click(closeProteinGoalModal);
+    })
+
+  });
 
 
 });
