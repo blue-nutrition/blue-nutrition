@@ -21,10 +21,10 @@
 <img src='screenshots/Screen Shot 2021-06-02 at 11.15.57 AM.png'/>
 <img src='screenshots/Screen Shot 2021-06-02 at 11.18.39 AM.png'/>
 <img src='screenshots/Screen Shot 2021-06-02 at 2.14.34 PM.png'/>
-<img src='screenshots/image (1).png'>/
-<img src='screenshots/image (2).png'>/
-<img src='screenshots/image (3).png'>/
-<img src='screenshots/image (4).png'>/
+<img src='screenshots/image (1).png'/>
+<img src='screenshots/image (2).png'/>
+<img src='screenshots/image (3).png'/>
+<img src='screenshots/image (4).png'/>
 
 ## Installation:
 - From your terminal, `git clone https://github.com/blue-nutrition/blue-nutrition.git`
